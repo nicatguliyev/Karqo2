@@ -246,6 +246,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
             VC.foreignPassportUrl = self.foreignPassportUrl
             VC.carRegisterDoc = self.carRegisterUrl
             VC.halfCarRegisterUrl = self.halfcarRegisterUrl
+            VC.type = 1
         }
     }
 

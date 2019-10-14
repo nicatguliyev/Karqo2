@@ -263,6 +263,7 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
                             let avatarUrl = URL(string: avatar)
                             DispatchQueue.main.async {
                                 self.userImage.sd_setImage(with: avatarUrl)
+                               
                             }
                         }
                         DispatchQueue.main.async {

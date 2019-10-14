@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 0
+        
+        UIView.appearance().isExclusiveTouch = true
         // Override point for customization after application launch.
         return true
     }

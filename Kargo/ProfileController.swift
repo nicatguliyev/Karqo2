@@ -21,6 +21,10 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
     
     @IBOutlet weak var mainViewHeight: NSLayoutConstraint!
     
+    var foreignPassportUrl: String?
+    var carRegisterUrl: String?
+    var halfcarRegisterUrl: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +48,7 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
             
         }
         
+            
         self.revealViewController()?.delegate = self
         
         let profilTap = UITapGestureRecognizer(target: self, action: #selector(profilTapped))
@@ -66,7 +71,13 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
     
     
     @objc func profilTapped(){
-       performSegue(withIdentifier: "segueToDetail", sender: self)
+        if(vars.user?.user?.role_id == 4){
+            performSegue(withIdentifier: "segueToDetail", sender: self)
+        }
+        else{
+            performSegue(withIdentifier: "segueToDriverProfileController", sender: self)
+        }
+       
     }
     
     @objc func sifreTapped(){
@@ -85,6 +96,7 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
     func revealControllerPanGestureBegan(_ revealController: SWRevealViewController!) {
         view1.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.05)
         view2.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.05)
+         senedView.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.05)
     }
     
     func setUpMenuButton(){
@@ -108,6 +120,12 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
         
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueToDocument")
+        {
+            let VC  = segue.destination as! DocumentsController
+            VC.type = 2
+        }
+    }
 
 }
