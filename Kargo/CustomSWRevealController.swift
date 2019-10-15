@@ -10,6 +10,7 @@ import UIKit
 
 class CustomSWRevealController: SWRevealViewController {
     
+    var prevVC: LoginController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

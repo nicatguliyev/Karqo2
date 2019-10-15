@@ -716,6 +716,9 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
                                         self.selectedImage = nil
                                         DispatchQueue.main.async {
                                             self.view.makeToast("Profil məlumatları  dəyişdirildi")
+                                            if let controller  = MenuViewController.staticSelf{
+                                                controller.changeProfileImage(x: responseData.avatar ?? "")
+                                            }
                                         }
                                     }
                                     else
@@ -828,6 +831,10 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
                     if(jsonData.status == "success"){
                         
                         DispatchQueue.main.async {
+                            if let controller  = MenuViewController.staticSelf{
+                                controller.changeName(x: self.nameTextField.text!)
+                                controller.changePhoneNumber(x: filteredNumbers[0])
+                            }
                             if(self.selectedImage != nil){
                                 self.updateAvatar()
                             }

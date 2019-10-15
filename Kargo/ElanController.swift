@@ -12,6 +12,7 @@
     let status: String?
     let data: OrderDataModel?
     let error: [String]?
+        let avatar: String?
     }
 
     struct OrderDataModel:Decodable {
@@ -66,6 +67,7 @@
         super.viewDidLoad()
      //  print(vars.user?.data?.token)
         setUpMenuButton()
+      
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001, execute: {
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
         })
@@ -123,9 +125,12 @@
         createShadow2(view: cell.nameView)
         cell.nameView.layer.cornerRadius = 10
         cell.nameView.isHidden = true
+        cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+        self.createShadow2(view: cell.priceView)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-            self.createShadow2(view: cell.priceView)
+          //  cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+          //  self.createShadow2(view: cell.priceView)
         })
         
         cell.removeBtn.tag = self.advs[indexPath.row].id!

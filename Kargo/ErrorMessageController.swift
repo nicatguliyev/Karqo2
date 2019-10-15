@@ -11,10 +11,16 @@ import UIKit
 class ErrorMessageController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var errorMessages = [String]()
-  
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var errorTable: UITableView!
+    @IBOutlet weak var closeBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mainView.layer.cornerRadius = 15.0
+        closeBtn.layer.cornerRadius = 15.0
+        errorTable.layer.cornerRadius = 15.0
        
     }
     

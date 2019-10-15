@@ -15,32 +15,32 @@ class Global {
 
 struct LoginDataModel:Decodable {
     let status: String?
-    let user: UserModel?
+    var user: UserModel?
     let data: UserTokenModel?
     
 }
 struct UserModel:Decodable{
-    let id: Int?
-    let role_id: Int?
-    let username: String?
-    let name: String?
-    let avatar: String?
-    let email: String?
-    let phone: String?
-    let foreign_passport: String?
-    let car_register_doc: String?
-    let half_car_register_doc: String?
-    let car_brand: Int?
-    let car_model: Int?
-    let car_tonnage_m3: Int?
-    let car_tonnage_kq: Int?
-    let car_type: Int?
-    let work_practice: Int?
-    let push_status: Int?
-    let sms_status: Int?
-    let sound_status: Int?
-    let vibration_status: Int?
-    let active: Int?
+    var id: Int?
+    var role_id: Int?
+    var username: String?
+    var name: String?
+    var avatar: String?
+    var email: String?
+    var phone: String?
+    var foreign_passport: String?
+    var car_register_doc: String?
+    var half_car_register_doc: String?
+    var car_brand: Int?
+    var car_model: Int?
+    var car_tonnage_m3: Int?
+    var car_tonnage_kq: Int?
+    var car_type: Int?
+    var work_practice: Int?
+    var push_status: Int?
+    var sms_status: Int?
+    var sound_status: Int?
+    var vibration_status: Int?
+    var active: Int?
     //let settings: [String: String]?
   //  let settings: [UserSettingModel]?
 }
@@ -65,6 +65,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
     var connView = UIView()
     var checkConnButtonView = UIView()
     var checkConnIndicator = UIActivityIndicatorView()
+    
+ //  static var staticSelf: LoginController?
 
     
     override func viewDidLoad() {
@@ -73,6 +75,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
         userNameView.layer.cornerRadius = 2
         passwordView.layer.cornerRadius = 2
         loginBtn.layer.cornerRadius = 30
+        
+        
         
         addConnectionView()
 
@@ -174,7 +178,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
                             let userModel = try JSONDecoder().decode(LoginDataModel.self, from: data)
                             vars.user = userModel
                             DispatchQueue.main.async {
+                               
                                 self.performSegue(withIdentifier: "segueToSWReveal", sender: self)
+                                
                             }
                         }
                     }
@@ -207,6 +213,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
             
             
             }.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? CustomSWRevealController {
+            
+            destinationVC.prevVC = self
+            
+        }
     }
 }
 

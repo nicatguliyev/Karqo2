@@ -215,9 +215,12 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             cell.removeBtn.isHidden = true
             cell.editBtn.isHidden = true
             cell.nameView.layer.cornerRadius = 10
+            cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+            self.createShadow2(view: cell.priceView)
+        
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-                self.createShadow2(view: cell.priceView)
+//                cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+//                self.createShadow2(view: cell.priceView)
             })
         
         if(vars.user?.user?.role_id == 4){
@@ -453,7 +456,6 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         let session = URLSession(configuration: sessionConfig)
         
         session.dataTask(with: urlRequest){(data, response, error) in
-            self.isLoading  = false
             if(error == nil){
                 guard let data = data else {return}
                 //   let output =   String(data: data, encoding: String.Encoding.utf8)
@@ -511,6 +513,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 }
             }
+            self.isLoading  = false
             
             
             }.resume()
@@ -549,7 +552,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         let session = URLSession(configuration: sessionConfig)
         
         session.dataTask(with: urlRequest){(data, response, error) in
-            self.isLoading  = false
+           
             if(error == nil){
                 guard let data = data else {return}
             //   let output =   String(data: data, encoding: String.Encoding.utf8)
@@ -583,6 +586,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                     self.driverCollectionView.reloadData()
                     
                 }
+                
             }
             else
             {
@@ -608,7 +612,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                 }
             }
             
-            
+            self.isLoading  = false
             }.resume()
         
     }
@@ -658,6 +662,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             if(isLoading == false && nextPageUrl != nil){
 
                 if(vars.user?.user?.role_id == 3){
+                    print("currentpage \(currentPage)")
                     getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate)
                 }
                 else

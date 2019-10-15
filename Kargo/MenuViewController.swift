@@ -15,16 +15,29 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var menuHeaderView: UIView!
     @IBOutlet weak var headerWidth: NSLayoutConstraint!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
+    
     var selectedIndexPath: IndexPath?
     var menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
     var menuImages = ["searchIcon.png", "elanIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
+    static var staticSelf: MenuViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MenuViewController.staticSelf = self
         selectedIndexPath = IndexPath(row: 0, section: 0)
         setupDesign()
+        
+        if let avatar = vars.user?.user?.avatar{
+            let avatarUrl = URL(string: avatar)
+            self.userImage.sd_setImage(with: avatarUrl)
+
+        }
+        phoneNumber.text = vars.user?.user?.phone?.components(separatedBy: ",")[0]
+        userName.text = vars.user?.user?.name
         // Do any additional setup after loading the view.
     }
     
@@ -72,17 +85,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let nib: [MenuTableViewCell] = Bundle.main.loadNibNamed("MenuTableViewCell", owner: self, options: nil) as! [MenuTableViewCell]
         let cell = nib[0]
         cell.greenView.layer.cornerRadius = 20
-        cell.numberBtn.layer.cornerRadius = cell.numberBtn.frame.width / 2
+       // cell.numberBtn.layer.cornerRadius = cell.numberBtn.frame.width / 2
         cell.menuNAmeLbl.text = menuNames[indexPath.row]
         cell.menuIcon.image = UIImage(named: menuImages[indexPath.row])
-        if(indexPath.row != 2){
-            cell.numberBtn.isHidden = true
-        }
+       
+          //  cell.numberBtn.isHidden = true
         
         if(indexPath == selectedIndexPath){
             cell.greenView.backgroundColor =  UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
             cell.menuNAmeLbl.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-            cell.numberBtn.titleLabel?.textColor = UIColor.white
+    //        cell.numberBtn.titleLabel?.textColor = UIColor.white
             
             let image2 = UIImage(named: menuImages[indexPath.row])
             let img = image2?.overlayImage(color: UIColor.white)
@@ -92,7 +104,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         {
             cell.greenView.backgroundColor = UIColor.clear
             cell.menuNAmeLbl.textColor = UIColor(red: 68/255, green: 86/255, blue: 108/255, alpha: 1)
-            cell.numberBtn.titleLabel?.textColor = UIColor(red: 68/255, green: 86/255, blue: 108/255, alpha: 1)
+           // cell.numberBtn.titleLabel?.textColor = UIColor(red: 68/255, green: 86/255, blue: 108/255, alpha: 1)
             
             let image2 = UIImage(named: menuImages[indexPath.row])
             let img = image2?.overlayImage(color: UIColor(red: 164/255, green: 168/255, blue: 186/255, alpha: 1))
@@ -187,7 +199,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
     
     }
-
+    
+    func changeProfileImage(x: String){
+        let avatarUrl = URL(string: x)
+            self.userImage.sd_setImage(with: avatarUrl)
+    }
+    func changePhoneNumber(x: String){
+         self.phoneNumber.text = x
+    }
+    
+    func changeName(x: String){
+        self.userName.text = x
+    }
+    
 }
 
 

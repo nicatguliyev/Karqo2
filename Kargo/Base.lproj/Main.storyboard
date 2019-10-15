@@ -463,9 +463,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgZ-Om-I3X">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="244"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billGates.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="75g-z5-m0x">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="75g-z5-m0x">
                                         <rect key="frame" x="48" y="50" width="100" height="100"/>
-                                        <color key="backgroundColor" red="0.8980392157" green="0.446336389" blue="0.2395990935" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="9A9-GU-Qf2"/>
                                             <constraint firstAttribute="width" constant="100" id="dui-eM-V9o"/>
@@ -527,7 +527,9 @@
                         <outlet property="imageHeight" destination="9A9-GU-Qf2" id="ypy-DE-3eR"/>
                         <outlet property="imageWidth" destination="dui-eM-V9o" id="Xr3-Ar-UEi"/>
                         <outlet property="menuHeaderView" destination="XgZ-Om-I3X" id="TXB-EJ-4aC"/>
+                        <outlet property="phoneNumber" destination="XAD-u1-sM9" id="KTk-2S-1M6"/>
                         <outlet property="userImage" destination="75g-z5-m0x" id="oj4-ac-6Xd"/>
+                        <outlet property="userName" destination="JTz-w1-4ER" id="JhG-I6-omB"/>
                         <segue destination="MsD-zU-DX1" kind="custom" identifier="segueToFind" customClass="SWRevealViewControllerSeguePushController" id="OIe-M9-Dqc"/>
                         <segue destination="wEi-5r-EBd" kind="custom" identifier="segueToPay" customClass="SWRevealViewControllerSeguePushController" id="IKJ-Pf-zLj"/>
                         <segue destination="v2E-gc-3Wn" kind="custom" identifier="segueToBildiris" customClass="SWRevealViewControllerSeguePushController" id="Jw4-Pc-OJg"/>
@@ -4934,10 +4936,10 @@ bilərsiniz</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="941-D1-qC0">
-                                <rect key="frame" x="20" y="248" width="374" height="400"/>
+                                <rect key="frame" x="20" y="298" width="374" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmd-cc-8fQ">
-                                        <rect key="frame" x="0.0" y="350" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="250" width="374" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.75686274509803919" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="DnB-AD-hBx"/>
@@ -4951,7 +4953,7 @@ bilərsiniz</string>
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AQ4-Il-yVz">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="350"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="250"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ErrorCellId" id="tUh-AS-B7w" customClass="ErrorMessageCell" customModule="Kargo" customModuleProvider="target">
@@ -4995,7 +4997,7 @@ bilərsiniz</string>
                                     <constraint firstItem="AQ4-Il-yVz" firstAttribute="top" secondItem="941-D1-qC0" secondAttribute="top" id="PM3-sV-2zr"/>
                                     <constraint firstAttribute="trailing" secondItem="AQ4-Il-yVz" secondAttribute="trailing" id="Vyf-Jr-0fR"/>
                                     <constraint firstItem="AQ4-Il-yVz" firstAttribute="leading" secondItem="941-D1-qC0" secondAttribute="leading" id="igz-bc-fxR"/>
-                                    <constraint firstAttribute="height" constant="400" id="wvh-qS-5sZ"/>
+                                    <constraint firstAttribute="height" constant="300" id="wvh-qS-5sZ"/>
                                     <constraint firstAttribute="bottom" secondItem="zmd-cc-8fQ" secondAttribute="bottom" id="xXW-Dg-Ct6"/>
                                 </constraints>
                             </view>
@@ -5008,6 +5010,11 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LmS-qJ-Pqn"/>
                     </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="zmd-cc-8fQ" id="EGO-vQ-4mO"/>
+                        <outlet property="errorTable" destination="AQ4-Il-yVz" id="Cpp-kV-sQY"/>
+                        <outlet property="mainView" destination="941-D1-qC0" id="0PE-lc-5vt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iB5-uS-qRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8540,7 +8547,6 @@ bilərsiniz</string>
         <image name="bellIcon.png" width="53" height="53"/>
         <image name="betweenStations.png" width="26" height="243"/>
         <image name="bigActionBar.png" width="1125" height="744"/>
-        <image name="billGates.jpg" width="216" height="233"/>
         <image name="blueCircle.png" width="42" height="42"/>
         <image name="cargoLogo.png" width="576" height="496"/>
         <image name="changePassword.png" width="52" height="61"/>
@@ -8580,10 +8586,10 @@ bilərsiniz</string>
         <image name="yukWeight.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TIs-rx-EBY"/>
+        <segue reference="OIe-M9-Dqc"/>
         <segue reference="vYI-Xy-kuo"/>
         <segue reference="xn1-NK-Phl"/>
         <segue reference="75M-Tb-J4Y"/>
-        <segue reference="zZG-qI-lrH"/>
+        <segue reference="KrB-zm-tVY"/>
     </inferredMetricsTieBreakers>
 </document>

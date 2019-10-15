@@ -42,6 +42,7 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
     var selectedImage: UIImage?
     var errorMessages = [String]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -371,6 +372,10 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
                     if(jsonData.status == "success"){
                        
                             DispatchQueue.main.async {
+                                if let controller  = MenuViewController.staticSelf{
+                                    controller.changeName(x: self.nameTextField.text!)
+                                    controller.changePhoneNumber(x: filteredNumbers[0])
+                                }
                                 if(self.selectedImage != nil){
                                      self.updateAvatar()
                                 }
@@ -378,20 +383,22 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
                                     self.connView.isHidden = true
                                     self.view.makeToast("Profil məlumatları dəyişdirildi")
                                 }
-                               
+                                
                             }
                         }
                     else
                     {
-                        DispatchQueue.main.async {
-                          self.connView.isHidden = true
-                        }
+                       
                         self.errorMessages = []
                         let requiredList = jsonData.error!
                         for i in 0..<requiredList.count{
                             self.errorMessages.append(requiredList[i])
                         }
-                        self.performSegue(withIdentifier: "segueToErrorController", sender: self)
+                        DispatchQueue.main.async {
+                            self.connView.isHidden = true
+                            self.performSegue(withIdentifier: "segueToErrorController", sender: self)
+                        }
+                        
                     }
                     
                 }
@@ -480,6 +487,9 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
                                         self.selectedImage = nil
                                         DispatchQueue.main.async {
                                          self.view.makeToast("Profil məlumatları  dəyişdirildi")
+                                            if let controller  = MenuViewController.staticSelf{
+                                                controller.changeProfileImage(x: responseData.avatar ?? "")
+                                            }
                                         }
                                     }
                                     else
