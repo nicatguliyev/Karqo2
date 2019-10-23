@@ -96,7 +96,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     var endDate = ""
     
     var elanType = ""
-   
+    var selectedAdv: TimeLineDataItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,12 +215,12 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             cell.removeBtn.isHidden = true
             cell.editBtn.isHidden = true
             cell.nameView.layer.cornerRadius = 10
-            cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-            self.createShadow2(view: cell.priceView)
+          //  cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+          //  self.createShadow2(view: cell.priceView)
         
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-//                cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-//                self.createShadow2(view: cell.priceView)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+                cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+                self.createShadow2(view: cell.priceView)
             })
         
         if(vars.user?.user?.role_id == 4){
@@ -373,7 +373,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         view.layer.shadowOpacity = 0.1
         view.layer.shadowRadius = 1
         view.layer.masksToBounds = false
-        view.layer.cornerRadius = 30.0
+        view.layer.cornerRadius = 15.0
     }
     
     

@@ -100,6 +100,27 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = 0
+        //let cells = self.numbersTable.visibleCells as! Array<AddNumberCell>
+        
+        if(textField == oldPassword || textField == newPassword || textField == replyNewPassword){
+            maxLength = 30
+        }
+        else
+        {
+            maxLength = 16
+        }
+        
+        
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+    
+    
     func addConnectionView(){
         if let connectionView = Bundle.main.loadNibNamed("CheckConnectionView", owner: self, options: nil)?.first as? CheckConnectionView {
             connectionView.frame = CGRect(x: 0, y: 80, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)

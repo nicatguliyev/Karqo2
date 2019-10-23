@@ -65,7 +65,6 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let dateFormatter = DateFormatter()
     
     @IBOutlet weak var secondDateTextField: UITextField!
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var haradanRegHeightConst: NSLayoutConstraint!
     @IBOutlet weak var haradanRegionTopConst: NSLayoutConstraint!
     @IBOutlet weak var haradanRegionLblConst: NSLayoutConstraint!
@@ -76,6 +75,14 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var carTypeViewHeightConst: NSLayoutConstraint!
     
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var yukTypeSelectBtn: CustomSelectButton!
+    @IBOutlet weak var yukTypeLbl: UILabel!
+    @IBOutlet weak var yukTypeTextField: UITextField!
+    
+    @IBOutlet weak var yukTypeHeightConst: NSLayoutConstraint!
+    @IBOutlet weak var yukTypeLblHeight: NSLayoutConstraint!
+    
     var screenHeight = 0.0
     var filterType = ""
     
@@ -105,7 +112,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
-            self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
+         //   self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
         })
         
         
@@ -128,14 +135,22 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         {
             carTypeLblHeightConst.constant = 18
             carTypeViewHeightConst.constant = 45
+            yukTypeLblHeight.constant = 0
+            yukTypeHeightConst.constant = 0
+        }
+        else{
+            carTypeLblHeightConst.constant = 0
+            carTypeViewHeightConst.constant = 0
+            yukTypeLblHeight.constant = 18
+            yukTypeHeightConst.constant = 45
         }
         
         getCountries()
         addConnectionView()
         
         let bottomTapGesture = UITapGestureRecognizer(target: self, action: #selector(bottomTapped))
-        bottomView.isUserInteractionEnabled = true
-        bottomView.addGestureRecognizer(bottomTapGesture)
+       // bottomView.isUserInteractionEnabled = true
+      //  bottomView.addGestureRecognizer(bottomTapGesture)
     }
 
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4B8D1CBFEEB7429C9F9F18F /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9B5301546B9A238FEF33FC /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		CD004BD122EB7D1A00279B64 /* greenDoneImg.png in Resources */ = {isa = PBXBuildFile; fileRef = CD004BD022EB7D1900279B64 /* greenDoneImg.png */; };
 		CD004BD322EB7DD400279B64 /* SelectLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD004BD222EB7DD400279B64 /* SelectLanguageController.swift */; };
 		CD004BD622ECCAD600279B64 /* FindOrderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD004BD422ECCAD600279B64 /* FindOrderCollectionCell.swift */; };
@@ -127,6 +128,11 @@
 		CD903F6C22CB49660088F473 /* FirstInfPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD903F6B22CB49660088F473 /* FirstInfPage.xib */; };
 		CD903F6E22CB49820088F473 /* FirstInfPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD903F6D22CB49820088F473 /* FirstInfPage.swift */; };
 		CD903F7022CBE5860088F473 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD903F6F22CBE5860088F473 /* image1.png */; };
+		CDA5429C23566F6B0070516D /* EditElanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA5429B23566F6B0070516D /* EditElanController.swift */; };
+		CDA542EA235E2EC00070516D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA542E9235E2EC00070516D /* NotificationService.swift */; };
+		CDA542EE235E2EC00070516D /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CDA542E7235E2EC00070516D /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDA542F62360378C0070516D /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA542F52360378C0070516D /* PhoneViewController.swift */; };
+		CDA542F823603A950070516D /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA542F723603A950070516D /* PhoneNumberCell.swift */; };
 		CDD7B6A2232EBAB6007B496D /* ElanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7B6A1232EBAB6007B496D /* ElanController.swift */; };
 		CDD7B6A5232EC3D8007B496D /* removeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD7B6A3232EC3D8007B496D /* removeIcon.png */; };
 		CDD7B6A6232EC3D8007B496D /* greenEditIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD7B6A4232EC3D8007B496D /* greenEditIcon.png */; };
@@ -142,9 +148,37 @@
 		EEC774465A95A2007F37F5AE /* Pods_Kargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D03C4362C06112D792C7559 /* Pods_Kargo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CDA542EC235E2EC00070516D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD903F4622CB2BAB0088F473 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDA542E6235E2EC00070516D;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CDA542F2235E2EC00070516D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CDA542EE235E2EC00070516D /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		116088AAC97930C112157D25 /* Pods-Kargo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kargo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kargo/Pods-Kargo.debug.xcconfig"; sourceTree = "<group>"; };
+		1476A1B1095562070005F2CA /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		45CA464DECD22E97ECA78941 /* Pods_Kargo_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kargo_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B9B5301546B9A238FEF33FC /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D03C4362C06112D792C7559 /* Pods_Kargo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kargo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E63928D5C386C1001D4ED2 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		CD004BD022EB7D1900279B64 /* greenDoneImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenDoneImg.png; sourceTree = "<group>"; };
 		CD004BD222EB7DD400279B64 /* SelectLanguageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageController.swift; sourceTree = "<group>"; };
 		CD004BD422ECCAD600279B64 /* FindOrderCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindOrderCollectionCell.swift; sourceTree = "<group>"; };
@@ -269,6 +303,14 @@
 		CD903F6B22CB49660088F473 /* FirstInfPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstInfPage.xib; sourceTree = "<group>"; };
 		CD903F6D22CB49820088F473 /* FirstInfPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfPage.swift; sourceTree = "<group>"; };
 		CD903F6F22CBE5860088F473 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
+		CDA5429B23566F6B0070516D /* EditElanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditElanController.swift; sourceTree = "<group>"; };
+		CDA542E7235E2EC00070516D /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDA542E9235E2EC00070516D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		CDA542EB235E2EC00070516D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDA542F3235E33930070516D /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		CDA542F4235E33C20070516D /* Kargo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kargo.entitlements; sourceTree = "<group>"; };
+		CDA542F52360378C0070516D /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
+		CDA542F723603A950070516D /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		CDD7B6A1232EBAB6007B496D /* ElanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElanController.swift; sourceTree = "<group>"; };
 		CDD7B6A3232EC3D8007B496D /* removeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = removeIcon.png; sourceTree = "<group>"; };
 		CDD7B6A4232EC3D8007B496D /* greenEditIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenEditIcon.png; sourceTree = "<group>"; };
@@ -293,6 +335,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CDA542E4235E2EC00070516D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4B8D1CBFEEB7429C9F9F18F /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -301,6 +351,8 @@
 			children = (
 				116088AAC97930C112157D25 /* Pods-Kargo.debug.xcconfig */,
 				D997445299DF0CD925F568A3 /* Pods-Kargo.release.xcconfig */,
+				1476A1B1095562070005F2CA /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				A6E63928D5C386C1001D4ED2 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -320,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				CD903F5022CB2BAB0088F473 /* Kargo */,
+				CDA542E8235E2EC00070516D /* OneSignalNotificationServiceExtension */,
 				CD903F4F22CB2BAB0088F473 /* Products */,
 				9DF6D1D05DF21EB22075183F /* Pods */,
 				E3C6FE533B041D2D85EB42B7 /* Frameworks */,
@@ -330,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				CD903F4E22CB2BAB0088F473 /* Kargo.app */,
+				CDA542E7235E2EC00070516D /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,6 +391,7 @@
 		CD903F5022CB2BAB0088F473 /* Kargo */ = {
 			isa = PBXGroup;
 			children = (
+				CDA542F4235E33C20070516D /* Kargo.entitlements */,
 				CD73D8A122D5D6640041B9E2 /* New Group */,
 				CD73D87122D120120041B9E2 /* SWRevealViewController.h */,
 				CD73D87022D120120041B9E2 /* SWRevealViewController.m */,
@@ -405,6 +460,9 @@
 				CDD7B6B123373395007B496D /* QuestionView.swift */,
 				CDD7B6B3233BECF9007B496D /* ExitPopupController.swift */,
 				CD462219234E7D2300FC976A /* DriverProfileDetailController.swift */,
+				CDA5429B23566F6B0070516D /* EditElanController.swift */,
+				CDA542F52360378C0070516D /* PhoneViewController.swift */,
+				CDA542F723603A950070516D /* PhoneNumberCell.swift */,
 			);
 			path = Kargo;
 			sourceTree = "<group>";
@@ -489,10 +547,22 @@
 			path = InformationPages;
 			sourceTree = "<group>";
 		};
+		CDA542E8235E2EC00070516D /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				CDA542F3235E33930070516D /* OneSignalNotificationServiceExtension.entitlements */,
+				CDA542E9235E2EC00070516D /* NotificationService.swift */,
+				CDA542EB235E2EC00070516D /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		E3C6FE533B041D2D85EB42B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				8D03C4362C06112D792C7559 /* Pods_Kargo.framework */,
+				45CA464DECD22E97ECA78941 /* Pods_Kargo_OneSignalNotificationServiceExtension.framework */,
+				6B9B5301546B9A238FEF33FC /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -509,15 +579,35 @@
 				CD903F4B22CB2BAB0088F473 /* Frameworks */,
 				CD903F4C22CB2BAB0088F473 /* Resources */,
 				4CE760E0E524FA134F829A01 /* [CP] Embed Pods Frameworks */,
+				CDA542F2235E2EC00070516D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CDA542ED235E2EC00070516D /* PBXTargetDependency */,
 			);
 			name = Kargo;
 			productName = Kargo;
 			productReference = CD903F4E22CB2BAB0088F473 /* Kargo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CDA542E6235E2EC00070516D /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDA542EF235E2EC00070516D /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				45DCD4658645EE84144D0AB1 /* [CP] Check Pods Manifest.lock */,
+				CDA542E3235E2EC00070516D /* Sources */,
+				CDA542E4235E2EC00070516D /* Frameworks */,
+				CDA542E5235E2EC00070516D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = CDA542E7235E2EC00070516D /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -532,6 +622,22 @@
 					CD903F4D22CB2BAB0088F473 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					CDA542E6235E2EC00070516D = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -549,6 +655,7 @@
 			projectRoot = "";
 			targets = (
 				CD903F4D22CB2BAB0088F473 /* Kargo */,
+				CDA542E6235E2EC00070516D /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -641,9 +748,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CDA542E5235E2EC00070516D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		45DCD4658645EE84144D0AB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4CE760E0E524FA134F829A01 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,6 +848,7 @@
 				CD73D87822D129FB0041B9E2 /* MenuViewController.swift in Sources */,
 				CD13673B232E7F2000E875E8 /* DocumentCollectionCell.swift in Sources */,
 				CD004BDD22ECD93F00279B64 /* CustomSWRevealController.swift in Sources */,
+				CDA542F62360378C0070516D /* PhoneViewController.swift in Sources */,
 				CD004BD322EB7DD400279B64 /* SelectLanguageController.swift in Sources */,
 				CD23A88C22DE560200FE9D5A /* BildirisItemBackground.swift in Sources */,
 				CD903F5222CB2BAB0088F473 /* AppDelegate.swift in Sources */,
@@ -729,10 +866,12 @@
 				CD73D88C22D3316E0041B9E2 /* DriverInfoController.swift in Sources */,
 				CD73D89D22D4BC7A0041B9E2 /* InfoTableViewCell.swift in Sources */,
 				CD73D89022D391740041B9E2 /* CustomView.swift in Sources */,
+				CDA5429C23566F6B0070516D /* EditElanController.swift in Sources */,
 				CD73D8C122D651BD0041B9E2 /* FontForService.swift in Sources */,
 				CD73D87222D120120041B9E2 /* SWRevealViewController.m in Sources */,
 				CD23A86422D750CC00FE9D5A /* CustomSelectButton.swift in Sources */,
 				CD73D87B22D1E5440041B9E2 /* FindDriverCollectionCell.swift in Sources */,
+				CDA542F823603A950070516D /* PhoneNumberCell.swift in Sources */,
 				CD136735232047B900E875E8 /* DriverRegController.swift in Sources */,
 				CD23A87622D8B53E00FE9D5A /* TetbiqViewController.swift in Sources */,
 				CD73D8AA22D601FE0041B9E2 /* MenuTableViewCell.swift in Sources */,
@@ -758,7 +897,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CDA542E3235E2EC00070516D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA542EA235E2EC00070516D /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDA542ED235E2EC00070516D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDA542E6235E2EC00070516D /* OneSignalNotificationServiceExtension */;
+			targetProxy = CDA542EC235E2EC00070516D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CD903F5522CB2BAB0088F473 /* Main.storyboard */ = {
@@ -900,8 +1055,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 116088AAC97930C112157D25 /* Pods-Kargo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Kargo/Kargo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M9JC34472J;
 				INFOPLIST_FILE = Kargo/Info.plist;
@@ -912,6 +1070,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicatguliyev.Kargo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kargo/Kargo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -923,8 +1082,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D997445299DF0CD925F568A3 /* Pods-Kargo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Kargo/Kargo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M9JC34472J;
 				INFOPLIST_FILE = Kargo/Info.plist;
@@ -935,7 +1097,52 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicatguliyev.Kargo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kargo/Kargo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CDA542F0235E2EC00070516D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1476A1B1095562070005F2CA /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M9JC34472J;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nicatguliyev.Kargo.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CDA542F1235E2EC00070516D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E63928D5C386C1001D4ED2 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M9JC34472J;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nicatguliyev.Kargo.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -958,6 +1165,15 @@
 			buildConfigurations = (
 				CD903F6122CB2BAD0088F473 /* Debug */,
 				CD903F6222CB2BAD0088F473 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDA542EF235E2EC00070516D /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDA542F0235E2EC00070516D /* Debug */,
+				CDA542F1235E2EC00070516D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

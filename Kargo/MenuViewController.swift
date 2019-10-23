@@ -17,6 +17,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var menuTable: UITableView!
     
     var selectedIndexPath: IndexPath?
     var menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
@@ -28,6 +29,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         MenuViewController.staticSelf = self
+        
         selectedIndexPath = IndexPath(row: 0, section: 0)
         setupDesign()
         
@@ -64,6 +66,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             imageHeight.constant = 70
             imageWidth.constant = 70
         }
+        
+        menuTable.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 70, right: 0)
     }
     
     
@@ -199,6 +203,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
     
     }
+    
     
     func changeProfileImage(x: String){
         let avatarUrl = URL(string: x)

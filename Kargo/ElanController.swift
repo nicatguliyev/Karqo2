@@ -12,7 +12,7 @@
     let status: String?
     let data: OrderDataModel?
     let error: [String]?
-        let avatar: String?
+    let avatar: String?
     }
 
     struct OrderDataModel:Decodable {
@@ -61,7 +61,8 @@
     var questionView = QuestionView()
     var clcikedRemoveBtn = UIButton()
     var questionIndicator = UIActivityIndicatorView()
-        var selectedAdvId: Int?
+    var selectedAdvId: Int?
+        var selectedAdv: TimeLineDataItem?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,16 +126,18 @@
         createShadow2(view: cell.nameView)
         cell.nameView.layer.cornerRadius = 10
         cell.nameView.isHidden = true
-        cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-        self.createShadow2(view: cell.priceView)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-          //  cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-          //  self.createShadow2(view: cell.priceView)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+            cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+            self.createShadow2(view: cell.priceView)
         })
         
         cell.removeBtn.tag = self.advs[indexPath.row].id!
         cell.removeBtn.addTarget(self, action: #selector(deleteAdvFromList), for: .touchUpInside)
+        
+        cell.editBtn.tag = indexPath.row
+        cell.editBtn.addTarget(self, action: #selector(editAdv), for: .touchUpInside)
         
         if(vars.user?.user?.role_id == 4){
             cell.tipLbl.text = "Yükün növü"
@@ -262,6 +265,10 @@
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 22
     }
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           // performSegue(withIdentifier: "segueToEditElan", sender: self)
+        }
 
     @objc func deleteAdvFromList(sender: UIButton){
         selectedAdvId = sender.tag
@@ -269,6 +276,13 @@
         addQuestionView()
         
     }
+        
+        @objc func editAdv(sender: UIButton){
+            //selectedAdvId = sender.tag
+            self.selectedAdv = self.advs[sender.tag]
+            performSegue(withIdentifier: "segueToEditElan", sender: self)
+            
+        }
 
 
     func createShadow(view: UIView){
@@ -278,7 +292,7 @@
         view.layer.shadowOpacity = 0.1
         view.layer.shadowRadius = 1
         view.layer.masksToBounds = false
-        view.layer.cornerRadius = 30.0
+        view.layer.cornerRadius = 15.0
     }
 
     func createShadow2(view: UIView){
@@ -509,6 +523,13 @@
             }.resume()
         
     }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if(segue.identifier == "segueToEditElan"){
+                let VC = segue.destination as! EditElanController
+                VC.selectedAdv = self.selectedAdv
+            }
+        }
 
 
     }

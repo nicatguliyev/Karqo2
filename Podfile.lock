@@ -1,16 +1,18 @@
 PODS:
-  - Alamofire (4.8.2)
-  - AnyFormatKit (1.0.0)
-  - IQKeyboardManagerSwift (6.4.0)
-  - SDWebImage (5.0.6):
-    - SDWebImage/Core (= 5.0.6)
-  - SDWebImage/Core (5.0.6)
+  - Alamofire (4.9.0)
+  - AnyFormatKit (2.0.0)
+  - IQKeyboardManagerSwift (6.5.1)
+  - OneSignal (2.11.2)
+  - SDWebImage (5.2.3):
+    - SDWebImage/Core (= 5.2.3)
+  - SDWebImage/Core (5.2.3)
   - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - AnyFormatKit
   - IQKeyboardManagerSwift
+  - OneSignal (< 3.0, >= 2.6.2)
   - SDWebImage
   - Toast-Swift
 
@@ -19,16 +21,18 @@ SPEC REPOS:
     - Alamofire
     - AnyFormatKit
     - IQKeyboardManagerSwift
+    - OneSignal
     - SDWebImage
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AnyFormatKit: f66c5065ab115140fda2499ca8940f34f924c9cc
-  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
-  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  AnyFormatKit: f42939cb80e91663dea5692cb26b26989d5e3e0a
+  IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
+  OneSignal: 4e3e68bb6c29975286a2fa910cb49132bc6e20bb
+  SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 664a67f5d12ab9a6aa79ec4e0f90b6a4f8a3a05e
+PODFILE CHECKSUM: 053fb64f4f6e59e879927dc24ea3795e310014e3
 
 COCOAPODS: 1.5.3

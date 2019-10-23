@@ -180,6 +180,8 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
         })
+        
+        checkMaxLength(textField: stajTextField, maxLength: 2)
 
     }
     
@@ -436,6 +438,37 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func tryAgain(){
         getCars()
         getCarTypes()
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = 0
+        //let cells = self.numbersTable.visibleCells as! Array<AddNumberCell>
+       
+        if(textField == nameTextField || textField == passwordTextField || textField == repeatPasswordTextField){
+            maxLength = 30
+        }
+        else if(textField == stajTextField){
+            maxLength = 2
+        }
+        else if(textField == userNameTextField){
+            maxLength = 20
+        }
+       else  if(textField == carWeightTextField || textField == halfCarVolumeTextField || textField == halfCarWeightTextField)
+        {
+            maxLength = 6
+        }
+        else
+        {
+            maxLength = 16
+        }
+        
+        
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
     
     
@@ -733,6 +766,12 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
             let VC = segue.destination as! SuccessRegisterController
             VC.userName = self.userNameTextField.text!
             VC.password = self.passwordTextField.text!
+        }
+    }
+    
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if ((textField.text!).count > maxLength) {
+            textField.deleteBackward()
         }
     }
     

@@ -41,7 +41,7 @@ struct DriverProfileData:Decodable{
     let data: DriverUserModel?
 }
 
-class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
     
     @IBOutlet weak var userImage: UIImageView!
@@ -99,7 +99,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+         self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
         addConnectionView()
         
         userImage.layer.cornerRadius = userImage.frame.height / 2
@@ -235,7 +235,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         
         
         cell.textField.tag = indexPath.row
-      //  cell.textField.delegate = self
+        cell.textField.delegate = self
         cell.textField.text = numbers[indexPath.row]
         
         if (indexPath.row == 4) {
@@ -314,6 +314,37 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         //getCars()
         getProfileDetails()
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = 0
+        //let cells = self.numbersTable.visibleCells as! Array<AddNumberCell>
+        
+        if(textField == nameTextField){
+            maxLength = 30
+        }
+//        else if(textField == stajTextField){
+//            maxLength = 2
+//        }
+        else if(textField == userNameTextField){
+            maxLength = 20
+        }
+        else  if(textField == carWeightField || textField == halfCarWeightField || textField == volumeTextField)
+        {
+            maxLength = 6
+        }
+        else
+        {
+            maxLength = 16
+        }
+        
+        
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+    
     
     func getProfileDetails(){
         self.connView.isHidden = false

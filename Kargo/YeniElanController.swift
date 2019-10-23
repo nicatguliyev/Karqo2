@@ -520,6 +520,31 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var maxLength = 0
+        
+        if(textField == haradanRegionTextField || textField == harayaRegionTextField){
+            maxLength = 35
+        }
+        else if(textField == weightTextField || textField == volumeTextField){
+            maxLength = 5
+        }
+        else if(textField == lengthTextField || textField == enTextField || textField == heightTextField)
+        {
+            maxLength = 4
+        }
+        else{
+            maxLength = 7
+        }
+        
+        
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+    
+    
     func createUserAdv(){
         
         errorMessages = []

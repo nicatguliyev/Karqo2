@@ -34,7 +34,12 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     var foreignPassportUrl: String?
     var carRegisterUrl: String?
     var halfcarRegisterUrl: String?
-    
+    @IBOutlet weak var whatsappView: CustomView!
+    @IBOutlet weak var phoneView: CustomView!
+    @IBOutlet weak var messageView: CustomView!
+    var phoneNumbers: String?
+    var actionType = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +56,49 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         setupDesign()
         createShadow2(view: tableParentView)
         getDriverDetail()
+        
+        let messageGesture = UITapGestureRecognizer(target: self, action: #selector(messageTapped))
+        messageView.isUserInteractionEnabled = true
+        messageGesture.cancelsTouchesInView = false
+        messageView.addGestureRecognizer(messageGesture)
+        
+        let phoneGesture = UITapGestureRecognizer(target: self, action: #selector(phoneTapped))
+        phoneView.isUserInteractionEnabled = true
+        phoneGesture.cancelsTouchesInView = false
+        phoneView.addGestureRecognizer(phoneGesture)
+        
+        let whatsappGesture = UITapGestureRecognizer(target: self, action: #selector(whatsappTapped))
+        whatsAppView.isUserInteractionEnabled = true
+        whatsappGesture.cancelsTouchesInView = false
+        whatsAppView.addGestureRecognizer(whatsappGesture)
 
+    }
+    
+    @objc func messageTapped(){
+        actionType = 3
+        if(self.phoneNumbers != nil){
+            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            
+        }
+        
+    }
+    
+    @objc func phoneTapped(){
+        actionType = 2
+        if(self.phoneNumbers != nil){
+            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            
+        }
+        
+    }
+    
+    @objc func whatsappTapped(){
+        actionType = 1
+        if(self.phoneNumbers != nil){
+            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            
+        }
+        
     }
     
     func setupDesign(){
@@ -206,6 +253,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.foreignPassportUrl = jsonData.data?.foreign_passport
                     self.carRegisterUrl = jsonData.data?.car_register_doc
                     self.halfcarRegisterUrl = jsonData.data?.half_car_register_doc
+                    self.phoneNumbers = jsonData.data?.phone
                     
                     
                 }
@@ -247,6 +295,11 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
             VC.carRegisterDoc = self.carRegisterUrl
             VC.halfCarRegisterUrl = self.halfcarRegisterUrl
             VC.type = 1
+        }
+        if(segue.identifier == "segueToPhoneNumbers"){
+            let VC = segue.destination as! PhoneViewController
+            VC.phoneNumbers = self.phoneNumbers ?? ""
+            VC.actionType = self.actionType
         }
     }
 

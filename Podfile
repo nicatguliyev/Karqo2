@@ -10,5 +10,13 @@ target 'Kargo' do
   pod 'Toast-Swift'
   pod 'Alamofire', '~> 4.0'
   pod 'SDWebImage'
+  pod 'OneSignal', '>= 2.6.2', '< 3.0'
 
 end
+
+target 'OneSignalNotificationServiceExtension' do
+  use_frameworks!
+
+  pod 'OneSignal', '>= 2.6.2', '< 3.0'
+end
+

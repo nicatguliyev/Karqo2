@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import OneSignal
 
 class Global {
-    var userName = ""
     var user: LoginDataModel?
+    var isExit: Bool?
 }
 
 struct LoginDataModel:Decodable {
@@ -72,6 +73,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        vars.isExit = false
+        
         userNameView.layer.cornerRadius = 2
         passwordView.layer.cornerRadius = 2
         loginBtn.layer.cornerRadius = 30
@@ -79,6 +82,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         
         
         addConnectionView()
+      //  OneSignal.sendTag("user_id", value: "76")
 
     }
     
@@ -178,8 +182,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
                             let userModel = try JSONDecoder().decode(LoginDataModel.self, from: data)
                             vars.user = userModel
                             DispatchQueue.main.async {
-                               
+                                
                                 self.performSegue(withIdentifier: "segueToSWReveal", sender: self)
+                              //  self.dismiss(animated: true, completion: nil)
                                 
                             }
                         }
@@ -217,9 +222,17 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? CustomSWRevealController {
-            
             destinationVC.prevVC = self
             
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(vars.isExit!)
+        {
+            userTextField.text = ""
+            passTextField.text = ""
+            vars.isExit = false
         }
     }
 }

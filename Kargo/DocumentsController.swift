@@ -40,6 +40,8 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
+         self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
+        
         editIcon.layer.cornerRadius = 27
         setUpBackButton()
         

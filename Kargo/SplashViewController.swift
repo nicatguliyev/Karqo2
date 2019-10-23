@@ -9,9 +9,12 @@
 import UIKit
 
 class SplashViewController: UIViewController {
+    
+    var SPVC: SplashViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {

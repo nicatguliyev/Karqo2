@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 
+
 struct  OrderDetail:Decodable {
     let data: OrderDetailDataModel?
 }
@@ -69,6 +70,7 @@ class OrderDetailController: UIViewController
     @IBOutlet weak var weightLbl: UILabel!
     @IBOutlet weak var volumeLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var messageView: CustomView!
     
     
     var selectedOrder: TimeLineDataItem?
@@ -81,6 +83,12 @@ class OrderDetailController: UIViewController
     var checkConnButtonView = UIView()
     var checkConnIndicator = UIActivityIndicatorView()
     
+    var phoneNumbers: String?
+    @IBOutlet weak var phoneView: CustomView!
+    @IBOutlet weak var whatsAppView: CustomView!
+    
+    var actionType = 0
+    
     @IBOutlet weak var thirdView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +100,23 @@ class OrderDetailController: UIViewController
             self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
             
         })
+        
+        let messageGesture = UITapGestureRecognizer(target: self, action: #selector(messageTapped))
+        messageView.isUserInteractionEnabled = true
+        messageGesture.cancelsTouchesInView = false
+        messageView.addGestureRecognizer(messageGesture)
+        
+        let phoneGesture = UITapGestureRecognizer(target: self, action: #selector(phoneTapped))
+        phoneView.isUserInteractionEnabled = true
+        phoneGesture.cancelsTouchesInView = false
+        phoneView.addGestureRecognizer(phoneGesture)
+        
+        let whatsappGesture = UITapGestureRecognizer(target: self, action: #selector(whatsappTapped))
+        whatsAppView.isUserInteractionEnabled = true
+        whatsappGesture.cancelsTouchesInView = false
+        whatsAppView.addGestureRecognizer(whatsappGesture)
+        
+        
         getOrderDetails()
         setupDesign()
         addConnectionView()
@@ -99,27 +124,35 @@ class OrderDetailController: UIViewController
      
     }
     
+    
+    @objc func messageTapped(){
+        actionType = 3
+        if(self.phoneNumbers != nil){
+            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+
+        }
+
+    }
+    
+    @objc func phoneTapped(){
+        actionType = 2
+        if(self.phoneNumbers != nil){
+            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            
+        }
+        
+    }
+    
+    @objc func whatsappTapped(){
+        actionType = 1
+        if(self.phoneNumbers != nil){
+            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            
+        }
+        
+    }
+    
     func setupDesign(){
-//        if(UIScreen.main.bounds.height < 580){
-//            nameLbl.font = nameLbl.font.withSize(18.0)
-//            userImageWidth.constant = 70.0
-//            userImageHeight.constant = 70.0
-//        }
-//        if(UIScreen.main.bounds.height > 730 && UIScreen.main.bounds.height < 800)
-//        {
-//            userImageWidth.constant = 100.0
-//            userImageHeight.constant = 100.0
-//        }
-//        if(UIScreen.main.bounds.height > 800)
-//        {
-//            userImageWidth.constant = 120.0
-//            userImageHeight.constant = 120.0
-//        }
-//
-//        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(bottomViewClicked))
-//        tapgesture.cancelsTouchesInView = false
-//        bottomView.addGestureRecognizer(tapgesture)
-//        bottomView.isUserInteractionEnabled = true
         
         setUpBackButton()
         createShadow2(view: voenView)
@@ -181,6 +214,15 @@ class OrderDetailController: UIViewController
     
     @objc func tryAgain(){
         getOrderDetails()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueToPhoneNumbers"){
+            let VC = segue.destination as! PhoneViewController
+            VC.phoneNumbers = self.phoneNumbers ?? ""
+            VC.actionType = self.actionType
+        }
     }
     
     func getOrderDetails(){
@@ -329,6 +371,7 @@ class OrderDetailController: UIViewController
                         }
                        
                     }
+                    self.phoneNumbers = jsonData.data?.phone
                     
                     
                 }
