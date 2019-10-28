@@ -14,7 +14,8 @@ class CustomBildirisCell: UITableViewCell {
     @IBOutlet weak var frontView: UIView!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var bildirisImg: UIImageView!
-    
+    @IBOutlet weak var bildirisLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

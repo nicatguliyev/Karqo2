@@ -182,7 +182,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
                             let userModel = try JSONDecoder().decode(LoginDataModel.self, from: data)
                             vars.user = userModel
                             DispatchQueue.main.async {
-                                
+                                OneSignal.sendTag("user_id", value: "\((userModel.user?.id)!)")
                                 self.performSegue(withIdentifier: "segueToSWReveal", sender: self)
                               //  self.dismiss(animated: true, completion: nil)
                                 

@@ -20,6 +20,7 @@ class SplashViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.dismiss(animated: true, completion: nil)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "InfId") as! InformationController
+            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: false, completion: nil)
         })
 

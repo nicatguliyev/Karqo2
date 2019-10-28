@@ -604,8 +604,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if(error == nil){
                 guard let data = data else {return}
                 
-               // let outputStr  = String(data: data, encoding: String.Encoding.utf8)
-               // print(outputStr)
+               let outputStr  = String(data: data, encoding: String.Encoding.utf8)
+                print(outputStr)
                 do{
      
                             let addOrderResponse = try JSONDecoder().decode(AddOrderSuccessModel.self, from: data)
@@ -717,8 +717,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if(error == nil){
                 guard let data = data else {return}
                 
-                // let outputStr  = String(data: data, encoding: String.Encoding.utf8)
-                // print(outputStr)
+                 let outputStr  = String(data: data, encoding: String.Encoding.utf8)
+                 print(outputStr)
                 do{
                     
                     let addOrderResponse = try JSONDecoder().decode(AddOrderSuccessModel.self, from: data)

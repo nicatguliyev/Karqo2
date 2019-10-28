@@ -32,6 +32,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var toCountryPicker = UIPickerView()
     var toRegionPicker = UIPickerView()
     var  carTypePicker = UIPickerView()
+    var  cargoTypePicker = UIPickerView()
     @IBOutlet weak var testTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var locationView: CustomSelectButton!
@@ -58,7 +59,6 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var toRegionList = [CountryDataModel]()
     var firstDatePicker = UIDatePicker()
     var secondDatePicker = UIDatePicker()
-   // var unSelectedModel = CountryDataModel()
     
     var textFieldArray = [UITextField]()
     var viewArray = [CustomSelectButton]()
@@ -78,10 +78,11 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBOutlet weak var yukTypeSelectBtn: CustomSelectButton!
     @IBOutlet weak var yukTypeLbl: UILabel!
-    @IBOutlet weak var yukTypeTextField: UITextField!
-    
+    @IBOutlet weak var yukTypeTextField: UITextField!    
     @IBOutlet weak var yukTypeHeightConst: NSLayoutConstraint!
     @IBOutlet weak var yukTypeLblHeight: NSLayoutConstraint!
+    @IBOutlet weak var cleanBtn: UIButton!
+    @IBOutlet weak var searchBtn: UIButton!
     
     var screenHeight = 0.0
     var filterType = ""
@@ -95,10 +96,11 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var selectedTocountry = ""
     var selectedToRegion = ""
     var selectedCarType = ""
+    var selectedCargoType = ""
     var startDate = ""
     var endDate = ""
     
-    var findOrderFunction: ((String, String, String, String, String, String) -> ())?
+    var findOrderFunction: ((String, String, String, String, String, String, String) -> ())?
     var findDriverFunction: ((String, String, String, String, String, String, String) -> ())?
     
     
@@ -106,7 +108,9 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
         
         textFieldArray = [locationTextfield, tecrubeTextField, typeTextFiled, volumeTextField, weightTextField, registerTextfield]
-        viewArray = [locationView, tecrubeView, typeView, volumeView, weightView, registerView]
+        viewArray = [locationView, tecrubeView, typeView, volumeView, weightView, registerView, yukTypeSelectBtn]
+        cleanBtn.layer.cornerRadius = 10
+        searchBtn.layer.cornerRadius = 10
 
         setUpBackButton()
         
@@ -148,24 +152,23 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         getCountries()
         addConnectionView()
         
-        let bottomTapGesture = UITapGestureRecognizer(target: self, action: #selector(bottomTapped))
+       // let bottomTapGesture = UITapGestureRecognizer(target: self, action: #selector(bottomTapped))
        // bottomView.isUserInteractionEnabled = true
       //  bottomView.addGestureRecognizer(bottomTapGesture)
     }
 
     
     @objc func bottomTapped(){
-      //  (findOrderFunction!("Nicat"))
-        if(filterType == "order")
-        {
-            findOrderFunction!(selectedFromCountry, selectedFromRegion, selectedTocountry, selectedToRegion, startDate, endDate)
-        }
-        else
-        {
-            findDriverFunction!(selectedFromCountry, selectedFromRegion, selectedTocountry, selectedToRegion, startDate, endDate, selectedCarType)
-        }
-        
-        self.navigationController?.popViewController(animated: true)
+//        if(filterType == "order")
+//        {
+//            findOrderFunction!(selectedFromCountry, selectedFromRegion, selectedTocountry, selectedToRegion, startDate, endDate)
+//        }
+//        else
+//        {
+//            findDriverFunction!(selectedFromCountry, selectedFromRegion, selectedTocountry, selectedToRegion, startDate, endDate, selectedCarType)
+//        }
+//        
+//        self.navigationController?.popViewController(animated: true)
     }
     
     func setUpBackButton(){
@@ -196,12 +199,16 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         carTypePicker.delegate = self
         carTypePicker.dataSource = self
+        
+        cargoTypePicker.delegate = self
+        cargoTypePicker.dataSource = self
 
         locationTextfield.inputView = picker
         tecrubeTextField.inputView = fromRegionPicker
         typeTextFiled.inputView = toCountryPicker
         volumeTextField.inputView = toRegionPicker
         registerTextfield.inputView = carTypePicker
+        yukTypeTextField.inputView = cargoTypePicker
         
         
         let locationTap = UITapGestureRecognizer(target: self, action: #selector(locationTapped))
@@ -233,6 +240,13 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         registerView.isUserInteractionEnabled = true
         registerTap.cancelsTouchesInView = false
         registerView.addGestureRecognizer(registerTap)
+        
+        let cargoTap = UITapGestureRecognizer(target: self, action: #selector(cargoTapped))
+        yukTypeSelectBtn.isUserInteractionEnabled = true
+        cargoTap.cancelsTouchesInView = false
+        yukTypeSelectBtn.addGestureRecognizer(cargoTap)
+        
+        
         
     }
     
@@ -282,6 +296,11 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     {
          registerTextfield.becomeFirstResponder()
     }
+    
+    @objc func cargoTapped()
+       {
+            yukTypeTextField.becomeFirstResponder()
+       }
     
     
     @objc func backClicked(){
@@ -415,14 +434,28 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         }
         else{
-            if(row != 0){
-                registerLbl.text = tipler[row - 1].name
-                selectedCarType = "\(tipler[row-1].id!)"
+            if(filterType == "driver"){
+                if(row != 0){
+                               registerLbl.text = tipler[row - 1].name
+                               selectedCarType = "\(tipler[row-1].id!)"
+                           }
+                           else{
+                               registerLbl.text = "Seçilməyib"
+                               selectedCarType = ""
+                           }
             }
-            else{
-                registerLbl.text = "Seçilməyib"
-                selectedCarType = ""
+            else
+            {
+                if(row != 0){
+                               yukTypeLbl.text = tipler[row - 1].name
+                               selectedCargoType = "\(tipler[row-1].id!)"
+                           }
+                           else{
+                               yukTypeLbl.text = "Seçilməyib"
+                               selectedCargoType = ""
+                           }
             }
+           
         }
     }
     
@@ -457,7 +490,58 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     }
 
+    @IBAction func cleanClicked(_ sender: Any) {
+        selectedFromCountry = ""
+        selectedFromRegion = ""
+        selectedTocountry = ""
+        selectedToRegion = ""
+        startDate = ""
+        endDate = ""
+        selectedCargoType = ""
+        selectedCarType = ""
+        locationLbl.text = "Seçilməyib"
+        tecrubeLbl.text = "Seçilməyib"
+        registerLbl.text = "Seçilməyib"
+        typeLbl.text = "Seçilməyib"
+        volumeLbl.text = "Seçilməyib"
+        yukTypeLbl.text = "Seçilməyib"
+        weightLbl.text = "Seçilməyib"
 
+        
+        picker.selectRow(0, inComponent: 0, animated: true)
+        fromRegionPicker.selectRow(0, inComponent: 0, animated: true)
+        toCountryPicker.selectRow(0, inComponent: 0, animated: true)
+        toRegionPicker.selectRow(0, inComponent: 0, animated: true)
+        carTypePicker.selectRow(0, inComponent: 0, animated: true)
+        cargoTypePicker.selectRow(0, inComponent: 0, animated: true)
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.fromRegionPicker.reloadAllComponents()
+            self.haradanRegHeightConst.constant = 0
+            self.haradanRegionLblConst.constant = 0
+            self.haradanRegionTopConst.constant = 0
+            self.toRegionPicker.reloadAllComponents()
+            self.harayaRegionHeightConst.constant = 0
+            self.harayaRegionLblConst.constant = 0
+            self.harayaRegionTopConst.constant = 0
+            self.view.layoutIfNeeded()
+                                           
+        })
+        
+    }
+    
+    @IBAction func searchClicked(_ sender: Any) {
+        if(filterType == "order")
+        {
+            findOrderFunction!(selectedFromCountry, selectedFromRegion, selectedTocountry, selectedToRegion, startDate, endDate, selectedCargoType)
+        }
+        else
+        {
+            findDriverFunction!(selectedFromCountry, selectedFromRegion, selectedTocountry, selectedToRegion, startDate, endDate, selectedCarType)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func getCountries(){
         
@@ -496,10 +580,12 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 DispatchQueue.main.async {
                     if(self.filterType == "driver"){
                         self.getCarTypes()
+                    
                     }
                     else
                     {
-                        self.connView.isHidden = true
+                      //  self.connView.isHidden = true
+                        self.getCargoTypes()
                     }
                   
                     self.picker.reloadAllComponents()
@@ -678,6 +764,64 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
                     self.connView.isHidden = true
                     self.carTypePicker.reloadAllComponents()
                 }
+            }
+            else
+            {
+                
+                
+                if let error = error as NSError?
+                {
+                    if error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorCannotConnectToHost || error.code == NSURLErrorTimedOut{
+                        DispatchQueue.main.async {
+                            self.connView.isHidden = false
+                            self.checkConnButtonView.isHidden = false
+                            self.checkConnIndicator.isHidden = true
+                        }
+                    }
+                }
+            }
+            
+            
+            }.resume()
+        
+    }
+    
+    func getCargoTypes(){
+        tipler = []
+        let carUrl = "http://209.97.140.82/api/v1/order/categories"
+        guard let url = URL(string: carUrl) else {return}
+        
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
+            
+            if(error == nil){
+                guard let data = data else {return}
+                do{
+                    let jsonData = try JSONDecoder().decode(CarTypeData.self, from: data)
+                    for i in 0..<jsonData.data.count{
+                        self.tipler.append(jsonData.data[i])
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.connView.isHidden = true
+                        self.carTypePicker.reloadAllComponents()
+                    }
+
+                }
+                    
+                catch let jsonError{
+                    DispatchQueue.main.async {
+                        print(jsonError)
+                        self.view.endEditing(true)
+                        self.connView.isHidden = true
+                        self.view.makeToast("Xəta baş verdi")
+                    }
+                }
+                
             }
             else
             {

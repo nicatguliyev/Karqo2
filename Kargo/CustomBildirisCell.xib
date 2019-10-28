@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,19 +14,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="100.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYh-0N-b8H">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="100.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label  sajbie oinfwepo  wepofwefio wepofe wpeoknoe efnooefoenf oenfoef efkefnneof lefneofnoe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1I-rd-SkC">
-                                <rect key="frame" x="90" y="32" width="206" height="20.5"/>
+                                <rect key="frame" x="90" y="32" width="206" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.26666666666666666" green="0.33725490196078434" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billGates.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FSm-3I-i7l">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="billGates.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FSm-3I-i7l">
                                 <rect key="frame" x="20" y="32" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1Xt-yy-kfk"/>
@@ -36,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCk-14-uie">
-                                <rect key="frame" x="90" y="57.5" width="73" height="14.5"/>
+                                <rect key="frame" x="90" y="58" width="73" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.64313725490196072" green="0.6588235294117647" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +53,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-qc-kcz" customClass="BildirisItemBackground" customModule="Kargo" customModuleProvider="target">
-                        <rect key="frame" x="-1000" y="-1000" width="1322" height="1100.5"/>
+                        <rect key="frame" x="-1000" y="-1000" width="1322" height="1101"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
@@ -75,6 +73,8 @@
             <connections>
                 <outlet property="backView" destination="3TJ-qc-kcz" id="RVB-Ry-J0P"/>
                 <outlet property="bildirisImg" destination="FSm-3I-i7l" id="BDe-fR-UNg"/>
+                <outlet property="bildirisLbl" destination="f1I-rd-SkC" id="yAg-VB-pod"/>
+                <outlet property="dateLbl" destination="DCk-14-uie" id="Jk7-rC-oU8"/>
                 <outlet property="imageView" destination="FSm-3I-i7l" id="zDw-50-Q2l"/>
             </connections>
             <point key="canvasLocation" x="155.07246376811597" y="100.78125"/>

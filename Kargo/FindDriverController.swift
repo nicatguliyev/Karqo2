@@ -92,6 +92,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     var selectedTocountry = ""
     var selectedToRegion = ""
     var selectedCarType = ""
+    var selectedCargoType = ""
     var startDate = ""
     var endDate = ""
     
@@ -130,7 +131,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             elanType = "driverElan"
             findDriverLbl.text = "Sifariş tap"
             allDriversLbl.text = "Bütün sifarişlər"
-             getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate)
+             getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
                  filterType = "order"
         }
 
@@ -156,7 +157,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     @objc func tryAgain(){
         if(vars.user?.user?.role_id == 3){
-              getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate)
+              getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
             
         }
         else
@@ -469,7 +470,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                     {
                         self.currentPage = self.currentPage + 1
                     }
-                    var orderItems = (jsonData.timeline?.data)!
+                    let orderItems = (jsonData.timeline?.data)!
                     for i in 0..<orderItems.count{
                         self.orders.append(orderItems[i])
                     }
@@ -521,7 +522,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-    func getOrders(currentPage: Int, fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String){
+    func getOrders(currentPage: Int, fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, cargoType: String){
         
         checkConnIndicator.isHidden = false
         checkConnButtonView.isHidden = true
@@ -537,7 +538,9 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
           URLQueryItem(name: "to_country_id", value: toCountry),
           URLQueryItem(name: "to_region_id", value: toRegion),
           URLQueryItem(name: "start_date", value: startDate),
-          URLQueryItem(name: "end_date", value: endDate)
+          URLQueryItem(name: "end_date", value: endDate),
+          URLQueryItem(name: "cargo_type", value: cargoType)
+
         ]
         
         var urlRequest = URLRequest(url: urlComponent!.url!)
@@ -566,7 +569,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                     {
                         self.currentPage = self.currentPage + 1
                     }
-                    var orderItems = (jsonData.timeline?.data)!
+                    let orderItems = (jsonData.timeline?.data)!
                     for i in 0..<orderItems.count{
                         self.orders.append(orderItems[i])
                     }
@@ -620,18 +623,19 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     
-    func findFromFilter(fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String) -> (){
+    func findFromFilter(fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, cargoType: String) -> (){
         selectedFromCountry = fromCountry
         selectedFromRegion = fromRegion
         selectedTocountry = toCountry
         selectedToRegion = toRegion
+        selectedCargoType = cargoType
         self.startDate = startDate
         self.endDate = endDate
         addConnectionView()
         currentPage = 1
         orders = []
         driverCollectionView.reloadData()
-            getOrders(currentPage: currentPage, fromCountry: fromCountry, fromRegion: fromRegion, toCountry: toCountry, toRegion: toRegion, startDate: startDate, endDate: endDate)
+            getOrders(currentPage: currentPage, fromCountry: fromCountry, fromRegion: fromRegion, toCountry: toCountry, toRegion: toRegion, startDate: startDate, endDate: endDate, cargoType: cargoType)
         
     }
     
@@ -663,7 +667,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
 
                 if(vars.user?.user?.role_id == 3){
                     print("currentpage \(currentPage)")
-                    getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate)
+                    getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
                 }
                 else
                 {

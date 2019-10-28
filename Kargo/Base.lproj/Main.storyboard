@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,7 +91,7 @@
                                             <color key="titleColor" red="0.0" green="0.79215686269999996" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Iv4-me-7OI" kind="show" id="d5Q-hf-nJm"/>
+                                            <segue destination="Iv4-me-7OI" kind="presentation" modalPresentationStyle="fullScreen" id="d5Q-hf-nJm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -438,13 +436,14 @@
         <!--CustomSW Reveal Controller-->
         <scene sceneID="21Q-kA-ezj">
             <objects>
-                <viewController id="WEE-5Z-9wF" customClass="CustomSWRevealController" customModule="Kargo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="WEE-5Z-9wF" customClass="CustomSWRevealController" customModule="Kargo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3g-Qz-cJL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="a2s-L3-40q"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eZU-5W-Dc9"/>
                     <connections>
                         <segue destination="Osa-ba-Fbi" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="HtW-yX-TtN"/>
                         <segue destination="MsD-zU-DX1" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="TIs-rx-EBY"/>
@@ -464,7 +463,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgZ-Om-I3X">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="218.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="220.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="75g-z5-m0x">
                                         <rect key="frame" x="48" y="50" width="80" height="80"/>
@@ -475,13 +474,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vahid Quluzade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTz-w1-4ER">
-                                        <rect key="frame" x="48" y="146" width="140" height="23.5"/>
+                                        <rect key="frame" x="48" y="146" width="166" height="24.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+90 523 625 78 79" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAD-u1-sM9">
-                                        <rect key="frame" x="48" y="179.5" width="134.5" height="19"/>
+                                        <rect key="frame" x="48" y="180.5" width="140" height="20"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" red="0.098039215686274508" green="0.32156862745098036" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -502,7 +501,7 @@
                                 <rect key="frame" x="0.0" y="717" width="414" height="179"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ks9-2w-Cj2">
-                                <rect key="frame" x="0.0" y="218.5" width="414" height="643.5"/>
+                                <rect key="frame" x="0.0" y="220.5" width="414" height="641.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Osa-ba-Fbi" id="2SW-pc-F11"/>
@@ -710,11 +709,11 @@
             <objects>
                 <viewController id="eAK-t9-fpv" customClass="SuccessRegisterController" customModule="Kargo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nwf-m3-z3S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lt7-eR-q1w">
-                                <rect key="frame" x="20" y="309.5" width="374" height="277"/>
+                                <rect key="frame" x="20" y="282.5" width="374" height="277"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenDoneIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="xOu-Yf-I7O">
                                         <rect key="frame" x="154.5" y="8" width="65" height="65"/>
@@ -777,7 +776,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-Ax-stM">
-                                <rect key="frame" x="188.5" y="636.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="609.5" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.75686274509999996" blue="0.32036751759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -791,6 +790,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OBu-J8-fyr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aKr-KD-81J"/>
                     <connections>
                         <outlet property="indicator" destination="JWM-Ax-stM" id="lZN-T8-uUK"/>
                         <outlet property="loginView" destination="b1U-6x-84f" id="6Qb-iF-Hkt"/>
@@ -1113,6 +1113,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jrC-1a-Plv"/>
                     </view>
+                    <navigationItem key="navigationItem" id="m0l-5J-xhz"/>
                     <connections>
                         <outlet property="bigActionBar" destination="WYO-XR-q2b" id="N3F-Cm-yLR"/>
                         <outlet property="bottomView" destination="Shy-qg-Tzf" id="ieg-Va-tuc"/>
@@ -1334,7 +1335,6 @@
                                             <constraint firstAttribute="height" constant="30" id="AyM-i0-VJT"/>
                                             <constraint firstAttribute="width" constant="35" id="otw-DM-hSh"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1408,6 +1408,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4xM-Z3-TLB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Oge-VC-7Bt"/>
                     <connections>
                         <outlet property="ayliqView" destination="0WE-pR-O5n" id="YhL-1v-xuC"/>
                         <outlet property="bigActionBar" destination="Gd4-6c-Yz8" id="8Ik-pG-zC8"/>
@@ -1476,7 +1477,7 @@
                                                 <rect key="frame" x="254.5" y="0.0" width="127.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh0-oy-tj8">
-                                                        <rect key="frame" x="51" y="39.5" width="25.5" height="14.5"/>
+                                                        <rect key="frame" x="51.5" y="39.5" width="25" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1580,7 +1581,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwV-5y-vfo">
-                                                <rect key="frame" x="156" y="122.5" width="102" height="14.5"/>
+                                                <rect key="frame" x="157.5" y="122.5" width="99.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2047,6 +2048,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gIa-nj-TKB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="C5a-u2-2Uz"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="contactsView" destination="fZK-ak-AXX" id="8UN-Vp-u0d"/>
@@ -2092,7 +2094,7 @@
                                         <rect key="frame" x="0.0" y="28" width="382" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J7z-1T-PPR" id="Tiy-Ms-geR">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1554161231616" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMx-W6-jsg">
@@ -2499,6 +2501,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lIr-Zd-GIB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dbg-kC-e5H"/>
                     <connections>
                         <outlet property="bigActionBar" destination="lru-cX-JQm" id="QUU-Sm-ORB"/>
                         <outlet property="imageHeight" destination="UPu-cl-FDj" id="w6y-HH-cw5"/>
@@ -2555,7 +2558,7 @@ bilərsiniz</string>
                                         <rect key="frame" x="0.0" y="10" width="382" height="585"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYb-pj-wnH">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="400"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="405"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ƏTRAFLI AXTARIŞ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSK-Ft-fBu">
                                                         <rect key="frame" x="16" y="0.0" width="350" height="0.0"/>
@@ -2604,7 +2607,6 @@ bilərsiniz</string>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="17" id="T85-rJ-Uqb"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -2650,7 +2652,6 @@ bilərsiniz</string>
                                                             <constraint firstAttribute="width" constant="17" id="N1u-6E-FDj"/>
                                                             <constraint firstAttribute="height" id="T80-cw-fRx"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -2693,7 +2694,6 @@ bilərsiniz</string>
                                                             <constraint firstAttribute="height" constant="45" id="Clz-RD-3Jg"/>
                                                             <constraint firstAttribute="width" constant="16" id="q88-Ob-jVA"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -2739,7 +2739,6 @@ bilərsiniz</string>
                                                             <constraint firstAttribute="height" constant="45" id="7CC-rw-DKY"/>
                                                             <constraint firstAttribute="width" constant="16" id="gnr-nK-gwd"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -2782,7 +2781,6 @@ bilərsiniz</string>
                                                             <constraint firstAttribute="height" constant="45" id="J15-A0-krM"/>
                                                             <constraint firstAttribute="width" constant="16" id="lHX-rY-zCu"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -2831,13 +2829,11 @@ bilərsiniz</string>
                                                             <constraint firstAttribute="width" constant="16" id="Aog-lK-qRL"/>
                                                             <constraint firstAttribute="height" constant="45" id="vha-kx-6Mh"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bitmə tarixi" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wU5-Fi-awe">
                                                         <rect key="frame" x="357" y="234" width="17" height="45"/>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -2853,8 +2849,8 @@ bilərsiniz</string>
                                                         <color key="textColor" red="0.52549019610000003" green="0.5568627451" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="684-jp-ddg" customClass="CustomSelectButton" customModule="Kargo" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="323" width="342" height="45"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="684-jp-ddg" customClass="CustomSelectButton" customModule="Kargo" customModuleProvider="target">
+                                                        <rect key="frame" x="16" y="328" width="342" height="45"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ErW-7i-WOl">
                                                                 <rect key="frame" x="312" y="15.5" width="14" height="14"/>
@@ -2881,12 +2877,11 @@ bilərsiniz</string>
                                                         </constraints>
                                                     </view>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JeL-OW-Pbz">
-                                                        <rect key="frame" x="358" y="323" width="16" height="45"/>
+                                                        <rect key="frame" x="358" y="328" width="16" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="AaL-8j-3I1"/>
                                                             <constraint firstAttribute="width" constant="16" id="x5H-yp-Ggm"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -2953,7 +2948,7 @@ bilərsiniz</string>
                                                     <constraint firstItem="xRK-PI-VF0" firstAttribute="trailing" secondItem="Jti-3M-swJ" secondAttribute="trailing" id="qK0-Bl-Fpa"/>
                                                     <constraint firstAttribute="trailing" secondItem="wU5-Fi-awe" secondAttribute="trailing" constant="8" id="ra3-Hm-i6V"/>
                                                     <constraint firstAttribute="trailing" secondItem="bom-FG-Sn0" secondAttribute="trailing" constant="8" id="sYw-Xg-Q0P"/>
-                                                    <constraint firstItem="684-jp-ddg" firstAttribute="top" secondItem="Pty-jb-0D4" secondAttribute="bottom" id="t5s-hB-gLh"/>
+                                                    <constraint firstItem="684-jp-ddg" firstAttribute="top" secondItem="Pty-jb-0D4" secondAttribute="bottom" constant="5" id="t5s-hB-gLh"/>
                                                     <constraint firstItem="O6I-2h-8ro" firstAttribute="top" secondItem="pSK-Ft-fBu" secondAttribute="bottom" constant="20" id="uCy-h6-fr4"/>
                                                     <constraint firstItem="DDZ-VN-8vB" firstAttribute="top" secondItem="an7-BR-5da" secondAttribute="bottom" constant="6" id="ywj-ln-Ioo"/>
                                                     <constraint firstItem="pSK-Ft-fBu" firstAttribute="top" secondItem="kYb-pj-wnH" secondAttribute="top" id="z45-DA-8KL"/>
@@ -2991,6 +2986,9 @@ bilərsiniz</string>
                                         <state key="normal" title="Təmizlə">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cleanClicked:" destination="VeR-vE-B2g" eventType="touchUpInside" id="wJr-3l-9q2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMG-m1-i5o">
                                         <rect key="frame" x="199" y="0.0" width="183" height="50"/>
@@ -3002,6 +3000,7 @@ bilərsiniz</string>
                                         <connections>
                                             <action selector="changeClicked:" destination="nVf-U7-Rux" eventType="touchUpInside" id="4Sk-Za-jvV"/>
                                             <action selector="createBtnClicked:" destination="uCv-0c-cxP" eventType="touchUpInside" id="ckI-Dq-M3t"/>
+                                            <action selector="searchClicked:" destination="VeR-vE-B2g" eventType="touchUpInside" id="atB-4A-yQg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3034,10 +3033,12 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ROf-EF-KdV"/>
                     </view>
+                    <navigationItem key="navigationItem" id="A1F-Ce-u4m"/>
                     <connections>
                         <outlet property="bigActionBar" destination="qcC-vb-0rB" id="lYJ-ED-ISW"/>
                         <outlet property="carTypeLblHeightConst" destination="gwq-Lu-Cc8" id="Xw6-Xa-UaF"/>
                         <outlet property="carTypeViewHeightConst" destination="xs0-n5-Kpt" id="nTm-jM-xxu"/>
+                        <outlet property="cleanBtn" destination="IaH-wv-kAq" id="QYP-b5-5q4"/>
                         <outlet property="haradanRegHeightConst" destination="8FM-J7-MTw" id="V1J-ZN-8Q7"/>
                         <outlet property="haradanRegionLblConst" destination="E6o-sD-W84" id="ZQM-KC-3T8"/>
                         <outlet property="haradanRegionTopConst" destination="oOe-ly-ACd" id="gYw-NA-vsk"/>
@@ -3053,6 +3054,7 @@ bilərsiniz</string>
                         <outlet property="registerTextfield" destination="9v0-XC-TO5" id="LSk-e1-JH4"/>
                         <outlet property="registerView" destination="sou-45-s1A" id="dqP-S3-xJD"/>
                         <outlet property="scrollView" destination="skm-qe-yOt" id="ZqM-V0-Bdu"/>
+                        <outlet property="searchBtn" destination="WMG-m1-i5o" id="hi5-Yv-T1D"/>
                         <outlet property="secondDateTextField" destination="wU5-Fi-awe" id="csz-rZ-Aob"/>
                         <outlet property="tecrubeLbl" destination="GuG-e9-l4d" id="LK1-EE-vvA"/>
                         <outlet property="tecrubeTextField" destination="H1K-ev-4Y9" id="w8B-2a-Zmb"/>
@@ -3352,6 +3354,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BWQ-xy-NyD"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wAC-1f-eA2"/>
                     <connections>
                         <outlet property="bottomView" destination="UYL-Tj-twL" id="8fK-7N-Z6u"/>
                         <outlet property="cityLbl" destination="zcl-DJ-o2y" id="65O-Iq-VVL"/>
@@ -3488,6 +3491,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mDM-d5-mQL"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9T7-15-tnT"/>
                     <connections>
                         <outlet property="bigActionBar" destination="syL-Om-e8Q" id="4ba-EE-qNb"/>
                         <outlet property="documentCollectionView" destination="e5T-vU-P4M" id="hok-aA-jqj"/>
@@ -3503,18 +3507,18 @@ bilərsiniz</string>
             <objects>
                 <viewController id="Lbj-uD-wty" customClass="DriverRegController" customModule="Kargo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BX2-aE-Lj0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkT-qH-YYf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="255.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigActionBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="O3W-m6-D8Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="255.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.7926661532" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8e-vQ-ljU">
-                                        <rect key="frame" x="16" y="115" width="40" height="40"/>
+                                        <rect key="frame" x="16" y="107.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="BZY-Cm-mdx"/>
                                             <constraint firstAttribute="height" constant="40" id="TMc-NY-yNl"/>
@@ -3527,7 +3531,7 @@ bilərsiniz</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qeydiyyat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CG-2e-fty">
-                                        <rect key="frame" x="149.5" y="120.5" width="115" height="29"/>
+                                        <rect key="frame" x="149.5" y="113" width="115" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3546,7 +3550,7 @@ bilərsiniz</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9H-FL-wQz">
-                                <rect key="frame" x="0.0" y="270" width="414" height="636"/>
+                                <rect key="frame" x="0.0" y="255.5" width="414" height="596.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOJ-K4-IKa">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="512"/>
@@ -3812,7 +3816,7 @@ bilərsiniz</string>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Id6-D6-TX0" customClass="SenedeBaxButtonView" customModule="Kargo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="906" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="852" width="414" height="130"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTV-by-BpQ">
                                         <rect key="frame" x="122" y="0.0" width="170" height="60"/>
@@ -3876,6 +3880,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CUP-R6-e46"/>
                     </view>
+                    <navigationItem key="navigationItem" id="GBb-Ct-aPQ"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="backButton" destination="e8e-vQ-ljU" id="8RD-0F-4JY"/>
@@ -3900,30 +3905,30 @@ bilərsiniz</string>
             <objects>
                 <viewController id="xQT-A2-x6i" customClass="RegisterTypeController" customModule="Kargo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xdX-67-QCB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiE-yR-sWf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="242"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigActionBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="hVi-Ul-ayh">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="242"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.79266615316901412" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCk-0D-jRU">
-                                        <rect key="frame" x="16" y="101" width="40" height="40"/>
+                                        <rect key="frame" x="16" y="93.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4jr-YP-bz5"/>
                                             <constraint firstAttribute="width" constant="40" id="jBC-Ld-Hz7"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
-                                        <state key="normal" title="Button" image="whiteBackIcon.png"/>
+                                        <state key="normal" image="whiteBackIcon.png"/>
                                         <connections>
                                             <action selector="backClicked:" destination="xQT-A2-x6i" eventType="touchUpInside" id="dae-7b-FA5"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qeydiyyat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8i-aR-Mj1">
-                                        <rect key="frame" x="149.5" y="106.5" width="115" height="29"/>
+                                        <rect key="frame" x="149.5" y="99" width="115" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3942,10 +3947,10 @@ bilərsiniz</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsZ-WZ-XmL">
-                                <rect key="frame" x="0.0" y="242" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="227.5" width="414" height="580.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXy-VX-CQN">
-                                        <rect key="frame" x="107" y="90" width="200" height="440"/>
+                                        <rect key="frame" x="107" y="70" width="200" height="440"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-te-VNX">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -4055,23 +4060,23 @@ bilərsiniz</string>
             <objects>
                 <viewController id="Fxg-9t-NXg" customClass="CustomerRegController" customModule="Kargo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZUq-H4-Vpf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cj6-V4-j6t">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="498.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigActionBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="W39-Uh-3kx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="513"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="498.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qeydiyyat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajO-fu-VCk">
-                                        <rect key="frame" x="149.5" y="242" width="115" height="29"/>
+                                        <rect key="frame" x="149.5" y="234.5" width="115" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9A-V0-Txo">
-                                        <rect key="frame" x="16" y="236.5" width="40" height="40"/>
+                                        <rect key="frame" x="16" y="229" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="CCC-2t-irX"/>
                                             <constraint firstAttribute="height" constant="40" id="OdD-4l-e9K"/>
@@ -4096,7 +4101,7 @@ bilərsiniz</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFh-MD-oda">
-                                <rect key="frame" x="0.0" y="513" width="414" height="1353"/>
+                                <rect key="frame" x="0.0" y="498.5" width="414" height="1313.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPG-Rh-f8L">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1368"/>
@@ -4221,7 +4226,6 @@ bilərsiniz</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="19" id="j5e-FJ-ifR"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -4425,7 +4429,6 @@ bilərsiniz</string>
                                                                     <constraint firstAttribute="width" constant="10" id="8IT-Rq-AjM"/>
                                                                     <constraint firstAttribute="height" id="8k2-gz-cwz"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -4435,7 +4438,6 @@ bilərsiniz</string>
                                                                     <constraint firstAttribute="width" constant="5" id="7af-jW-ZaQ"/>
                                                                     <constraint firstAttribute="height" constant="30" id="orW-P1-o4m"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -4539,7 +4541,6 @@ bilərsiniz</string>
                                                                     <constraint firstAttribute="height" constant="30" id="lmg-ky-3YU"/>
                                                                     <constraint firstAttribute="width" constant="10" id="xzf-Jm-vZb"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -4549,7 +4550,6 @@ bilərsiniz</string>
                                                                     <constraint firstAttribute="width" constant="5" id="dxL-jN-pzG"/>
                                                                     <constraint firstAttribute="height" constant="30" id="z9u-7D-8lo"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -4719,7 +4719,6 @@ bilərsiniz</string>
                                                                     <constraint firstAttribute="width" constant="10" id="JhH-vp-FSG"/>
                                                                     <constraint firstAttribute="height" id="o6j-Ty-kBM"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -4873,7 +4872,6 @@ bilərsiniz</string>
                                                             <constraint firstAttribute="width" constant="10" id="fKt-EU-AWW"/>
                                                             <constraint firstAttribute="height" id="sgL-Os-R9i"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -5061,6 +5059,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tBD-vn-dMP"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cfK-ft-ivl"/>
                     <size key="freeformSize" width="414" height="1900"/>
                     <connections>
                         <outlet property="bottomView" destination="gE7-Uc-G4E" id="HAE-CT-eXL"/>
@@ -5134,14 +5133,14 @@ bilərsiniz</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ErrorCellId" id="tUh-AS-B7w" customClass="ErrorMessageCell" customModule="Kargo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="374" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tUh-AS-B7w" id="ACr-8Z-lhP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label dfklndlkf jdfjk kldfjndsf sdosfin dslnsdof sdsdofsdf lsdfsdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec9-go-hb0">
-                                                            <rect key="frame" x="16" y="16" width="342" height="20"/>
+                                                            <rect key="frame" x="16" y="16" width="342" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="1" green="0.088252303732055504" blue="0.13269091732554938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -5200,8 +5199,9 @@ bilərsiniz</string>
         <!--Navigation Controller-->
         <scene sceneID="l2c-gS-UtC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BLy-9C-1mv" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="BLy-9C-1mv" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="87I-cG-Tkp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q2R-dU-XnK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5688,6 +5688,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A4a-df-iFh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7bl-NI-N1d"/>
                     <connections>
                         <outlet property="map" destination="3Ye-IM-mbH" id="gS1-wP-cOh"/>
                     </connections>
@@ -5764,7 +5765,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="2Zz-zL-A5O"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="GDe-0J-OrB"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -5824,7 +5824,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="8" id="5vV-r0-Z0o"/>
                                                                                     <constraint firstAttribute="height" id="nD8-ye-tzi"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -5927,7 +5926,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="pTs-zf-eD2"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="xX5-np-YS4"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -5987,7 +5985,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="fTh-9k-Dq9"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="kfd-di-zpZ"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -6092,7 +6089,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="623-cc-cnO"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="qa7-NN-jo9"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -6375,7 +6371,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="F00-ex-4PU"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="SSy-5a-EDU"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -6385,7 +6380,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="bhb-6o-Pqm"/>
                                                                                     <constraint firstAttribute="width" constant="3" id="n8p-Ec-2pW"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -6447,7 +6441,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="8" id="4VD-ed-JzN"/>
                                                                                     <constraint firstAttribute="height" id="lWB-Fq-SUA"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -6734,6 +6727,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vPK-U3-m8i"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3Zu-Lu-0hC"/>
                     <size key="freeformSize" width="414" height="1900"/>
                     <connections>
                         <outlet property="bigActionBar" destination="gV4-Hc-jYE" id="6kI-NK-MbO"/>
@@ -7089,6 +7083,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wkN-aY-Of9"/>
                     </view>
+                    <navigationItem key="navigationItem" id="K2O-oS-W4H"/>
                     <connections>
                         <outlet property="bigActionBar" destination="vyX-Gx-YOL" id="d1I-p9-QnB"/>
                         <outlet property="bottomView" destination="qJP-tJ-1CS" id="aev-V9-FUi"/>
@@ -7256,6 +7251,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3El-hK-cI1"/>
                     </view>
+                    <navigationItem key="navigationItem" id="for-6p-n2O"/>
                     <connections>
                         <outlet property="bigActionBar" destination="8o1-XG-Fgc" id="svO-KS-WBp"/>
                         <outlet property="mainView" destination="nAa-bH-JHA" id="3TE-NN-bGl"/>
@@ -7607,6 +7603,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zfl-Fo-T3G"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ife-JV-D66"/>
                     <connections>
                         <outlet property="bigActionBar" destination="p4D-cO-ByW" id="5XR-ey-kA1"/>
                         <outlet property="bottomView" destination="m39-g1-nOZ" id="Hg6-rn-qM9"/>
@@ -7860,6 +7857,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hMk-fz-oJI"/>
                     </view>
+                    <navigationItem key="navigationItem" id="K8H-fs-g3H"/>
                     <connections>
                         <outlet property="bigActionBar" destination="nNX-Vk-GEL" id="pTc-XI-LBz"/>
                         <outlet property="bottomView" destination="Eab-2K-QSc" id="Dz4-t9-7CZ"/>
@@ -7942,7 +7940,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="8" id="JtI-u6-Xp5"/>
                                                                                     <constraint firstAttribute="height" id="dqX-br-y91"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8002,7 +7999,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="6wb-PL-4Vr"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="CPl-LO-6VB"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8102,7 +8098,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="8" id="gBi-24-wqp"/>
                                                                                     <constraint firstAttribute="height" id="ocB-vc-zVf"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8162,7 +8157,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="8" id="d5z-Y6-7WZ"/>
                                                                                     <constraint firstAttribute="height" id="vev-GQ-W2N"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8262,7 +8256,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="rXO-u7-DTX"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="t02-gI-4ah"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8522,7 +8515,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="BcS-xf-gJJ"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="uib-96-hC4"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8532,7 +8524,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="3" id="K0g-3m-ds1"/>
                                                                                     <constraint firstAttribute="height" id="WXM-fZ-2p4"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8594,7 +8585,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="height" id="1Ia-la-Rap"/>
                                                                                     <constraint firstAttribute="width" constant="8" id="UsU-Qx-wLB"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -8870,6 +8860,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kqb-nb-zgC"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Cwo-0m-mXe"/>
                     <size key="freeformSize" width="414" height="1900"/>
                     <connections>
                         <outlet property="bigActionBar" destination="QYH-Li-nJJ" id="PZj-7X-qZ0"/>
@@ -8902,6 +8893,7 @@ bilərsiniz</string>
                         <outlet property="toCountryTextField" destination="XVo-CZ-3fj" id="j63-59-akx"/>
                         <outlet property="toREgionHeight" destination="j0d-f4-ude" id="w2n-a5-Hv0"/>
                         <outlet property="toRegionTextField" destination="KKy-QS-hhy" id="jn3-vA-YZp"/>
+                        <outlet property="typeLbl" destination="wpy-f5-u8L" id="VEx-Ac-vgi"/>
                         <outlet property="valyutaLbl" destination="q5M-zG-d2q" id="M1K-hH-rfA"/>
                         <outlet property="valyutaSelectBtn" destination="hbm-GI-nqB" id="t8f-MS-tza"/>
                         <outlet property="valyutaTextField" destination="hDe-8p-6md" id="FlJ-Qb-Hto"/>
@@ -9131,7 +9123,6 @@ bilərsiniz</string>
                                                                                     <constraint firstAttribute="width" constant="10" id="VhW-yc-W7x"/>
                                                                                     <constraint firstAttribute="height" id="cGX-9q-T3u"/>
                                                                                 </constraints>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -9258,7 +9249,6 @@ bilərsiniz</string>
                                                                             <constraint firstAttribute="width" constant="10" id="2Mr-9q-pnt"/>
                                                                             <constraint firstAttribute="height" id="pMA-7n-UYl"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
@@ -9292,14 +9282,12 @@ bilərsiniz</string>
                                                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFh-Ua-rEI">
                                                                                 <rect key="frame" x="15" y="40" width="10" height="30"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
                                                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-68-GFt">
                                                                                 <rect key="frame" x="10" y="40" width="5" height="30"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
@@ -9464,7 +9452,6 @@ bilərsiniz</string>
                                                                             <constraint firstAttribute="width" constant="10" id="mbp-pt-hba"/>
                                                                             <constraint firstAttribute="height" id="vPL-Jp-VCO"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
@@ -9627,6 +9614,7 @@ bilərsiniz</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vd7-Rz-Tz6"/>
                     </view>
+                    <navigationItem key="navigationItem" id="haH-kw-e1t"/>
                     <size key="freeformSize" width="414" height="1500"/>
                     <connections>
                         <outlet property="bigActionBar" destination="xm6-cD-hyZ" id="rEc-rE-Ohi"/>

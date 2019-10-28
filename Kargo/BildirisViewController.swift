@@ -8,19 +8,49 @@
 
 import UIKit
 
+struct BildirisList: Decodable {
+    let list: BildirisTimeLine?
+}
+
+struct BildirisTimeLine: Decodable {
+    let current_page: Int?
+    let data: [BildirisDataItem]
+    let last_page: Int?
+    let next_page_url: String?
+    
+}
+
+
+struct BildirisDataItem: Decodable {
+    let sender_id: Int?
+    let title: String?
+    let created_at: String?
+    let sender: UserModel?
+    
+}
+
+
+
+
 class BildirisViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, SWRevealViewControllerDelegate {
 
     var menuBtn = UIButton()
     var menuBarItem = UIBarButtonItem()
     @IBOutlet weak var bigActionBar: UIView!
     @IBOutlet weak var bildirisTable: UITableView!
-    
+    var connView = UIView()
+    var checkConnButtonView = UIView()
+    var checkConnIndicator = UIActivityIndicatorView()
+    var bildirisler = [BildirisDataItem]()
+    var currentPage = 1
+    var isLoading = false
+    var nextPageUrl: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpMenuButton()
-        //setUpDesign()
+        addConnectionView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
         })
@@ -30,6 +60,8 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
         let nib = UINib.init(nibName: "CustomBildirisCell", bundle: nil)
         self.bildirisTable.register(nib, forCellReuseIdentifier: "MyCustomCell")
         self.revealViewController()?.delegate = self
+        
+        getNotifications(page: currentPage)
 
     }
     
@@ -79,12 +111,16 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return bildirisler.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let nib: [CustomBildirisCell] = Bundle.main.loadNibNamed("CustomBildirisCell", owner: self, options: nil) as! [CustomBildirisCell]
         let cell = nib[0]
+        
+        cell.bildirisImg.sd_setImage(with: URL(string: (bildirisler[indexPath.row].sender?.avatar)!))
+        cell.bildirisLbl.text = bildirisler[indexPath.row].title
+        cell.dateLbl.text = bildirisler[indexPath.row].created_at
         
         cell.layer.zPosition=CGFloat(20-indexPath.row)
         
@@ -100,6 +136,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("MMMMMMMM")
         for i in 0..<20 {
             let indexpath = IndexPath(row: i, section: 0)
             if(bildirisTable.cellForRow(at: indexpath) != nil){
@@ -108,10 +145,20 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
+                let  height = scrollView.frame.size.height
+                let contentYoffset = scrollView.contentOffset.y
+                let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+                if distanceFromBottom < height {
+                    
+                    if(isLoading == false && nextPageUrl != nil){
+                    getNotifications(page: currentPage)
+                    
+                }
+               
+            }
     }
     
     func revealControllerPanGestureBegan(_ revealController: SWRevealViewController!) {
-        print("Basladi")
         for i in 0..<20 {
             let indexpath = IndexPath(row: i, section: 0)
             if(bildirisTable.cellForRow(at: indexpath) != nil){
@@ -120,7 +167,103 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-
     
+    func addConnectionView(){
+          if let connectionView = Bundle.main.loadNibNamed("CheckConnectionView", owner: self, options: nil)?.first as? CheckConnectionView {
+              connectionView.frame = CGRect(x: 0, y: 80, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 80)
+              self.view.addSubview(connectionView);
+              connectionView.buttonView.clipsToBounds = true
+              
+              connView = connectionView
+              checkConnButtonView = connectionView.buttonView
+              checkConnIndicator = connectionView.checkIndicator
+              
+               connectionView.tryButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
+              
+          }
+      }
+      
+      @objc func tryAgain(){
+          getNotifications(page: currentPage)
+      }
+    
+    
+    func getNotifications(page: Int){
+           isLoading = true
+           
+          // tipler = []
+        
+        if(bildirisler.count == 0){
+            self.connView.isHidden = false
+            self.checkConnButtonView.isHidden = true
+            self.checkConnIndicator.isHidden = false
+        }
+           let carUrl = "http://209.97.140.82/api/v1/user/notifications?page=" + "\(page)"
+           guard let url = URL(string: carUrl) else {return}
+           
+           var urlRequest = URLRequest(url: url)
+           
+           urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+           urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+           
+           URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
+               
+               if(error == nil){
+                   guard let data = data else {return}
+                   do{
+                       let jsonData = try JSONDecoder().decode(BildirisList.self, from: data)
+                    self.nextPageUrl = jsonData.list!.next_page_url ?? nil
+                    if(self.nextPageUrl != nil)
+                    {
+                        self.currentPage = self.currentPage + 1
+                    }
+                    for i in 0..<jsonData.list!.data.count{
+                        self.bildirisler.append(jsonData.list!.data[i])
+                    }
+                       DispatchQueue.main.async {
+                        self.connView.isHidden = true
+                        self.bildirisTable.reloadData()
+                       }
+                       
+                   }
+                       
+                   catch let jsonError{
+                       DispatchQueue.main.async {
+                           print(jsonError)
+                           self.connView.isHidden = true
+                           self.view.makeToast("Xəta baş verdi")
+                       }
+                   }
+                   
+               }
+               else
+               {
+                   
+                   
+                   if let error = error as NSError?
+                   {
+                       if error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorCannotConnectToHost || error.code == NSURLErrorTimedOut{
+                           DispatchQueue.main.async {
+                            if(self.bildirisler.count == 0){
+                                self.connView.isHidden = false
+                                self.checkConnButtonView.isHidden = false
+                                self.checkConnIndicator.isHidden = true
+                            }
+                            else
+                            {
+                                self.view.makeToast("İnternet bağlantısını yoxlayin")
+
+                            }
+                               
+                           }
+                       }
+                   }
+               }
+               self.isLoading  = false
+
+               
+           }.resume()
+           
+       }
     
 }
