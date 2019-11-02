@@ -70,6 +70,9 @@
 		CD23A8A222E79C2200FE9D5A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A8A122E79C2200FE9D5A /* SettingsController.swift */; };
 		CD23A8A422E7AE3000FE9D5A /* BildirisSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A8A322E7AE3000FE9D5A /* BildirisSettingsController.swift */; };
 		CD46221A234E7D2300FC976A /* DriverProfileDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD462219234E7D2300FC976A /* DriverProfileDetailController.swift */; };
+		CD60D26823699E710083A5AA /* BildirisDetailCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60D26623699E710083A5AA /* BildirisDetailCollectionCell.swift */; };
+		CD60D26923699E710083A5AA /* BildirisDetailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD60D26723699E710083A5AA /* BildirisDetailCollectionCell.xib */; };
+		CD60D26B236C4E080083A5AA /* BildirisNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD60D26A236C4E080083A5AA /* BildirisNavController.swift */; };
 		CD73D86622CE8DD40041B9E2 /* CustomerRegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD73D86522CE8DD40041B9E2 /* CustomerRegController.swift */; };
 		CD73D86822CEAA030041B9E2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD73D86722CEAA030041B9E2 /* LoginController.swift */; };
 		CD73D86A22CEAD620041B9E2 /* userIco.png in Resources */ = {isa = PBXBuildFile; fileRef = CD73D86922CEAD620041B9E2 /* userIco.png */; };
@@ -241,6 +244,9 @@
 		CD23A8A122E79C2200FE9D5A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CD23A8A322E7AE3000FE9D5A /* BildirisSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BildirisSettingsController.swift; sourceTree = "<group>"; };
 		CD462219234E7D2300FC976A /* DriverProfileDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProfileDetailController.swift; sourceTree = "<group>"; };
+		CD60D26623699E710083A5AA /* BildirisDetailCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BildirisDetailCollectionCell.swift; sourceTree = "<group>"; };
+		CD60D26723699E710083A5AA /* BildirisDetailCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BildirisDetailCollectionCell.xib; sourceTree = "<group>"; };
+		CD60D26A236C4E080083A5AA /* BildirisNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BildirisNavController.swift; sourceTree = "<group>"; };
 		CD73D86522CE8DD40041B9E2 /* CustomerRegController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRegController.swift; sourceTree = "<group>"; };
 		CD73D86722CEAA030041B9E2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CD73D86922CEAD620041B9E2 /* userIco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userIco.png; sourceTree = "<group>"; };
@@ -463,6 +469,9 @@
 				CDA5429B23566F6B0070516D /* EditElanController.swift */,
 				CDA542F52360378C0070516D /* PhoneViewController.swift */,
 				CDA542F723603A950070516D /* PhoneNumberCell.swift */,
+				CD60D26623699E710083A5AA /* BildirisDetailCollectionCell.swift */,
+				CD60D26723699E710083A5AA /* BildirisDetailCollectionCell.xib */,
+				CD60D26A236C4E080083A5AA /* BildirisNavController.swift */,
 			);
 			path = Kargo;
 			sourceTree = "<group>";
@@ -677,6 +686,7 @@
 				CD73D88222D288770041B9E2 /* carTypeIcon.png in Resources */,
 				CD73D87C22D1E5440041B9E2 /* FindDriverCollectionCell.xib in Resources */,
 				CD73D86C22CEAD6C0041B9E2 /* passIcon.png in Resources */,
+				CD60D26923699E710083A5AA /* BildirisDetailCollectionCell.xib in Resources */,
 				CD23A89822E62EE000FE9D5A /* penIcon.png in Resources */,
 				CD23A87322D8ADBC00FE9D5A /* roundArrow.png in Resources */,
 				CD73D8A722D5FF6D0041B9E2 /* menuBottomImage.png in Resources */,
@@ -845,6 +855,7 @@
 				CD23A89A22E6489D00FE9D5A /* ChangePasswordController.swift in Sources */,
 				CD23A86E22D8A03E00FE9D5A /* PayViewController.swift in Sources */,
 				CD23A88222DDF5E700FE9D5A /* BildirisViewController.swift in Sources */,
+				CD60D26823699E710083A5AA /* BildirisDetailCollectionCell.swift in Sources */,
 				CD73D87822D129FB0041B9E2 /* MenuViewController.swift in Sources */,
 				CD13673B232E7F2000E875E8 /* DocumentCollectionCell.swift in Sources */,
 				CD004BDD22ECD93F00279B64 /* CustomSWRevealController.swift in Sources */,
@@ -852,6 +863,7 @@
 				CD004BD322EB7DD400279B64 /* SelectLanguageController.swift in Sources */,
 				CD23A88C22DE560200FE9D5A /* BildirisItemBackground.swift in Sources */,
 				CD903F5222CB2BAB0088F473 /* AppDelegate.swift in Sources */,
+				CD60D26B236C4E080083A5AA /* BildirisNavController.swift in Sources */,
 				CD73D87422D122820041B9E2 /* FindDriverController.swift in Sources */,
 				CD23A8A222E79C2200FE9D5A /* SettingsController.swift in Sources */,
 				CD903F6722CB38650088F473 /* SplashViewController.swift in Sources */,

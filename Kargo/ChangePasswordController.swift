@@ -157,7 +157,7 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         

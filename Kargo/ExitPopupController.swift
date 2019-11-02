@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class ExitPopupController: UIViewController {
     @IBOutlet weak var exitView: UIView!
@@ -28,6 +29,13 @@ class ExitPopupController: UIViewController {
     }
     
     @IBAction func yesBtnClicked(_ sender: Any) {
+        OneSignal.deleteTag("user_id")
+        UserDefaults.standard.removeObject(forKey: "USERID")
+        UserDefaults.standard.removeObject(forKey: "USERTOKEN")
+          UserDefaults.standard.removeObject(forKey: "USERROLE")
+        UserDefaults.standard.removeObject(forKey: "USERNAME")
+              UserDefaults.standard.removeObject(forKey: "USERAVATAR")
+                UserDefaults.standard.removeObject(forKey: "USERPHONE")
         dismiss(animated: true, completion: nil)
         exit!()
         //self.revealViewController()?.dismiss(animated: true, completion: nil)

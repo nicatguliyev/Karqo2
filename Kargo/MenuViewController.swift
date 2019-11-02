@@ -33,13 +33,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         selectedIndexPath = IndexPath(row: 0, section: 0)
         setupDesign()
         
-        if let avatar = vars.user?.user?.avatar{
+        if let avatar = UserDefaults.standard.string(forKey: "USERAVATAR"){
             let avatarUrl = URL(string: avatar)
             self.userImage.sd_setImage(with: avatarUrl)
 
         }
-        phoneNumber.text = vars.user?.user?.phone?.components(separatedBy: ",")[0]
-        userName.text = vars.user?.user?.name
+        phoneNumber.text = UserDefaults.standard.string(forKey: "USERPHONE")!.components(separatedBy: ",")[0]
+        userName.text = UserDefaults.standard.string(forKey: "USERNAME")
         // Do any additional setup after loading the view.
     }
     

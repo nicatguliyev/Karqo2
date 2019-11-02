@@ -10,37 +10,65 @@ import UIKit
 import IQKeyboardManagerSwift
 import OneSignal
 
+
+class Global {
+    var user: LoginDataModel?
+    var isExit: Bool?
+    var isNotf: Bool?
+    var notfsenderId: Int?
+}
+
+
+var vars = Global()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+   
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
-        
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 0
-        
         UIView.appearance().isExclusiveTouch = true
         
+        let handleNotification: OSHandleNotificationReceivedBlock = { notification in
+        }
         
-        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        let actionBlocak: OSHandleNotificationActionBlock = { result in
+            
+            let payload: OSNotificationPayload = result!.notification.payload
+            let additionalData = payload.additionalData
+            vars.notfsenderId = (additionalData!["sender_id"] as! Int)
+            vars.isNotf = true
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            var initialViewController = UIViewController()
+            
+            
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "SplashVC")
         
-        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+         }
+        
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]
+        
         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: "62545622-542a-4615-ad03-489cf22a5b7a",
-                                        handleNotificationAction: nil,
+                                        handleNotificationReceived: handleNotification,
+                                        handleNotificationAction: actionBlocak,
                                         settings: onesignalInitSettings)
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
         
-        // Recommend moving the below line to prompt for push after informing the user about
-        //   how your app will use them.
         OneSignal.promptForPushNotifications(userResponse: { accepted in
             print("User accepted notifications: \(accepted)")
         })
         
-        // Override point for customization after application launch.
         return true
     }
 

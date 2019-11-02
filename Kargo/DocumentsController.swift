@@ -193,15 +193,15 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let userId = vars.user?.user?.id
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId!)"
+        let userId =  UserDefaults.standard.string(forKey: "USERID")!
+        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId)"
         guard let url = URL(string: driverDetailUrl) else {return}
         print(driverDetailUrl)
         
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let sessionConfig = URLSessionConfiguration.default
@@ -300,7 +300,7 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         let headers = [
-            "Authorization": "Bearer " + (vars.user?.data?.token)!,
+            "Authorization": "Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!,
             "Content-type":"multipart/form-data",
             "Content-Disposition":"form-data"
             

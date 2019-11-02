@@ -351,16 +351,16 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let userId = vars.user?.user?.id
+        let userId = (UserDefaults.standard.string(forKey: "USERID"))!
         // tipler = []
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId!)"
+        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId)"
         guard let url = URL(string: driverDetailUrl) else {return}
         print(driverDetailUrl)
         
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let sessionConfig = URLSessionConfiguration.default
@@ -705,7 +705,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         checkConnButtonView.isHidden = true
         
         let headers = [
-            "Authorization": "Bearer " + (vars.user?.data?.token)!,
+            "Authorization": "Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!,
             "Content-type":"multipart/form-data",
             "Content-Disposition":"form-data"
             
@@ -818,7 +818,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         var filteredNumbers = [String]()

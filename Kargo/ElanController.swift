@@ -79,7 +79,7 @@
          elanCollectionView.register(UINib(nibName: "FindOrderCollectionCell", bundle: nil), forCellWithReuseIdentifier: "cell2")
         
         addConnectionView()
-        if(vars.user?.user?.role_id == 4){
+        if(UserDefaults.standard.string(forKey: "USERROLE")! == "4"){
             getDriverAdvs(type: 1)
         }
         else
@@ -139,7 +139,7 @@
         cell.editBtn.tag = indexPath.row
         cell.editBtn.addTarget(self, action: #selector(editAdv), for: .touchUpInside)
         
-        if(vars.user?.user?.role_id == 4){
+        if(UserDefaults.standard.string(forKey: "USERROLE")! == "4"){
             cell.tipLbl.text = "Yükün növü"
             
             cell.personNameLbl.text = advs[indexPath.row].owner?.name
@@ -362,7 +362,7 @@
             
             var deleteUrl = ""
             
-            if(vars.user?.user?.role_id == 4){
+            if(UserDefaults.standard.string(forKey: "USERROLE")! == "4"){
                 deleteUrl = "http://209.97.140.82/api/v1/order/delete"
             }
             else
@@ -376,7 +376,7 @@
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "POST"
             
-            urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
             urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             
             let parameters: [String: Any] = [
@@ -464,7 +464,7 @@
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         URLSession.shared.dataTask(with: urlRequest){(data, response, error) in

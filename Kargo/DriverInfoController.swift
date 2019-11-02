@@ -8,10 +8,9 @@
 
 import UIKit
 
-class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
- 
-    
+
     @IBOutlet weak var userImageView: UIView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var contactsView: UIView!
@@ -25,7 +24,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var whatsAppView: CustomView!
     var backButton = UIButton()
     var barItem = UIBarButtonItem()
-    var paramaterNames = ["N/v-nin çəkisi(kq)", "N/v-nin tutumu(m3)"]
+    var paramaterNames = ["Markası", "Modeli",  "Növü", "N/v-nin tutumu(kq)", "N/v-nin tutumu(m3)"]
     var paramValues = [String]()
     var selectedOrder: TimeLineDataItem?
     var connView = UIView()
@@ -39,7 +38,11 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var messageView: CustomView!
     var phoneNumbers: String?
     var actionType = 0
-
+    @IBOutlet weak var myAdvCollectionView: UICollectionView!
+    @IBOutlet weak var muyAdvCollectionHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var distanceBetwenTableAndBottom: NSLayoutConstraint!
+    var requestedOrders = [OrderDataModel2]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +74,9 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         whatsAppView.isUserInteractionEnabled = true
         whatsappGesture.cancelsTouchesInView = false
         whatsAppView.addGestureRecognizer(whatsappGesture)
-
+        
+               myAdvCollectionView.register(UINib(nibName: "BildirisDetailCollectionCell", bundle: nil), forCellWithReuseIdentifier: "cell3")
+        
     }
     
     @objc func messageTapped(){
@@ -102,22 +107,22 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setupDesign(){
-        if(UIScreen.main.bounds.height < 580){
-            nameLbl.font = nameLbl.font.withSize(18.0)
-            userImageWidth.constant = 70.0
-            userImageHeight.constant = 70.0
-        }
-        if(UIScreen.main.bounds.height > 730 && UIScreen.main.bounds.height < 800)
-        {
-            userImageWidth.constant = 100.0
-            userImageHeight.constant = 100.0
-        }
-        if(UIScreen.main.bounds.height > 800)
-        {
-            userImageWidth.constant = 120.0
-            userImageHeight.constant = 120.0
-        }
-        
+//        if(UIScreen.main.bounds.height < 580){
+//            nameLbl.font = nameLbl.font.withSize(18.0)
+//            userImageWidth.constant = 70.0
+//            userImageHeight.constant = 70.0
+//        }
+//        if(UIScreen.main.bounds.height > 730 && UIScreen.main.bounds.height < 800)
+//        {
+//            userImageWidth.constant = 100.0
+//            userImageHeight.constant = 100.0
+//        }
+//        if(UIScreen.main.bounds.height > 800)
+//        {
+//            userImageWidth.constant = 120.0
+//            userImageHeight.constant = 120.0
+//        }
+//
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(bottomViewClicked))
         tapgesture.cancelsTouchesInView = false
         bottomView.addGestureRecognizer(tapgesture)
@@ -189,6 +194,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func backClciked(){
+        vars.isNotf = false
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -199,8 +205,8 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         view.layer.shadowOpacity = 0.5
         view.layer.shadowRadius = 10
         view.layer.masksToBounds = false
-        view.layer.cornerRadius = 30.0
-        infoTableView.layer.cornerRadius = 30.0
+        view.layer.cornerRadius = 15.0
+        infoTableView.layer.cornerRadius = 15
     }
     
     func getDriverDetail(){
@@ -209,14 +215,22 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         // tipler = []
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((selectedOrder?.owner?.id)!)"
+        var driverDetailUrl = ""
+        if(vars.isNotf == true){
+            driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((vars.notfsenderId!))"
+        }
+        else
+        {
+            driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((selectedOrder?.owner?.id)!)"
+        }
+        
         guard let url = URL(string: driverDetailUrl) else {return}
         print(driverDetailUrl)
         
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let sessionConfig = URLSessionConfiguration.default
@@ -229,12 +243,15 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
             if(error == nil){
                 guard let data = data else {return}
                 
-                // let output =   String(data: data, encoding: String.Encoding.utf8)
-                //  print("output: \(output)")
+               // let output =   String(data: data, encoding: String.Encoding.utf8)
+              //    print("output: \(output)")
                 
                 do{
                     let jsonData = try JSONDecoder().decode(UserDetailModel.self, from: data)
                     let avatar = jsonData.data?.avatar
+                    if(vars.isNotf == true){
+                        self.requestedOrders = jsonData.requested_orders ?? []
+                    }
                     
                     if let avatar = avatar{
                         let avatarUrl = URL(string: avatar)
@@ -243,6 +260,26 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                     }
                     
+                    DispatchQueue.main.async {
+                        self.nameLbl.text = jsonData.data?.name
+                        if(vars.isNotf == true){
+                            self.myAdvCollectionView.reloadData()
+                            let x = (self.requestedOrders.count * 332)
+                            let y = (self.requestedOrders.count - 1) * 12
+                            self.muyAdvCollectionHeight.constant = CGFloat(x + y)
+                        }
+                    }
+                    if let carMarka = jsonData.data?.car_brand?.code{
+                        self.paramValues.append(carMarka)
+                    }
+                    
+                    if let carModel = jsonData.data?.car_model?.code{
+                        self.paramValues.append(carModel)
+                    }
+                    
+                    if let carType = jsonData.data?.car_type?.name{
+                        self.paramValues.append(carType)
+                    }
                     
                     if let carWeight = jsonData.data?.car_tonnage_kq{
                         self.paramValues.append("\(carWeight)")
@@ -250,6 +287,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                     if let carVolume = jsonData.data?.car_tonnage_m3{
                         self.paramValues.append("\(carVolume)")
                     }
+                    
                     self.foreignPassportUrl = jsonData.data?.foreign_passport
                     self.carRegisterUrl = jsonData.data?.car_register_doc
                     self.halfcarRegisterUrl = jsonData.data?.half_car_register_doc
@@ -303,9 +341,73 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return requestedOrders.count
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as! BildirisDetailCollectionCell
+                  
+        var fromText = requestedOrders[indexPath.row].from_country?.name
+        if(requestedOrders[indexPath.row].from_region != nil){
+            fromText = (fromText ?? "") + "/" + (requestedOrders[indexPath.row].from_region?.name ?? "")
+        }
+        if(requestedOrders[indexPath.row].from_city != nil){
+            fromText = (fromText ?? "") + "/" + (requestedOrders[indexPath.row].from_city ?? "")
+        }
+        cell.fromCountryLbl.text = fromText
+        
+        
+        var toText = requestedOrders[indexPath.row].to_country?.name
+        if(requestedOrders[indexPath.row].to_region != nil){
+            toText = (toText ?? "") + "/" + (requestedOrders[indexPath.row].to_region?.name ?? "")
+        }
+        if(requestedOrders[indexPath.row].to_city != nil){
+            toText = (toText ?? "") + "/" + (requestedOrders[indexPath.row].to_city ?? "")
+        }
+        cell.toCountryLbl.text = toText
+
+        cell.dateLbl.text = (requestedOrders[indexPath.row].start_date ?? "") + "/" + (requestedOrders[indexPath.row].end_date ?? "")
+        
+       // cell.
+        
+        createShadow2(view: cell.mainView)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+            cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+            cell.confirmBtn.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
+            //  self.createShadow2(view: cell.priceView)
+        })
+        
+        return cell
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: (self.view.frame.width) , height: 332)
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 22, left: 0, bottom: 22, right: 0)
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 16
+//    }
+//    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
+    }
+    
+   func createShadow(view: UIView){
+       
+       view.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+       view.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+       view.layer.shadowOpacity = 0.1
+       view.layer.shadowRadius = 1
+       view.layer.masksToBounds = false
+       view.layer.cornerRadius = 15.0
+   }
    
-
-
+   
 }

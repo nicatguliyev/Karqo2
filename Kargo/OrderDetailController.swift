@@ -36,6 +36,7 @@ struct OrderDetailDataModel:Decodable {
 struct UserDetailModel: Decodable {
     let status: String?
     let data: UserDetailDataModel?
+    let requested_orders: [OrderDataModel2]?
 }
 
 struct UserDetailDataModel: Decodable{
@@ -50,6 +51,13 @@ struct UserDetailDataModel: Decodable{
     let car_register_doc: String?
     let half_car_register_doc: String?
     let car_brand: TimeLineItemValyuta?
+    let car_model: TimeLineItemValyuta?
+    let car_type: TimeLineItemOwnerOrRegion?
+}
+
+struct SendRequestModel: Decodable{
+    let status: String?
+    let error: [String]?
 }
 
 class OrderDetailController: UIViewController
@@ -71,6 +79,10 @@ class OrderDetailController: UIViewController
     @IBOutlet weak var volumeLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var messageView: CustomView!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var bottomView: SenedeBaxButtonView!
+    @IBOutlet weak var acceptLbl: UILabel!
     
     
     var selectedOrder: TimeLineDataItem?
@@ -93,12 +105,12 @@ class OrderDetailController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
-            self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
-            self.priceBtn.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
-            self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+//            self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+//            self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+//            self.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
+//            self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
+//
         })
         
         let messageGesture = UITapGestureRecognizer(target: self, action: #selector(messageTapped))
@@ -116,14 +128,30 @@ class OrderDetailController: UIViewController
         whatsappGesture.cancelsTouchesInView = false
         whatsAppView.addGestureRecognizer(whatsappGesture)
         
+        let bottomGesture = UITapGestureRecognizer(target: self, action: #selector(acceptTapped))
+        bottomGesture.cancelsTouchesInView = false
+        bottomView.isUserInteractionEnabled = true
+        bottomView.addGestureRecognizer(bottomGesture)
         
         getOrderDetails()
         setupDesign()
         addConnectionView()
         
-     
     }
     
+    override func viewWillLayoutSubviews() {
+             self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+               self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+               self.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
+               self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
+           self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
+    }
+    
+    @objc func acceptTapped(){
+        if(self.acceptLbl.text == "ACCEPT"){
+            SendRequest()
+        }
+       }
     
     @objc func messageTapped(){
         actionType = 3
@@ -155,7 +183,7 @@ class OrderDetailController: UIViewController
     func setupDesign(){
         
         setUpBackButton()
-        createShadow2(view: voenView)
+       // createShadow2(view: voenView)
         createShadow2(view: destinationView)
         createShadow2(view: thirdView)
     }
@@ -237,7 +265,7 @@ class OrderDetailController: UIViewController
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
@@ -292,7 +320,8 @@ class OrderDetailController: UIViewController
                         
                         
                         if let price = self.selectedOrder?.price, let valyuta = self.selectedOrder?.valyuta?.code{
-                            self.priceBtn.setTitle(price + " " + valyuta, for: .normal)
+                           // self.priceBtn.setTitle(price + " " + valyuta, for: .normal)
+                            self.priceLbl.text = price + " " + valyuta
                         }
                        
                         
@@ -343,7 +372,7 @@ class OrderDetailController: UIViewController
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
@@ -351,8 +380,8 @@ class OrderDetailController: UIViewController
             if(error == nil){
                 guard let data = data else {return}
                 
-                // let output =   String(data: data, encoding: String.Encoding.utf8)
-                //  print("output: \(output)")
+          //       let output =   String(data: data, encoding: String.Encoding.utf8)
+          //        print("output: \(output)")
                 
                 do{
                     let jsonData = try JSONDecoder().decode(UserDetailModel.self, from: data)
@@ -404,6 +433,82 @@ class OrderDetailController: UIViewController
             }.resume()
         
     }
+    
+    func SendRequest(){
+
+         self.connView.isHidden = false
+         self.checkConnIndicator.isHidden = false
+         self.checkConnButtonView.isHidden = true
+         
+         let loginUrl = "http://209.97.140.82/api/v1/user/request/" + "\((selectedOrder?.id)!)"
+         
+         guard let url = URL(string: loginUrl) else {return}
+         
+         var urlRequest = URLRequest(url: url)
+         urlRequest.httpMethod = "GET"
+         
+         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+         urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
+         
+         
+         let sessionConfig = URLSessionConfiguration.default
+         sessionConfig.timeoutIntervalForRequest = 5.0
+         sessionConfig.timeoutIntervalForResource = 60.0
+         let session = URLSession(configuration: sessionConfig)
+         
+         session.dataTask(with: urlRequest){(data, response, error) in
+            
+             DispatchQueue.main.async {
+                 self.connView.isHidden = true
+             }
+              guard let data = data else {return}
+            
+          //  let output =   String(data: data, encoding: String.Encoding.utf8)
+          //  print("output: \(output)")
+             if(error == nil){
+                
+                 do{
+                             let responseModel = try JSONDecoder().decode(SendRequestModel.self, from: data)
+                    if(responseModel.status == "success"){
+                        DispatchQueue.main.async {
+                            self.acceptLbl.text = "PENDING"
+                        }
+                    }
+                    else
+                    {
+                        DispatchQueue.main.async {
+                            self.view.makeToast("Xəta baş verdi.")
+                        }
+                    }
+                    
+                 }
+                     
+                 catch let jsonError{
+                     DispatchQueue.main.async {
+                          print(jsonError)
+                          self.view.makeToast("Model Json Error")
+                     }
+                    
+                 }
+             }
+             else
+             {
+                 
+                 if let error = error as NSError?
+                 {
+                     
+                     if error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorCannotConnectToHost || error.code == NSURLErrorTimedOut{
+                         DispatchQueue.main.async {
+                             self.view.makeToast("İnternet bağlantısını yoxlayın")
+                         }
+                         
+                     }
+                 }
+             }
+             
+             
+             }.resume()
+     }
     
     
     

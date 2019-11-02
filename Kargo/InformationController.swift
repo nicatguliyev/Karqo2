@@ -26,7 +26,7 @@ class InformationController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         designButtons()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.addPages()
         })
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class SuccessRegisterController: UIViewController {
     @IBOutlet weak var loginView: UIView!
@@ -85,6 +86,13 @@ class SuccessRegisterController: UIViewController {
                             let userModel = try JSONDecoder().decode(LoginDataModel.self, from: data)
                             vars.user = userModel
                             DispatchQueue.main.async {
+                                OneSignal.sendTag("user_id", value: "\((userModel.user?.id)!)")
+                                UserDefaults.standard.set("\((userModel.user?.id)!)", forKey: "USERID")
+                                UserDefaults.standard.set("\((userModel.data?.token)!)", forKey: "USERTOKEN")
+                                UserDefaults.standard.set("\((userModel.user?.role_id)!)", forKey: "USERROLE")
+                                UserDefaults.standard.set("\((userModel.user?.name)!)", forKey: "USERNAME")
+                                UserDefaults.standard.set("\((userModel.user?.phone)!)", forKey: "USERPHONE")
+                                UserDefaults.standard.set("\((userModel.user?.avatar ?? ""))", forKey: "USERAVATAR")
                                 self.performSegue(withIdentifier: "segueToMain", sender: self)
                                 //self.dismiss(animated: true, completion: nil)
                             }

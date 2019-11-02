@@ -45,11 +45,16 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     var currentPage = 1
     var isLoading = false
     var nextPageUrl: String?
+    var backButton = UIButton()
+    var barItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+
+            setUpMenuButton()
         
-        setUpMenuButton()
+    
         addConnectionView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
@@ -63,6 +68,28 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
         
         getNotifications(page: currentPage)
 
+    }
+    
+    
+    func setUpBackButton(){
+          
+          backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+          backButton.setImage(UIImage(named: "whiteBackIcon.png"), for: UIControl.State.normal)
+          backButton.translatesAutoresizingMaskIntoConstraints = false
+          backButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+          backButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+          backButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 30)
+          
+          backButton.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
+          
+          barItem = UIBarButtonItem(customView: backButton)
+          
+          self.navigationItem.leftBarButtonItem = barItem
+          
+      }
+    
+    @objc func backClicked(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +106,8 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
         menuBtn.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 30)
         
         
-        menuBtn.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+       // menuBtn.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        menuBtn.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         menuBarItem = UIBarButtonItem(customView: menuBtn)
         
         self.navigationItem.leftBarButtonItem = menuBarItem
@@ -88,6 +116,10 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
         self.revealViewController()?.rearViewRevealOverdraw = 0
         self.revealViewController()?.bounceBackOnOverdraw = false
         
+    }
+    
+    @objc func dismissVC(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setUpDesign(){
@@ -122,7 +154,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
         cell.bildirisLbl.text = bildirisler[indexPath.row].title
         cell.dateLbl.text = bildirisler[indexPath.row].created_at
         
-        cell.layer.zPosition=CGFloat(20-indexPath.row)
+        cell.layer.zPosition=CGFloat(bildirisler.count-indexPath.row)
         
         cell.backView.layer.cornerRadius = 60
         cell.backView.layer.borderWidth = 1
@@ -136,8 +168,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("MMMMMMMM")
-        for i in 0..<20 {
+        for i in 0..<bildirisler.count {
             let indexpath = IndexPath(row: i, section: 0)
             if(bildirisTable.cellForRow(at: indexpath) != nil){
             let cell:CustomBildirisCell = bildirisTable.cellForRow(at: indexpath) as! CustomBildirisCell
@@ -202,8 +233,10 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
            guard let url = URL(string: carUrl) else {return}
            
            var urlRequest = URLRequest(url: url)
+        
+           print((UserDefaults.standard.string(forKey: "USERTOKEN"))!)
            
-           urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+           urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
            urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
            
            URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
@@ -221,6 +254,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
                         self.bildirisler.append(jsonData.list!.data[i])
                     }
                        DispatchQueue.main.async {
+                        //print("Bildirilser: \(self.bildirisler)")
                         self.connView.isHidden = true
                         self.bildirisTable.reloadData()
                        }

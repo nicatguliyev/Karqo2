@@ -145,7 +145,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
         })
         
-        if(vars.user?.user?.role_id == 3){
+        if((UserDefaults.standard.string(forKey: "USERROLE"))! == ""){
             weightViewHeight.constant = 0
             volViewHeight.constant = 0
             enViewHeight.constant = 0
@@ -509,7 +509,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     @IBAction func createBtnClicked(_ sender: Any) {
-        if(vars.user?.user?.role_id == 4){
+        if((UserDefaults.standard.string(forKey: "USERROLE"))! == "4"){
             createUserAdv()
         }
         else
@@ -563,7 +563,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
        
         let parameters: [String: Any] = [
@@ -681,7 +681,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let parameters: [String: Any] = [
@@ -836,7 +836,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         var urlRequest = URLRequest(url: url)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         URLSession.shared.dataTask(with: urlRequest){(data, response, error) in

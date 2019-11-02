@@ -9,12 +9,13 @@
 import UIKit
 import OneSignal
 
-class Global {
-    var user: LoginDataModel?
-    var isExit: Bool?
-}
+//class Global {
+//    var user: LoginDataModel?
+//    var isExit: Bool?
+//    var isNotf: Bool?
+//}
 
-struct LoginDataModel:Decodable {
+struct LoginDataModel:Decodable{
     let status: String?
     var user: UserModel?
     let data: UserTokenModel?
@@ -52,7 +53,8 @@ struct UserSettingModel:Decodable {
 struct UserTokenModel:Decodable {
     let token: String?
 }
-var vars = Global()
+
+//var vars = Global()
 
 class LoginController: UIViewController, UITextFieldDelegate {
 
@@ -183,6 +185,12 @@ class LoginController: UIViewController, UITextFieldDelegate {
                             vars.user = userModel
                             DispatchQueue.main.async {
                                 OneSignal.sendTag("user_id", value: "\((userModel.user?.id)!)")
+                                UserDefaults.standard.set("\((userModel.user?.id)!)", forKey: "USERID")
+                                UserDefaults.standard.set("\((userModel.data?.token)!)", forKey: "USERTOKEN")
+                                UserDefaults.standard.set("\((userModel.user?.role_id)!)", forKey: "USERROLE")
+                                UserDefaults.standard.set("\((userModel.user?.name)!)", forKey: "USERNAME")
+                                UserDefaults.standard.set("\((userModel.user?.phone)!)", forKey: "USERPHONE")
+                                UserDefaults.standard.set("\((userModel.user?.avatar ?? ""))", forKey: "USERAVATAR")
                                 self.performSegue(withIdentifier: "segueToSWReveal", sender: self)
                               //  self.dismiss(animated: true, completion: nil)
                                 

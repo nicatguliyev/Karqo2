@@ -102,6 +102,12 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(vars.isNotf == true){
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.00001, execute: {
+                self.performSegue(withIdentifier: "segueToNotf", sender: self)
+            })
+        }
+        
         self.revealViewController()?.delegate = self
         navBarColor = UIColor(red: 0, green: 193, blue: 138, alpha: 1)
         setUpNavigationBar()
@@ -119,8 +125,11 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         filterBtn.layer.cornerRadius = 12.0
         addBtn.layer.cornerRadius = 12.0
         
-        
-        if(vars.user?.user?.role_id == 4){
+     //   let decoded = UserDefaults.standard.data(forKey: "USERMODEL")
+      //  _ = NSKeyedUnarchiver.unarchivedObject(ofClasses: [LoginDataModel], from: decoded)
+       // print("JJJJJJJ")
+      //  print(UserDefaults.standard.data(forKey: "USERMODEL"))
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
             elanType = "orderElan"
             findDriverLbl.text = "Sürücü tap"
             allDriversLbl.text = "Bütün sürücülər"
@@ -134,7 +143,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
              getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
                  filterType = "order"
         }
-
+        
        driverCollectionView.register(UINib(nibName: "FindOrderCollectionCell", bundle: nil), forCellWithReuseIdentifier: "cell2")
     
     }
@@ -156,7 +165,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     @objc func tryAgain(){
-        if(vars.user?.user?.role_id == 3){
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
               getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
             
         }
@@ -224,7 +233,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                 self.createShadow2(view: cell.priceView)
             })
         
-        if(vars.user?.user?.role_id == 4){
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
            cell.tipLbl.text = "Nəqliyyat vasitəsinin tipi"
             
             cell.personNameLbl.text = orders[indexPath.row].owner?.name
@@ -353,7 +362,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if(vars.user?.user?.role_id == 4){
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
              selectedOrder = orders[indexPath.row]
              performSegue(withIdentifier: "SegueToDriverInfo", sender: self)
             
@@ -447,7 +456,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         
         var urlRequest = URLRequest(url: urlComponent!.url!)
         
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         
@@ -545,7 +554,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         
         var urlRequest = URLRequest(url: urlComponent!.url!)
     
-        urlRequest.setValue("Bearer " + (vars.user?.data?.token)!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         
         
@@ -665,7 +674,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             
             if(isLoading == false && nextPageUrl != nil){
 
-                if(vars.user?.user?.role_id == 3){
+                if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
                     print("currentpage \(currentPage)")
                     getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
                 }

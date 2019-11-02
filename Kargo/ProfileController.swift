@@ -42,7 +42,7 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
         view2.layer.cornerRadius = 0
         senedView.layer.cornerRadius = 0
         
-        if(vars.user?.user?.role_id == 4){
+        if((UserDefaults.standard.string(forKey: "USERROLE"))! == "4"){
             senedViewHeight.constant = 0
             mainViewHeight.constant = 140
             
@@ -71,7 +71,7 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
     
     
     @objc func profilTapped(){
-        if(vars.user?.user?.role_id == 4){
+        if((UserDefaults.standard.string(forKey: "USERROLE"))! == "4"){
             performSegue(withIdentifier: "segueToDetail", sender: self)
         }
         else{
