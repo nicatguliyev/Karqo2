@@ -47,12 +47,13 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     var nextPageUrl: String?
     var backButton = UIButton()
     var barItem = UIBarButtonItem()
+    var driverId = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
 
-            setUpMenuButton()
+        setUpMenuButton()
         
     
         addConnectionView()
@@ -106,8 +107,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
         menuBtn.imageEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 30)
         
         
-       // menuBtn.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
-        menuBtn.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        menuBtn.addTarget(revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         menuBarItem = UIBarButtonItem(customView: menuBtn)
         
         self.navigationItem.leftBarButtonItem = menuBarItem
@@ -164,7 +164,14 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+            self.driverId = bildirisler[indexPath.row].sender_id!
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                self.performSegue(withIdentifier: "segueToBildirisDetail", sender: self)
+            })
+                
+        }
+      
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -246,6 +253,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
                    do{
                        let jsonData = try JSONDecoder().decode(BildirisList.self, from: data)
                     self.nextPageUrl = jsonData.list!.next_page_url ?? nil
+                   // self.driverId = jsonData.list?.data[]
                     if(self.nextPageUrl != nil)
                     {
                         self.currentPage = self.currentPage + 1
@@ -299,5 +307,12 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
            }.resume()
            
        }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueToBildirisDetail"){
+            let VC = segue.destination as! DriverInfoController
+            VC.driverId = self.driverId
+        }
+    }
     
 }

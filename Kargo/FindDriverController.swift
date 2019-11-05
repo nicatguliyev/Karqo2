@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import OneSignal
 
 struct TimeLineFullData: Decodable{
     let timeline: TimeLine?
@@ -99,10 +99,13 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     var elanType = ""
     var selectedAdv: TimeLineDataItem?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(vars.isNotf == true){
+        OneSignal.sendTag("user_id", value: "\((UserDefaults.standard.string(forKey: "USERID"))!)")
+        
+        if(vars.isNotf == true && UserDefaults.standard.string(forKey: "USERROLE") == "4"){
             DispatchQueue.main.asyncAfter(deadline: .now()+0.00001, execute: {
                 self.performSegue(withIdentifier: "segueToNotf", sender: self)
             })
@@ -124,11 +127,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         
         filterBtn.layer.cornerRadius = 12.0
         addBtn.layer.cornerRadius = 12.0
-        
-     //   let decoded = UserDefaults.standard.data(forKey: "USERMODEL")
-      //  _ = NSKeyedUnarchiver.unarchivedObject(ofClasses: [LoginDataModel], from: decoded)
-       // print("JJJJJJJ")
-      //  print(UserDefaults.standard.data(forKey: "USERMODEL"))
+
         if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
             elanType = "orderElan"
             findDriverLbl.text = "Sürücü tap"
@@ -138,10 +137,11 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         }
         else{
             elanType = "driverElan"
-            findDriverLbl.text = "Sifariş tap"
-            allDriversLbl.text = "Bütün sifarişlər"
-             getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
-                 filterType = "order"
+                findDriverLbl.text = "Sifariş tap"
+                allDriversLbl.text = "Bütün sifarişlər"
+                getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
+                    filterType = "order"
+          
         }
         
        driverCollectionView.register(UINib(nibName: "FindOrderCollectionCell", bundle: nil), forCellWithReuseIdentifier: "cell2")
@@ -273,9 +273,18 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             let startDate = orders[indexPath.row].start_date
             let endDate = orders[indexPath.row].end_date
             
-            if(startDate != nil && endDate != nil){
-                cell.dateLbl.text = startDate! + " / " + endDate!
-            }
+                 if(startDate != nil && endDate != nil && startDate != "" && endDate != ""){
+                      let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                      let startDate = dateFormatter.date(from: startDate!)
+                      let endDate = dateFormatter.date(from: endDate!)
+                            
+                            dateFormatter.dateFormat = "d MMM yyyy"
+                            dateFormatter.locale = Locale.init(identifier: "az")
+                            let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
+                            cell.dateLbl.text = goodDate
+                      //cell.dateLbl.text = startDate! + " / " + endDate!
+                  }
             
             if let price = orders[indexPath.row].price, let valyuta = orders[indexPath.row].valyuta?.code{
                 cell.priceLbl.text = price + " " + valyuta
@@ -325,8 +334,17 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             let startDate = orders[indexPath.row].start_date
             let endDate = orders[indexPath.row].end_date
             
-            if(startDate != nil && endDate != nil){
-                cell.dateLbl.text = startDate! + " / " + endDate!
+            if(startDate != nil && endDate != nil && startDate != "" && endDate != ""){
+                let dateFormatter = DateFormatter()
+                      dateFormatter.dateFormat = "yyyy-MM-dd"
+                let startDate = dateFormatter.date(from: startDate!)
+                let endDate = dateFormatter.date(from: endDate!)
+                      
+                      dateFormatter.dateFormat = "d MMM yyyy"
+                      dateFormatter.locale = Locale.init(identifier: "az")
+                      let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
+                      cell.dateLbl.text = goodDate
+                //cell.dateLbl.text = startDate! + " / " + endDate!
             }
             
             if let price = orders[indexPath.row].price, let valyuta = orders[indexPath.row].valyuta?.code{

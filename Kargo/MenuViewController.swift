@@ -20,8 +20,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var menuTable: UITableView!
     
     var selectedIndexPath: IndexPath?
-    var menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
-    var menuImages = ["searchIcon.png", "elanIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
+    var menuNames = [String]()
+    var menuImages = [String]()
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
     static var staticSelf: MenuViewController?
@@ -29,6 +29,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         MenuViewController.staticSelf = self
+        
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
+            menuNames = ["Sifariş tap", "Elanlarım", "Sifarişlərim", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+            menuImages = ["searchIcon.png", "elanIcon.png", "sifarisIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
+        }
+        else{
+            menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+                     menuImages = ["searchIcon.png", "elanIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
+        }
         
         selectedIndexPath = IndexPath(row: 0, section: 0)
         setupDesign()
@@ -82,7 +91,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return menuNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -134,53 +143,107 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
        
-        
-        if(indexPath.row != 6 ){
-            let cell:MenuTableViewCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
-             selectedIndexPath = indexPath
-             cell.greenView.backgroundColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
-            cell.menuNAmeLbl.textColor = UIColor.white
-            let image2 = UIImage(named: menuImages[indexPath.row])
-            let img = image2?.overlayImage(color: UIColor.white)
-            cell.menuIcon.image = img
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+            if(indexPath.row != 6 ){
+                let cell:MenuTableViewCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
+                 selectedIndexPath = indexPath
+                 cell.greenView.backgroundColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
+                cell.menuNAmeLbl.textColor = UIColor.white
+                let image2 = UIImage(named: menuImages[indexPath.row])
+                let img = image2?.overlayImage(color: UIColor.white)
+                cell.menuIcon.image = img
+                
+            }
+            else
+            {
+                if(tableView.cellForRow(at: selectedIndexPath!) != nil){
+                    let cell:MenuTableViewCell = tableView.cellForRow(at: selectedIndexPath!) as! MenuTableViewCell
+                    cell.greenView.backgroundColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
+                    cell.menuNAmeLbl.textColor = UIColor.white
+                    let image2 = UIImage(named: menuImages[selectedIndexPath!.row])
+                    let img = image2?.overlayImage(color: UIColor.white)
+                    cell.menuIcon.image = img
+                    tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
+                }
+                
+                self.revealViewController()?.revealToggle(animated: true)
+                self.revealViewController()?.performSegue(withIdentifier: "segueToExit", sender: self)
+               
+            }
             
+            if(indexPath.row == 0){
+                performSegue(withIdentifier: "segueToFind", sender: self)
+            }
+            else if(indexPath.row == 1){
+                performSegue(withIdentifier: "segueToElan", sender: self)
+
+            }
+            else if(indexPath.row == 2){
+                performSegue(withIdentifier: "segueToPay", sender: self)
+            }
+            else if(indexPath.row == 3){
+                performSegue(withIdentifier: "segueToBildiris", sender: self)
+            }
+            else if(indexPath.row == 4){
+                performSegue(withIdentifier: "segueToProfil", sender: self)
+            }
+            else if(indexPath.row == 5){
+                performSegue(withIdentifier: "segueToSettings", sender: self)
+            }
         }
         else
         {
-            if(tableView.cellForRow(at: selectedIndexPath!) != nil){
-                let cell:MenuTableViewCell = tableView.cellForRow(at: selectedIndexPath!) as! MenuTableViewCell
-                cell.greenView.backgroundColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
+            if(indexPath.row != 7 ){
+                let cell:MenuTableViewCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
+                 selectedIndexPath = indexPath
+                 cell.greenView.backgroundColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
                 cell.menuNAmeLbl.textColor = UIColor.white
-                let image2 = UIImage(named: menuImages[selectedIndexPath!.row])
+                let image2 = UIImage(named: menuImages[indexPath.row])
                 let img = image2?.overlayImage(color: UIColor.white)
                 cell.menuIcon.image = img
-                tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
+                
+            }
+            else
+            {
+                if(tableView.cellForRow(at: selectedIndexPath!) != nil){
+                    let cell:MenuTableViewCell = tableView.cellForRow(at: selectedIndexPath!) as! MenuTableViewCell
+                    cell.greenView.backgroundColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1)
+                    cell.menuNAmeLbl.textColor = UIColor.white
+                    let image2 = UIImage(named: menuImages[selectedIndexPath!.row])
+                    let img = image2?.overlayImage(color: UIColor.white)
+                    cell.menuIcon.image = img
+                    tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle)
+                }
+                
+                self.revealViewController()?.revealToggle(animated: true)
+                self.revealViewController()?.performSegue(withIdentifier: "segueToExit", sender: self)
+               
             }
             
-            self.revealViewController()?.revealToggle(animated: true)
-            self.revealViewController()?.performSegue(withIdentifier: "segueToExit", sender: self)
-           
-        }
-        
-        if(indexPath.row == 0){
-            performSegue(withIdentifier: "segueToFind", sender: self)
-        }
-        else if(indexPath.row == 1){
-            performSegue(withIdentifier: "segueToElan", sender: self)
+            if(indexPath.row == 0){
+                performSegue(withIdentifier: "segueToFind", sender: self)
+            }
+            else if(indexPath.row == 1){
+                performSegue(withIdentifier: "segueToElan", sender: self)
 
+            }
+            else if(indexPath.row == 2){
+               performSegue(withIdentifier: "segueToSifarislerim", sender: self)
+            }
+            else if(indexPath.row == 3){
+                performSegue(withIdentifier: "segueToPay", sender: self)
+            }
+            else if(indexPath.row == 4){
+                performSegue(withIdentifier: "segueToBildiris", sender: self)
+            }
+            else if(indexPath.row == 5){
+                performSegue(withIdentifier: "segueToProfil", sender: self)
+            }
+            else if(indexPath.row == 6){
+                performSegue(withIdentifier: "segueToSettings", sender: self)
+            }
         }
-        else if(indexPath.row == 2){
-            performSegue(withIdentifier: "segueToPay", sender: self)
-        }
-        else if(indexPath.row == 3){
-            performSegue(withIdentifier: "segueToBildiris", sender: self)
-        }
-        else if(indexPath.row == 4){
-            performSegue(withIdentifier: "segueToProfil", sender: self)
-        }
-        else if(indexPath.row == 5){
-            performSegue(withIdentifier: "segueToSettings", sender: self)
-        }
+
         
     }
     

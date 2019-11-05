@@ -35,6 +35,7 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
     var newforeignPassport: UIImage?
     var newCarRegister: UIImage?
     var newHalfCarRegister: UIImage?
+    var image2 = UIImage()
 
     
     override func viewDidLoad() {
@@ -118,7 +119,14 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
             if(newCarRegister == nil){
                 if let carRegisterDoc = carRegisterDoc
                 {
-                    cell.docImage.sd_setImage(with: URL(string: carRegisterDoc))
+                    //cell.docImage.sd_setImage(with: URL(string: carRegisterDoc))
+                    cell.docImage.sd_setImage(with: URL(string: carRegisterDoc), completed: {image, error, cachType, imageURL in
+                        cell.docImage.image = image
+                     //   self.image2 = image!
+                       // print(image?.size.height)
+
+                        
+                    })
                 }
             }
             else
@@ -410,6 +418,14 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
         })
         
     }
+    
+    func getAspectRatioAccordingToiPhones(cellImageFrame:CGSize,downloadedImage: UIImage)->CGFloat {
+           let widthOffset = downloadedImage.size.width - cellImageFrame.width
+           let widthOffsetPercentage = (widthOffset*100)/downloadedImage.size.width
+           let heightOffset = (widthOffsetPercentage * downloadedImage.size.height)/100
+           let effectiveHeight = downloadedImage.size.height - heightOffset
+           return(effectiveHeight)
+       }
     
     
 }

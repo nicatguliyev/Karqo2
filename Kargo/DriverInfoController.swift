@@ -40,6 +40,10 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     var actionType = 0
     @IBOutlet weak var myAdvCollectionView: UICollectionView!
     @IBOutlet weak var muyAdvCollectionHeight: NSLayoutConstraint!
+    var driverId = Int()
+    var acceptedCell: BildirisDetailCollectionCell?
+    var questionView = QuestionView()
+    
     
     @IBOutlet weak var distanceBetwenTableAndBottom: NSLayoutConstraint!
     var requestedOrders = [OrderDataModel2]()
@@ -48,6 +52,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         addConnectionView()
+        print(driverId)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
            self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
@@ -189,6 +194,25 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func addQuestionView(){
+         if let questionView = Bundle.main.loadNibNamed("QuestionView", owner: self, options: nil)?.first as? QuestionView {
+            
+            self.questionView = questionView
+          //  self.questionIndicator = questionView.indicator
+            questionView.yesBTN.layer.cornerRadius = 15.0
+            questionView.cancelBtn.layer.cornerRadius = 15.0
+            self.questionView.deleteView.isHidden = true
+            self.questionView.indicator.isHidden = false
+          
+          //  let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+            questionView.frame = UIApplication.shared.keyWindow!.frame
+            UIApplication.shared.keyWindow?.addSubview(questionView)
+            
+            
+            
+        }
+    }
+    
     @objc func tryAgain(){
         
     }
@@ -221,7 +245,13 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         else
         {
-            driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((selectedOrder?.owner?.id)!)"
+            if(selectedOrder != nil){
+                driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((selectedOrder?.owner?.id)!)"
+            }
+            else{
+                driverDetailUrl =    "http://209.97.140.82/api/v1/user/profile/\((driverId))"
+            }
+            
         }
         
         guard let url = URL(string: driverDetailUrl) else {return}
@@ -249,7 +279,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                 do{
                     let jsonData = try JSONDecoder().decode(UserDetailModel.self, from: data)
                     let avatar = jsonData.data?.avatar
-                    if(vars.isNotf == true){
+                    if(vars.isNotf == true || self.selectedOrder == nil){
                         self.requestedOrders = jsonData.requested_orders ?? []
                     }
                     
@@ -262,7 +292,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     DispatchQueue.main.async {
                         self.nameLbl.text = jsonData.data?.name
-                        if(vars.isNotf == true){
+                        if(vars.isNotf == true || self.selectedOrder == nil){
                             self.myAdvCollectionView.reloadData()
                             let x = (self.requestedOrders.count * 332)
                             let y = (self.requestedOrders.count - 1) * 12
@@ -287,6 +317,8 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                     if let carVolume = jsonData.data?.car_tonnage_m3{
                         self.paramValues.append("\(carVolume)")
                     }
+                    
+                    self.driverId = (jsonData.data?.id)!
                     
                     self.foreignPassportUrl = jsonData.data?.foreign_passport
                     self.carRegisterUrl = jsonData.data?.car_register_doc
@@ -347,6 +379,10 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath) as! BildirisDetailCollectionCell
+        
+        cell.confirmBtn.tag = requestedOrders[indexPath.row].id!
+        cell.confirmBtn.superview?.tag = indexPath.row
+        cell.confirmBtn.addTarget(self, action: #selector(confirmRequest), for: .touchUpInside)
                   
         var fromText = requestedOrders[indexPath.row].from_country?.name
         if(requestedOrders[indexPath.row].from_region != nil){
@@ -366,11 +402,33 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
             toText = (toText ?? "") + "/" + (requestedOrders[indexPath.row].to_city ?? "")
         }
         cell.toCountryLbl.text = toText
-
-        cell.dateLbl.text = (requestedOrders[indexPath.row].start_date ?? "") + "/" + (requestedOrders[indexPath.row].end_date ?? "")
         
-       // cell.
         
+        if(requestedOrders[indexPath.row].start_date != nil && requestedOrders[indexPath.row].end_date != nil &&
+            requestedOrders[indexPath.row].start_date != "" && requestedOrders[indexPath.row].end_date != ""){
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let startDate = dateFormatter.date(from: requestedOrders[indexPath.row].start_date!)
+            let endDate = dateFormatter.date(from: requestedOrders[indexPath.row].end_date!)
+            
+            dateFormatter.dateFormat = "d MMM yyyy"
+            dateFormatter.locale = Locale.init(identifier: "az")
+            let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
+            cell.dateLbl.text = goodDate
+            
+        }
+        
+        if(requestedOrders[indexPath.row].category != nil){
+            cell.typeLbl.text = requestedOrders[indexPath.row].category?.name!
+        }
+        
+        if(requestedOrders[indexPath.row].price != "" && requestedOrders[indexPath.row].price != nil &&
+            requestedOrders[indexPath.row].valyuta != nil){
+            cell.priceLbl.text = requestedOrders[indexPath.row].price! + " " + (requestedOrders[indexPath.row].valyuta?.code)!
+        }
+    
+    
         createShadow2(view: cell.mainView)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
@@ -398,6 +456,98 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
     }
+    
+    
+    @objc func confirmRequest(sender: UIButton){
+        
+               //  self.questionView.indicator.isHidden = false
+               //  self.questionView.deleteView.isHidden = true
+                 addQuestionView()
+                 
+                 let confirmUrl = "http://209.97.140.82/api/v1/user/request/confirm"
+                 
+                 guard let url = URL(string: confirmUrl) else {return}
+                 
+                 var urlRequest = URLRequest(url: url)
+                 urlRequest.httpMethod = "POST"
+                 
+                 urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
+                 urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                 
+                 let parameters: [String: Any] = [
+                    "order_id": "\(sender.tag)",
+                    "user_id": "\(self.driverId)"
+                 ]
+                 
+                 
+                 urlRequest.httpBody = parameters.percentEscaped().data(using: .utf8)
+                 
+                 let sessionConfig = URLSessionConfiguration.default
+                 sessionConfig.timeoutIntervalForRequest = 4.0
+                 sessionConfig.timeoutIntervalForResource = 60.0
+                 let session = URLSession(configuration: sessionConfig)
+                 
+                 session.dataTask(with: urlRequest){(data, response, error) in
+                     
+                     DispatchQueue.main.async {
+                        self.questionView.removeFromSuperview()
+                     }
+                     
+                     if(error == nil){
+                         guard let data = data else {return}
+                         
+                         //let outputStr  = String(data: data, encoding: String.Encoding.utf8)
+                        // print(outputStr!)
+                         do{
+                             let jsonData = try JSONDecoder().decode(SendRequestModel.self, from: data)
+                             if(jsonData.status == "success"){
+                                 DispatchQueue.main.async {
+                                     self.view.makeToast("Müraciəti təsdiqlədiniz")
+                                    let deletingCell = sender.superview?.superview as! BildirisDetailCollectionCell
+                                     let deletionIndexPath = self.myAdvCollectionView.indexPath(for: deletingCell)!
+                                    self.requestedOrders.remove(at: deletionIndexPath.row)
+                                    self.myAdvCollectionView.deleteItems(at: [deletionIndexPath])
+                                    let x = (self.requestedOrders.count * 332)
+                                    let y = (self.requestedOrders.count - 1) * 12
+                                    self.muyAdvCollectionHeight.constant = CGFloat(x + y)
+                                 }
+                             }
+                             else
+                             {
+                                 DispatchQueue.main.async {
+                                     self.view.makeToast("Xəta: Müraciət təsdiq edilmədi")
+                                 }
+                             }
+                         }
+                             
+                         catch let jsonError{
+                             DispatchQueue.main.async {
+                                 print(jsonError)
+                                 self.view.makeToast("Xəta: Json error")
+                             }
+                         }
+                     }
+                     else
+                     {
+                         
+                         if let error = error as NSError?
+                         {
+                             
+                             if error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorCannotConnectToHost || error.code == NSURLErrorTimedOut{
+                                 DispatchQueue.main.async {
+                                     self.view.makeToast("Xəta: İnternet bağlantısını yoxlayın")
+                                 }
+                                 
+                             }
+                         }
+                     }
+                     
+                     
+                     }.resume()
+    }
+    
+    
+
     
    func createShadow(view: UIView){
        

@@ -93,6 +93,10 @@ class SuccessRegisterController: UIViewController {
                                 UserDefaults.standard.set("\((userModel.user?.name)!)", forKey: "USERNAME")
                                 UserDefaults.standard.set("\((userModel.user?.phone)!)", forKey: "USERPHONE")
                                 UserDefaults.standard.set("\((userModel.user?.avatar ?? ""))", forKey: "USERAVATAR")
+                                UserDefaults.standard.set("\((userModel.user?.push_status)!)", forKey: "PUSHSTATUS")
+                                UserDefaults.standard.set("\((userModel.user?.sms_status)!)", forKey: "SMSSTATUS")
+                                UserDefaults.standard.set("\((userModel.user?.sound_status)!)", forKey: "SOUNDSTATUS")
+                                UserDefaults.standard.set("\((userModel.user?.vibration_status)!)", forKey: "VIBSTATUS")
                                 self.performSegue(withIdentifier: "segueToMain", sender: self)
                                 //self.dismiss(animated: true, completion: nil)
                             }

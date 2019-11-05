@@ -67,6 +67,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var enViewHeight: NSLayoutConstraint!
     @IBOutlet weak var heightViewHeight: NSLayoutConstraint!
     @IBOutlet weak var typeViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var betweenMapAndBottomConst: NSLayoutConstraint!
     
     
     var fromCountryPicker = UIPickerView()
@@ -145,13 +147,15 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
         })
         
-        if((UserDefaults.standard.string(forKey: "USERROLE"))! == ""){
+        if((UserDefaults.standard.string(forKey: "USERROLE"))! == "3"){
             weightViewHeight.constant = 0
             volViewHeight.constant = 0
             enViewHeight.constant = 0
             heightViewHeight.constant = 0
             volumeViewHeight.constant = 0
             typeViewHeight.constant = 0
+            mapViewHeight.constant = 0
+            betweenMapAndBottomConst.constant = 0
         }
         
         
@@ -695,8 +699,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             "end_date": endDate,
             "price": priceTextField.text!,
             "price_valyuta": selectedValyuta,
-            "coordinates_x": coord_x,
-            "coordinates_y": coord_y,
+            "coordinates_x": "345234345",
+            "coordinates_y": "345345324",
             "car_type": "1"
         ]
         

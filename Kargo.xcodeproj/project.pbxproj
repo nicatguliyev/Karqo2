@@ -148,6 +148,9 @@
 		CDD7B6B4233BECF9007B496D /* ExitPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7B6B3233BECF9007B496D /* ExitPopupController.swift */; };
 		CDD7B6B62349B78D007B496D /* blackWhatsapp.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD7B6B52349B78C007B496D /* blackWhatsapp.png */; };
 		CDD7B6B82349BA54007B496D /* greenWhatsapp.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD7B6B72349BA52007B496D /* greenWhatsapp.png */; };
+		CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */; };
+		CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D052237012880021CA0F /* sifarisIcon.png */; };
+		CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5D054237020240021CA0F /* MyOrdersController.swift */; };
 		EEC774465A95A2007F37F5AE /* Pods_Kargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D03C4362C06112D792C7559 /* Pods_Kargo.framework */; };
 /* End PBXBuildFile section */
 
@@ -329,6 +332,9 @@
 		CDD7B6B3233BECF9007B496D /* ExitPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitPopupController.swift; sourceTree = "<group>"; };
 		CDD7B6B52349B78C007B496D /* blackWhatsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackWhatsapp.png; sourceTree = "<group>"; };
 		CDD7B6B72349BA52007B496D /* greenWhatsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenWhatsapp.png; sourceTree = "<group>"; };
+		CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon2.png; path = ../../../../Downloads/locationIcon2.png; sourceTree = "<group>"; };
+		CDF5D052237012880021CA0F /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sifarisIcon.png; path = ../../../../Downloads/sifarisIcon.png; sourceTree = "<group>"; };
+		CDF5D054237020240021CA0F /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
 		D997445299DF0CD925F568A3 /* Pods-Kargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kargo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kargo/Pods-Kargo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -472,6 +478,7 @@
 				CD60D26623699E710083A5AA /* BildirisDetailCollectionCell.swift */,
 				CD60D26723699E710083A5AA /* BildirisDetailCollectionCell.xib */,
 				CD60D26A236C4E080083A5AA /* BildirisNavController.swift */,
+				CDF5D054237020240021CA0F /* MyOrdersController.swift */,
 			);
 			path = Kargo;
 			sourceTree = "<group>";
@@ -492,6 +499,7 @@
 				CDD7B6AB233411C8007B496D /* whiteDone.png */,
 				CD136736232ABC5500E875E8 /* whitePlusIcon.png */,
 				CD13673E232EB6D500E875E8 /* elanIcon.png */,
+				CDF5D052237012880021CA0F /* sifarisIcon.png */,
 				CD004BE82305F39E00279B64 /* minus.png */,
 				CD73D88522D32D280041B9E2 /* helpIcon.png */,
 				CDD7B6A4232EC3D8007B496D /* greenEditIcon.png */,
@@ -499,6 +507,7 @@
 				CD13672E231EF6D100E875E8 /* roundedRightIcon.png */,
 				CD23A87922D8CB0C00FE9D5A /* dropdownIcon.png */,
 				CD13673C232E887F00E875E8 /* editIcon.png */,
+				CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */,
 				CD004BDA22ECD25600279B64 /* greenCalendar.png */,
 				CD136730231EF71400E875E8 /* greenDoneIcon.png */,
 				CD004BE62305CAC700279B64 /* plus-button.png */,
@@ -729,6 +738,7 @@
 				CD13673D232E888000E875E8 /* editIcon.png in Resources */,
 				CD7FA538230B396D00A66483 /* noInternet.png in Resources */,
 				CD004BE72305CAC700279B64 /* plus-button.png in Resources */,
+				CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */,
 				CD73D8A022D4BEEC0041B9E2 /* blueCircle.png in Resources */,
 				CD73D8B922D61F440041B9E2 /* ringIcon.png in Resources */,
 				CD004BD122EB7D1A00279B64 /* greenDoneImg.png in Resources */,
@@ -741,6 +751,7 @@
 				CD23A89F22E79B8300FE9D5A /* langIcon.png in Resources */,
 				CD23A89122E0E9BC00FE9D5A /* profilInf.png in Resources */,
 				CD23A88822DDF91D00FE9D5A /* CustomBildirisCell.xib in Resources */,
+				CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */,
 				CD219F5E22CD2F4D00BC4DC6 /* bigActionBar.png in Resources */,
 				CD73D88822D32D290041B9E2 /* helpIcon.png in Resources */,
 				CD73D89822D4B1280041B9E2 /* eyeIcon.png in Resources */,
@@ -893,6 +904,7 @@
 				CD004BE322F4D4F600279B64 /* OrderDetailController.swift in Sources */,
 				CD23A88E22DF3CAE00FE9D5A /* ProfileController.swift in Sources */,
 				CD219F6022CD30B500BC4DC6 /* RegisterTypeController.swift in Sources */,
+				CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */,
 				CD796BE523106E8A008D8805 /* ErrorMessageController.swift in Sources */,
 				CD73D8BF22D64BDA0041B9E2 /* ServiceViewController.swift in Sources */,
 				CD73D89A22D4B2260041B9E2 /* SenedeBaxButtonView.swift in Sources */,

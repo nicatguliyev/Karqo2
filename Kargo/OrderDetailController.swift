@@ -11,6 +11,7 @@ import SDWebImage
 
 
 struct  OrderDetail:Decodable {
+    let requested: Bool?
     let data: OrderDetailDataModel?
 }
 
@@ -282,6 +283,11 @@ class OrderDetailController: UIViewController
                     self.driverId = jsonData.data?.owner?.id ?? 0
                     
                     DispatchQueue.main.async {
+                        
+                        if(jsonData.requested ?? true){
+                            self.acceptLbl.text = "PENDING"
+                        }
+                        
                         let fromCntry = jsonData.data?.from_country?.name ?? ""
                         let fromRegion = jsonData.data?.from_region?.name ?? ""
                         let fromCity = jsonData.data?.from_city ?? ""
@@ -325,7 +331,7 @@ class OrderDetailController: UIViewController
                         }
                        
                         
-                        self.getDriverDetail()
+                        self.getOrderOwnerDetail()
                     }
                 }
                     
@@ -360,7 +366,7 @@ class OrderDetailController: UIViewController
         
     }
     
-    func getDriverDetail(){
+    func getOrderOwnerDetail(){
         
         self.connView.isHidden = false
         self.checkConnIndicator.isHidden = false

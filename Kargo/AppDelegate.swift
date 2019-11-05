@@ -50,9 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             initialViewController = storyboard.instantiateViewController(withIdentifier: "SplashVC")
         
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
+            if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+                self.window?.rootViewController = initialViewController
+                           self.window?.makeKeyAndVisible()
+            }
+           
          }
         
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: true]

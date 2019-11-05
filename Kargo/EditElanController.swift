@@ -99,6 +99,9 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var ovalView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bigActionBar: UIView!
+    @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var betweenBottomAndMapConst: NSLayoutConstraint!
+    
     
     var connView = UIView()
     var checkConnButtonView = UIView()
@@ -138,6 +141,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var coord_y = ""
     var errorMessages = [String]()
     var dateFormatter = DateFormatter()
+    var updateElanList: (()->())?
     
     
     override func viewDidLoad() {
@@ -147,10 +151,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         pickerViewSettings()
         getCountries()
         
-        
     }
-    
-    
     
     func setUpDesign(){
         
@@ -168,14 +169,16 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
         })
         
-        if((UserDefaults.standard.string(forKey: "USERID"))! ==  "3"){
+        if((UserDefaults.standard.string(forKey: "USERROLE"))! ==  "3"){
             yukWeightHeight.constant = 0
             yukVolumeHeight.constant = 0
             yukEnHeight.constant = 0
             yukHundurHeight.constant = 0
             yukLengthHeight.constant = 0
-            typeLbl.text = "Avtomobil tipi"
-            // yukTypeHeight.constant = 0
+            //typeLbl.text = "Avtomobil tipi"
+             yukTypeHeight.constant = 0
+            mapViewHeight.constant = 0
+            betweenBottomAndMapConst.constant = 0
         }
         
         if(selectedAdv?.from_region_id == nil){
@@ -200,21 +203,12 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         selectedToCity = "\(selectedAdv?.to_region_id ?? 0)"
         selectedValyuta = "\(selectedAdv?.valyuta?.id ?? 0)"
         
-        if((UserDefaults.standard.string(forKey: "USERID")) == "3"){
-            selectedType = "\(selectedAdv?.car_type?.id ?? 0)"
+        if((UserDefaults.standard.string(forKey: "USERROLE")) == "4"){
+          selectedType = "\(selectedAdv?.category?.id ?? 0)"
         }
-        else
-        {
-            selectedType = "\(selectedAdv?.category?.id ?? 0)"
-        }
-        
-        //   selectedFromCity =
-        
+            
     }
-    
-    //    override func viewDidLayoutSubviews() {
-    //        <#code#>
-    //    }
+
     
     func createShadow2(view: UIView){
         view.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -597,10 +591,8 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                             self.getCargoTypes()
                             
                         }
-                        else
-                            
-                        {
-                            self.getCarTypes()
+                        else{
+                            self.getValyutas()
                         }
                     }
                 }
@@ -1099,9 +1091,9 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             "end_date": endDate,
             "price": priceTextField.text!,
             "price_valyuta": selectedValyuta,
-            "coordinates_x": coord_x,
-            "coordinates_y": coord_y,
-            "car_type": selectedType
+            "coordinates_x": "23478347",
+            "coordinates_y": "34756893",
+            "car_type": "1"
         ]
         
         
@@ -1129,6 +1121,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                     DispatchQueue.main.async {
                         
                         if(addOrderResponse.status == "success"){
+                            self.updateElanList!()
                             self.navigationController?.popViewController(animated: true)
                         }
                         else
@@ -1247,6 +1240,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                     DispatchQueue.main.async {
                         
                         if(addOrderResponse.status == "success"){
+                            self.updateElanList!()
                             self.navigationController?.popViewController(animated: true)
                         }
                         else
@@ -1297,6 +1291,8 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             updateDriverAdv()
         }
     }
+    
+    
     
     
     

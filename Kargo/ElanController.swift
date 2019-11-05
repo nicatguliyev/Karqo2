@@ -63,6 +63,7 @@
     var questionIndicator = UIActivityIndicatorView()
     var selectedAdvId: Int?
         var selectedAdv: TimeLineDataItem?
+        var selectedIndex = 0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,9 +180,18 @@
             let startDate = advs[indexPath.row].start_date
             let endDate = advs[indexPath.row].end_date
             
-            if(startDate != nil && endDate != nil){
-                cell.dateLbl.text = startDate! + " / " + endDate!
-            }
+                 if(startDate != nil && endDate != nil && startDate != "" && endDate != ""){
+                      let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                      let startDate = dateFormatter.date(from: startDate!)
+                      let endDate = dateFormatter.date(from: endDate!)
+                            
+                            dateFormatter.dateFormat = "d MMM yyyy"
+                            dateFormatter.locale = Locale.init(identifier: "az")
+                            let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
+                            cell.dateLbl.text = goodDate
+                      //cell.dateLbl.text = startDate! + " / " + endDate!
+                  }
             
             if let price = advs[indexPath.row].price, let valyuta = advs[indexPath.row].valyuta?.code{
                 cell.priceLbl.text = price + " " + valyuta
@@ -231,9 +241,18 @@
             let startDate = advs[indexPath.row].start_date
             let endDate = advs[indexPath.row].end_date
             
-            if(startDate != nil && endDate != nil){
-                cell.dateLbl.text = startDate! + " / " + endDate!
-            }
+                  if(startDate != nil && endDate != nil && startDate != "" && endDate != ""){
+                      let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                      let startDate = dateFormatter.date(from: startDate!)
+                      let endDate = dateFormatter.date(from: endDate!)
+                            
+                            dateFormatter.dateFormat = "d MMM yyyy"
+                            dateFormatter.locale = Locale.init(identifier: "az")
+                            let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
+                            cell.dateLbl.text = goodDate
+                      //cell.dateLbl.text = startDate! + " / " + endDate!
+                  }
             
             if let price = advs[indexPath.row].price, let valyuta = advs[indexPath.row].valyuta?.code{
                 cell.priceLbl.text = price + " " + valyuta
@@ -279,6 +298,7 @@
         
         @objc func editAdv(sender: UIButton){
             //selectedAdvId = sender.tag
+            selectedIndex = sender.tag
             self.selectedAdv = self.advs[sender.tag]
             performSegue(withIdentifier: "segueToEditElan", sender: self)
             
@@ -480,6 +500,10 @@
                 DispatchQueue.main.async {
                     self.connView.isHidden = true
                     self.advCollectionView.reloadData()
+                    if(self.advs.count != 0){
+                        self.advCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at: .centeredVertically, animated: true)
+                    }
+                    
                 }
                 
                 do{
@@ -492,6 +516,9 @@
                     
                     DispatchQueue.main.async {
                         self.advCollectionView.reloadData()
+                        if(self.advs.count != 0){
+                            self.advCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at: .centeredVertically, animated: true)
+                        }
                     }
                 }
                     
@@ -528,7 +555,19 @@
             if(segue.identifier == "segueToEditElan"){
                 let VC = segue.destination as! EditElanController
                 VC.selectedAdv = self.selectedAdv
+                VC.updateElanList = self.updateElanList
             }
+        }
+        
+        func updateElanList()->(){
+            if(UserDefaults.standard.string(forKey: "USERROLE")! == "4"){
+                      getDriverAdvs(type: 1)
+                  }
+                  else
+                  {
+                      getDriverAdvs(type: 2)
+                  }
+            //self.advCollectionView.scrollToItem(at: sele, at: ., animated: true)
         }
 
 
