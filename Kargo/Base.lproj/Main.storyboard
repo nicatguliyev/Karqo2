@@ -3812,6 +3812,13 @@ bilərsiniz</string>
                                                     <constraint firstItem="Uhv-Xg-MXC" firstAttribute="leading" secondItem="IVl-dc-DQU" secondAttribute="leading" id="z6e-2Y-tya"/>
                                                 </constraints>
                                             </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenWhatsapp.png" translatesAutoresizingMaskIntoConstraints="NO" id="V4r-rB-AfU">
+                                                <rect key="frame" x="4" y="207" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="lVs-SC-raS"/>
+                                                    <constraint firstAttribute="width" constant="24" id="qMg-oa-rzj"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -3829,10 +3836,12 @@ bilərsiniz</string>
                                             <constraint firstAttribute="bottom" secondItem="IVl-dc-DQU" secondAttribute="bottom" constant="20" id="ZVC-CS-3Zn"/>
                                             <constraint firstItem="Wai-vl-LAn" firstAttribute="leading" secondItem="ZOJ-K4-IKa" secondAttribute="leading" constant="32" id="gjA-iB-dyA"/>
                                             <constraint firstAttribute="trailing" secondItem="gMd-eM-fde" secondAttribute="trailing" constant="32" id="jcG-De-QPP"/>
+                                            <constraint firstItem="V4r-rB-AfU" firstAttribute="leading" secondItem="ZOJ-K4-IKa" secondAttribute="leading" constant="4" id="m4W-hp-jL2"/>
                                             <constraint firstItem="qZs-Sj-Umt" firstAttribute="leading" secondItem="ZOJ-K4-IKa" secondAttribute="leading" constant="32" id="pPA-67-BVm"/>
                                             <constraint firstItem="g0n-NT-1KO" firstAttribute="leading" secondItem="ZOJ-K4-IKa" secondAttribute="leading" constant="32" id="pm1-dA-yXg"/>
                                             <constraint firstItem="IVl-dc-DQU" firstAttribute="top" secondItem="qZs-Sj-Umt" secondAttribute="bottom" constant="18" id="pvI-Wp-8na"/>
                                             <constraint firstItem="qZs-Sj-Umt" firstAttribute="top" secondItem="Wai-vl-LAn" secondAttribute="bottom" constant="15" id="q2c-cI-Ayb"/>
+                                            <constraint firstItem="V4r-rB-AfU" firstAttribute="top" secondItem="hUG-zF-5K3" secondAttribute="top" constant="13" id="qhD-cl-FZ4"/>
                                             <constraint firstAttribute="trailing" secondItem="Wai-vl-LAn" secondAttribute="trailing" constant="32" id="tCd-G7-Pxv"/>
                                             <constraint firstAttribute="trailing" secondItem="qZs-Sj-Umt" secondAttribute="trailing" constant="32" id="xZr-0N-705"/>
                                             <constraint firstItem="IVl-dc-DQU" firstAttribute="leading" secondItem="ZOJ-K4-IKa" secondAttribute="leading" constant="32" id="zC1-Vb-QKB"/>
@@ -3930,7 +3939,7 @@ bilərsiniz</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pe4-xz-2uC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692.753623188406" y="-833.1521739130435"/>
+            <point key="canvasLocation" x="2692.753623188406" y="-833.70535714285711"/>
         </scene>
         <!--Register Type Controller-->
         <scene sceneID="MX0-BH-s11">
@@ -4981,6 +4990,13 @@ bilərsiniz</string>
                                                     <constraint firstItem="XXa-j9-Gjj" firstAttribute="top" secondItem="Q39-Wr-626" secondAttribute="bottom" id="nrx-DQ-R5W"/>
                                                 </constraints>
                                             </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenWhatsapp.png" translatesAutoresizingMaskIntoConstraints="NO" id="XZr-fP-1Zc">
+                                                <rect key="frame" x="4" y="561" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="dgR-1Q-yJE"/>
+                                                    <constraint firstAttribute="width" constant="24" id="f4s-Ui-EEb"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -5005,6 +5021,7 @@ bilərsiniz</string>
                                             <constraint firstItem="61Z-2P-La1" firstAttribute="width" secondItem="qXm-Mp-TWL" secondAttribute="width" id="E5f-DF-D2s"/>
                                             <constraint firstItem="gE7-Uc-G4E" firstAttribute="leading" secondItem="fPG-Rh-f8L" secondAttribute="leading" id="FU8-x5-cKE"/>
                                             <constraint firstAttribute="trailing" secondItem="gE7-Uc-G4E" secondAttribute="trailing" id="G1d-PB-HXL"/>
+                                            <constraint firstItem="XZr-fP-1Zc" firstAttribute="top" secondItem="KMh-V6-CB8" secondAttribute="top" constant="13" id="GWN-pE-vo0"/>
                                             <constraint firstAttribute="trailing" secondItem="cRg-nH-aeA" secondAttribute="trailing" constant="32" id="HFN-VB-cJh"/>
                                             <constraint firstItem="GOG-B6-S8I" firstAttribute="top" secondItem="7Vf-Ls-jPh" secondAttribute="bottom" constant="12" id="Hpd-fj-R9J"/>
                                             <constraint firstAttribute="trailing" secondItem="GOG-B6-S8I" secondAttribute="trailing" constant="32" id="HzN-I3-503"/>
@@ -5055,6 +5072,7 @@ bilərsiniz</string>
                                             <constraint firstItem="cRg-nH-aeA" firstAttribute="top" secondItem="mIJ-De-Z61" secondAttribute="bottom" constant="12" id="ksY-CV-R0H"/>
                                             <constraint firstItem="7Vf-Ls-jPh" firstAttribute="top" secondItem="KMh-V6-CB8" secondAttribute="bottom" constant="25" id="ktT-7o-ayy"/>
                                             <constraint firstItem="rpW-xh-drr" firstAttribute="top" secondItem="UOq-AV-0su" secondAttribute="bottom" constant="25" id="lMz-Qb-blC"/>
+                                            <constraint firstItem="XZr-fP-1Zc" firstAttribute="leading" secondItem="fPG-Rh-f8L" secondAttribute="leading" constant="4" id="nLi-HB-f4P"/>
                                             <constraint firstItem="KMh-V6-CB8" firstAttribute="top" secondItem="Rpr-Wd-9xQ" secondAttribute="bottom" id="rkO-sM-Oha"/>
                                             <constraint firstItem="H5c-NY-gms" firstAttribute="top" secondItem="Pqh-6x-sV2" secondAttribute="top" id="sHx-hP-CRJ"/>
                                             <constraint firstItem="yft-yf-Ihh" firstAttribute="top" secondItem="ihn-6G-212" secondAttribute="top" id="syL-wU-R78"/>
@@ -5133,7 +5151,7 @@ bilərsiniz</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yE4-VR-imL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3624.6376811594205" y="-103.53260869565219"/>
+            <point key="canvasLocation" x="3624.6376811594205" y="-103.79464285714285"/>
         </scene>
         <!--Error Message Controller-->
         <scene sceneID="jgd-Ap-3ET">
@@ -9993,12 +10011,12 @@ bilərsiniz</string>
         <segue reference="OIe-M9-Dqc"/>
         <segue reference="Shh-HG-VUt"/>
         <segue reference="gBh-0I-oN8"/>
-        <segue reference="jGH-mh-tbh"/>
+        <segue reference="vkm-51-aTu"/>
         <segue reference="xn1-NK-Phl"/>
         <segue reference="PqT-Eh-g6K"/>
         <segue reference="Ege-yc-rh2"/>
         <segue reference="8Hd-Sn-SmD"/>
-        <segue reference="L6T-ag-gEY"/>
+        <segue reference="75M-Tb-J4Y"/>
         <segue reference="zZG-qI-lrH"/>
     </inferredMetricsTieBreakers>
 </document>
