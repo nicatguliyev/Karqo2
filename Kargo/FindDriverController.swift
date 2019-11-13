@@ -137,8 +137,9 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         }
         else{
             elanType = "driverElan"
-                findDriverLbl.text = "Sifariş tap"
-                allDriversLbl.text = "Bütün sifarişlər"
+                findDriverLbl.text = "Yüklər"
+            allDriversLbl.isHidden = true
+                    // allDriversLbl.text = "Bütün sifarişlər"
                 getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
                     filterType = "order"
           
@@ -566,7 +567,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
           URLQueryItem(name: "to_region_id", value: toRegion),
           URLQueryItem(name: "start_date", value: startDate),
           URLQueryItem(name: "end_date", value: endDate),
-          URLQueryItem(name: "cargo_type", value: cargoType)
+          URLQueryItem(name: "order_category_id", value: cargoType)
 
         ]
         

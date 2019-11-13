@@ -9,15 +9,13 @@
 import UIKit
 import Alamofire
 
-class DocumentsController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DocumentsController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
 
     
     var backButton = UIButton()
     var barItem = UIBarButtonItem()
     @IBOutlet weak var bigActionBar: UIView!
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var editIcon: UIButton!
-    @IBOutlet weak var documentCollectionView: UICollectionView!
     
     var connView = UIView()
     var checkConnButtonView = UIView()
@@ -36,13 +34,28 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
     var newCarRegister: UIImage?
     var newHalfCarRegister: UIImage?
     var image2 = UIImage()
+    var first = false
+    var scnd = false
+    var third = false
 
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
+    @IBOutlet weak var imageView3: UIImageView!
+    @IBOutlet weak var image1Height: NSLayoutConstraint!
+    @IBOutlet weak var image2Height: NSLayoutConstraint!
+    @IBOutlet weak var image3Height: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//
+//        if let flowLayout = documentCollectionView.collectionViewLayout as? UICollectionViewFlowLayout{
+//            let w = documentCollectionView.frame.width - 40
+//            flowLayout.estimatedItemSize = CGSize(width: w, height: 300)
+//        }
+//
 
          self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
-        
+    
         editIcon.layer.cornerRadius = 27
         setUpBackButton()
         
@@ -53,6 +66,8 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
         else
         {
             editIcon.isHidden = true
+            setImages()
+         
         }
         
         
@@ -63,6 +78,22 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
         imageController.delegate = self
         imageController.sourceType = UIImagePickerController.SourceType.photoLibrary
         imageController.allowsEditing  = false
+        
+        imageView1.layer.cornerRadius = 10
+        imageView2.layer.cornerRadius = 10
+        imageView3.layer.cornerRadius = 10
+        
+        let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(image1Tapped))
+        imageView1.isUserInteractionEnabled = true
+        imageView1.addGestureRecognizer(tapGesture1)
+        
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(image2Tapped))
+          imageView2.isUserInteractionEnabled = true
+          imageView2.addGestureRecognizer(tapGesture2)
+        
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(image3Tapped))
+          imageView3.isUserInteractionEnabled = true
+          imageView3.addGestureRecognizer(tapGesture3)
         
     }
     
@@ -84,114 +115,55 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
         
     }
     
+    @objc func image1Tapped(){
+        if(type == 2){
+            selectedRow = 0
+            imageView1.layer.borderWidth = 10
+            imageView1.layer.borderColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1).cgColor
+            imageView2.layer.borderWidth = 0
+            imageView3.layer.borderWidth = 0
+        }
+    }
     
+    @objc func image2Tapped(){
+        if(type == 2){
+            selectedRow = 1
+            imageView2.layer.borderWidth = 10
+            imageView2.layer.borderColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1).cgColor
+            imageView1.layer.borderWidth = 0
+            imageView3.layer.borderWidth = 0
+        }
+
+       }
+    
+    @objc func image3Tapped(){
+        if(type == 2){
+            selectedRow = 2
+            imageView3.layer.borderWidth = 10
+            imageView3.layer.borderColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1).cgColor
+            imageView2.layer.borderWidth = 0
+            imageView1.layer.borderWidth = 0
+        }
+
+       }
     @objc func backClicked(){
         self.navigationController?.popViewController(animated: true)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "documentCellId", for: indexPath) as! DocumentCollectionCell
-        cell.docImage.layer.cornerRadius = 10
-        cell.contentView.layer.cornerRadius = 10
-        
-        if(indexPath.row == 0){
-             cell.docNameLbl.text = "Xarici passport"
-            
-            if(newforeignPassport == nil){
-                if let foreignPassportUrl = foreignPassportUrl
-                {
-                    cell.docImage.sd_setImage(with: URL(string: foreignPassportUrl))
-                }
-            }
-            else{
-                 cell.docImage.image = newforeignPassport
-                
-            }
-         
-        }
-        else if(indexPath.row == 1){
-            cell.docNameLbl.text = "Nəq.vasitəsinin qeydiyyat şəhadətnaməsi"
-            
-            if(newCarRegister == nil){
-                if let carRegisterDoc = carRegisterDoc
-                {
-                    //cell.docImage.sd_setImage(with: URL(string: carRegisterDoc))
-                    cell.docImage.sd_setImage(with: URL(string: carRegisterDoc), completed: {image, error, cachType, imageURL in
-                        cell.docImage.image = image
-                     //   self.image2 = image!
-                       // print(image?.size.height)
 
-                        
-                    })
-                }
-            }
-            else
-            {
-                cell.docImage.image = newCarRegister
-            }
-            
-           
-        }
-        else{
-             cell.docNameLbl.text = "Yarımqoşqunun qeydiyyat şəhadətnaməsi"
-            if(newHalfCarRegister == nil){
-                if let halfCarRegisterUrl = halfCarRegisterUrl
-                {
-                    cell.docImage.sd_setImage(with: URL(string: halfCarRegisterUrl))
-                }
-            }
-            else
-            {
-                cell.docImage.image = newHalfCarRegister
-            }
-        
-        }
-        
-        if(indexPath.row == selectedRow){
-            cell.docImage.layer.borderColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1).cgColor
-            cell.docImage.layer.borderWidth = 10
-        }
-        else{
-            cell.docImage.layer.borderWidth = 0
-        }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: (view.frame.width - 32) , height: 300)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       let cell = collectionView.cellForItem(at: indexPath) as! DocumentCollectionCell
-        
-        selectedRow  = indexPath.row
-        cell.docImage.layer.borderColor = UIColor(red: 0/255, green: 193/255, blue: 138/255, alpha: 1).cgColor
-        cell.docImage.layer.borderWidth = 10
-        documentCollectionView.reloadData()
-        print(indexPath.row)
-    }
-    
-    
     func addConnectionView(){
         if let connectionView = Bundle.main.loadNibNamed("CheckConnectionView", owner: self, options: nil)?.first as? CheckConnectionView {
             connectionView.frame = CGRect(x: 0, y: 75, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 75)
             self.view.addSubview(connectionView);
             connectionView.buttonView.clipsToBounds = true
-            
+
             connView = connectionView
             checkConnButtonView = connectionView.buttonView
             checkConnIndicator = connectionView.checkIndicator
-            
+
             connectionView.tryButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
         }
     }
-    
+
     @objc func tryAgain(){
         getProfileDetails()
     }
@@ -229,7 +201,8 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
                         self.carRegisterDoc = jsonData.data?.car_register_doc
                         self.halfCarRegisterUrl = jsonData.data?.half_car_register_doc
                         DispatchQueue.main.async {
-                          self.documentCollectionView.reloadData()
+                            self.setImages()
+                            //  self.documentCollectionView.reloadData()
                         }
                     }
                     
@@ -351,19 +324,34 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
                                         DispatchQueue.main.async {
                                             if(self.selectedRow == 0)
                                             {
-                                                self.newforeignPassport = self.selectedImage
-                                                 self.view.makeToast("Xarici passport  dəyişdirildi")
+                                                //self.newforeignPassport = self.selectedImage
+                                                let ratio = CGFloat(((self.selectedImage?.size.width)!)) / CGFloat(((self.selectedImage?.size.height)!))
+                                                
+                                                let newHeight = Int(self.imageView1.frame.width / CGFloat(ratio))
+                                                self.image1Height.constant = CGFloat(newHeight)
+                                                self.imageView1.image = self.selectedImage
+                                                self.view.makeToast("Xarici passport  dəyişdirildi")
                                             }
                                             else if(self.selectedRow == 1){
-                                                self.newCarRegister = self.selectedImage
+                                                //self.newCarRegister = self.selectedImage
+                                                let ratio = CGFloat(((self.selectedImage?.size.width)!)) / CGFloat(((self.selectedImage?.size.height)!))
+                                            
+                                                let newHeight = Int(self.imageView2.frame.width / CGFloat(ratio))
+                                                self.image2Height.constant = CGFloat(newHeight)
+                                                self.imageView2.image = self.selectedImage
                                                  self.view.makeToast("Nəqliyyat vasitəsinin qeydiyyat şəhadətnaməsi dəyişdirildi")
                                             }
                                             else{
-                                                self.newHalfCarRegister = self.selectedImage
+                                              //  self.newHalfCarRegister = self.selectedImage
+                                                let ratio = CGFloat(((self.selectedImage?.size.width)!)) / CGFloat(((self.selectedImage?.size.height)!))
+                                                
+                                                    let newHeight = Int(self.imageView3.frame.width / CGFloat(ratio))
+                                                    self.image3Height.constant = CGFloat(newHeight)
+                                                    self.imageView3.image = self.selectedImage
                                                 self.view.makeToast("Yarımqoşqunun qeydiyyat şəhadətnaməsi dəyişdirildi")
                                             }
                                              self.selectedImage = nil
-                                             self.documentCollectionView.reloadData()
+                                         //    self.documentCollectionView.reloadData()
                                         }
                                     }
                                     else
@@ -426,6 +414,52 @@ class DocumentsController: UIViewController, UICollectionViewDelegate, UICollect
            let effectiveHeight = downloadedImage.size.height - heightOffset
            return(effectiveHeight)
        }
+    
+    func setImages(){
+        if let foreignPassportUrl = foreignPassportUrl{
+            
+            //imageView1.sd_setImage(with: <#T##URL?#>, placeholderImage: <#T##UIImage?#>, options: <#T##SDWebImageOptions#>, completed: <#T##SDExternalCompletionBlock?##SDExternalCompletionBlock?##(UIImage?, Error?, SDImageCacheType, URL?) -> Void#>)
+            
+                 
+            
+                    imageView1.sd_setImage(with: URL(string: foreignPassportUrl), completed: {image, error, cachType, imageURL in
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                            let ratio = CGFloat((image?.size.width)!) / CGFloat((image?.size.height)!)
+                            print(ratio)
+                            let newHeight = Int(self.imageView1.frame.width / CGFloat(ratio))
+                            self.image1Height.constant = CGFloat(newHeight)
+                            self.imageView1.image = image
+                        })
+                        
+                       
+                    })
+                }
+                if let carRegisterDoc = carRegisterDoc{
+                    imageView2.sd_setImage(with: URL(string: carRegisterDoc), completed: {image, error, cachType, imageURL in
+                        DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                            
+                            let ratio = CGFloat((image?.size.width)!) / CGFloat((image?.size.height)!)
+                            let newHeight = Int(self.imageView2.frame.width / CGFloat(ratio))
+                            self.image2Height.constant = CGFloat(newHeight)
+                            self.imageView2.image = image
+                        })
+                      
+                    })
+                }
+                if let halfCarRegisterUrl = halfCarRegisterUrl{
+                    imageView3.sd_setImage(with: URL(string: halfCarRegisterUrl), completed: {image, error, cachType, imageURL in
+                        DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                            
+                            let ratio = CGFloat((image?.size.width)!) / CGFloat((image?.size.height)!)
+                            let newHeight = Int(self.imageView3.frame.width / CGFloat(ratio))
+                            self.image3Height.constant = CGFloat(newHeight)
+                            self.imageView3.image = image
+                        })
+                       
+                    })
+                }
+    }
     
     
 }

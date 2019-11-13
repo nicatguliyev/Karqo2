@@ -113,6 +113,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var showMessage: (()->())?
     
+    @IBOutlet weak var moreDetailTxt: UITextView!
     var dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -221,6 +222,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         dateFormatter.dateFormat = "dd/MM/yyyy"
         
         firstDatePicker.datePickerMode = .date
+        firstDatePicker.minimumDate = Date()
         firstDateTextField.inputView = firstDatePicker
         
         
@@ -588,7 +590,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             "price_valyuta": selectedValyuta,
             "coordinates_x": coord_x,
             "coordinates_y": coord_y,
-            "order_category_id": selectedType
+            "order_category_id": selectedType,
+            "note": moreDetailTxt.text!
         ]
         
         
@@ -608,8 +611,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if(error == nil){
                 guard let data = data else {return}
                 
-               let outputStr  = String(data: data, encoding: String.Encoding.utf8)
-                print(outputStr)
+              // let outputStr  = String(data: data, encoding: String.Encoding.utf8)
+            //    print(outputStr)
                 do{
      
                             let addOrderResponse = try JSONDecoder().decode(AddOrderSuccessModel.self, from: data)
@@ -701,7 +704,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             "price_valyuta": selectedValyuta,
             "coordinates_x": "345234345",
             "coordinates_y": "345345324",
-            "car_type": "1"
+            "car_type": "1",
+            "note": moreDetailTxt.text!
         ]
         
         
@@ -721,8 +725,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if(error == nil){
                 guard let data = data else {return}
                 
-                 let outputStr  = String(data: data, encoding: String.Encoding.utf8)
-                 print(outputStr)
+               //  let outputStr  = String(data: data, encoding: String.Encoding.utf8)
+                // print(outputStr)
                 do{
                     
                     let addOrderResponse = try JSONDecoder().decode(AddOrderSuccessModel.self, from: data)
@@ -1057,6 +1061,8 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if(textField == firstDateTextField){
           dateLbl.text = dateFormatter.string(from: firstDatePicker.date) + " - "
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                self.secondDatePicker.minimumDate = self.firstDatePicker.date
+                self.secondDatePicker.maximumDate = self.firstDatePicker.date.addingTimeInterval(TimeInterval(30 * 24 * 60 * 60))
                 self.secondDateTextField.becomeFirstResponder()
             })
          

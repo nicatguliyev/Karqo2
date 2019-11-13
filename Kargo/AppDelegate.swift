@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let payload: OSNotificationPayload = result!.notification.payload
             let additionalData = payload.additionalData
             vars.notfsenderId = (additionalData!["sender_id"] as! Int)
+            print(additionalData)
             vars.isNotf = true
             
             self.window = UIWindow(frame: UIScreen.main.bounds)

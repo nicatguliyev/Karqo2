@@ -61,7 +61,7 @@ struct SendRequestModel: Decodable{
     let error: [String]?
 }
 
-class OrderDetailController: UIViewController
+class OrderDetailController: UIViewController, UIScrollViewDelegate
 
     
 {
@@ -319,10 +319,20 @@ class OrderDetailController: UIViewController
                         }
                         
                         
-                        let startDate = jsonData.data?.start_date ?? "null"
-                        let endDate = jsonData.data?.end_date ?? "null"
-                        
-                        self.dateLbl.text = startDate + " - " + endDate
+                        let startDate = jsonData.data?.start_date ?? ""
+                        let endDate = jsonData.data?.end_date ?? ""
+                        if(startDate != "" && endDate != ""){
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            let startDate = dateFormatter.date(from: startDate)
+                            let endDate = dateFormatter.date(from: endDate)
+                            
+                            dateFormatter.dateFormat = "d MMM yyyy"
+                            dateFormatter.locale = Locale.init(identifier: "az")
+                            let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
+                            self.dateLbl.text = goodDate
+                                
+                                }
                         
                         
                         if let price = self.selectedOrder?.price, let valyuta = self.selectedOrder?.valyuta?.code{
@@ -516,6 +526,15 @@ class OrderDetailController: UIViewController
              }.resume()
      }
     
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+                whatsAppView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+               phoneView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+          messageView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+            
+          
+           
+    }
     
     
 

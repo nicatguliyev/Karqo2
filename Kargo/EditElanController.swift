@@ -43,6 +43,7 @@ struct OrderDataModel2:Decodable {
     let from_region: TimeLineItemOwnerOrRegion?
     let to_country: TimeLineItemOwnerOrRegion?
     let to_region: TimeLineItemOwnerOrRegion?
+    let note: String?
     
 }
 
@@ -101,6 +102,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var bigActionBar: UIView!
     @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
     @IBOutlet weak var betweenBottomAndMapConst: NSLayoutConstraint!
+    @IBOutlet weak var moreDetailTextView: UITextView!
     
     
     var connView = UIView()
@@ -313,6 +315,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         let startDate = formatter1.date(from: (self.selectedAdv?.start_date!)!)
         let endDate = formatter1.date(from: (self.selectedAdv?.end_date!)!)
         
+        firstDatePicker.minimumDate = Date()
         firstDatePicker.date = startDate!
         secondDatePicker.date = endDate!
         
@@ -504,7 +507,10 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     func textFieldDidEndEditing(_ textField: UITextField) {
         if(textField == startDateTextField){
             dateLbl.text = dateFormatter.string(from: firstDatePicker.date) + " - "
+            secondDatePicker.minimumDate = firstDatePicker.date
+            secondDatePicker.maximumDate = firstDatePicker.date.addingTimeInterval(TimeInterval(30 * 24 * 60 * 60))
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                
                 self.endDateTextField.becomeFirstResponder()
             })
             
@@ -765,9 +771,6 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             orderDetailUrl = "http://209.97.140.82/api/v1/order/detail/" + "\((self.selectedAdv?.id)!)"
         }
         
-        
-        
-        
         guard let url = URL(string: orderDetailUrl) else {return}
         
         var urlRequest = URLRequest(url: url)
@@ -792,7 +795,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                         self.yukLengthTextField.text = "\(jsonData.data?.size_x ?? "")"
                         self.yukEnTextField.text = "\(jsonData.data?.size_y ?? "")"
                         self.yukHundurTextField.text = "\(jsonData.data?.size_z ?? "")"
-                        
+                        self.moreDetailTextView.text = "\(jsonData.data?.note ?? "")"
                     }
                     
                 }
@@ -1093,7 +1096,8 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             "price_valyuta": selectedValyuta,
             "coordinates_x": "23478347",
             "coordinates_y": "34756893",
-            "car_type": "1"
+            "car_type": "1",
+            "note": moreDetailTextView.text!
         ]
         
         
@@ -1212,7 +1216,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             "price_valyuta": selectedValyuta,
             "coordinates_x": coord_x,
             "coordinates_y": coord_y,
-            
+            "note": moreDetailTextView.text!
         ]
         
         
@@ -1292,6 +1296,9 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
     }
     
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     

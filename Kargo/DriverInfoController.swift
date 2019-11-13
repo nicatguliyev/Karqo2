@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate
 {
 
     @IBOutlet weak var userImageView: UIView!
@@ -87,7 +87,13 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func messageTapped(){
         actionType = 3
         if(self.phoneNumbers != nil){
-            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            let numbers = phoneNumbers!.components(separatedBy: ",")
+            if(numbers.count > 1){
+                performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            }
+            else{
+                  UIApplication.shared.open(URL(string: "sms:" + numbers[0])!, options: [:], completionHandler: nil)
+            }
             
         }
         
@@ -96,7 +102,13 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func phoneTapped(){
         actionType = 2
         if(self.phoneNumbers != nil){
-            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            let numbers = phoneNumbers!.components(separatedBy: ",")
+            if(numbers.count > 1){
+                performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            }
+            else{
+                UIApplication.shared.open(URL(string: "tel:" + numbers[0])!, options: [:], completionHandler: nil)
+            }
             
         }
         
@@ -105,7 +117,9 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func whatsappTapped(){
         actionType = 1
         if(self.phoneNumbers != nil){
-            performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
+            let numbers = phoneNumbers!.components(separatedBy: ",")
+            UIApplication.shared.open(URL(string: "https://api.whatsapp.com/send?phone=" + numbers[0])!, options: [:], completionHandler: nil)
+
             
         }
         
@@ -544,6 +558,12 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                      
                      
                      }.resume()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+          whatsAppView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+          phoneView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+          messageView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
     }
     
     

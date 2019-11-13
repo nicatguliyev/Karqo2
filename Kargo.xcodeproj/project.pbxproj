@@ -148,6 +148,10 @@
 		CDD7B6B4233BECF9007B496D /* ExitPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD7B6B3233BECF9007B496D /* ExitPopupController.swift */; };
 		CDD7B6B62349B78D007B496D /* blackWhatsapp.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD7B6B52349B78C007B496D /* blackWhatsapp.png */; };
 		CDD7B6B82349BA54007B496D /* greenWhatsapp.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD7B6B72349BA52007B496D /* greenWhatsapp.png */; };
+		CDE53E9C237AA60E00CF28B3 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9A237AA60B00CF28B3 /* unchecked.png */; };
+		CDE53E9D237AA60E00CF28B3 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9B237AA60C00CF28B3 /* checked.png */; };
+		CDE53EA0237AB3E000CF28B3 /* PricesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */; };
+		CDE53EA1237AB3E000CF28B3 /* PricesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */; };
 		CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */; };
 		CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D052237012880021CA0F /* sifarisIcon.png */; };
 		CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5D054237020240021CA0F /* MyOrdersController.swift */; };
@@ -332,6 +336,10 @@
 		CDD7B6B3233BECF9007B496D /* ExitPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitPopupController.swift; sourceTree = "<group>"; };
 		CDD7B6B52349B78C007B496D /* blackWhatsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackWhatsapp.png; sourceTree = "<group>"; };
 		CDD7B6B72349BA52007B496D /* greenWhatsapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenWhatsapp.png; sourceTree = "<group>"; };
+		CDE53E9A237AA60B00CF28B3 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		CDE53E9B237AA60C00CF28B3 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesTableCell.swift; sourceTree = "<group>"; };
+		CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricesTableCell.xib; sourceTree = "<group>"; };
 		CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon2.png; path = ../../../../Downloads/locationIcon2.png; sourceTree = "<group>"; };
 		CDF5D052237012880021CA0F /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sifarisIcon.png; path = ../../../../Downloads/sifarisIcon.png; sourceTree = "<group>"; };
 		CDF5D054237020240021CA0F /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
@@ -479,6 +487,8 @@
 				CD60D26723699E710083A5AA /* BildirisDetailCollectionCell.xib */,
 				CD60D26A236C4E080083A5AA /* BildirisNavController.swift */,
 				CDF5D054237020240021CA0F /* MyOrdersController.swift */,
+				CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */,
+				CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */,
 			);
 			path = Kargo;
 			sourceTree = "<group>";
@@ -497,6 +507,8 @@
 				CD73D89422D4708E0041B9E2 /* smsIcon.png */,
 				CD23A89522E62DC900FE9D5A /* rightArrow.png */,
 				CDD7B6AB233411C8007B496D /* whiteDone.png */,
+				CDE53E9B237AA60C00CF28B3 /* checked.png */,
+				CDE53E9A237AA60B00CF28B3 /* unchecked.png */,
 				CD136736232ABC5500E875E8 /* whitePlusIcon.png */,
 				CD13673E232EB6D500E875E8 /* elanIcon.png */,
 				CDF5D052237012880021CA0F /* sifarisIcon.png */,
@@ -698,6 +710,7 @@
 				CD60D26923699E710083A5AA /* BildirisDetailCollectionCell.xib in Resources */,
 				CD23A89822E62EE000FE9D5A /* penIcon.png in Resources */,
 				CD23A87322D8ADBC00FE9D5A /* roundArrow.png in Resources */,
+				CDE53E9D237AA60E00CF28B3 /* checked.png in Resources */,
 				CD73D8A722D5FF6D0041B9E2 /* menuBottomImage.png in Resources */,
 				CD23A87A22D8CB0C00FE9D5A /* dropdownIcon.png in Resources */,
 				CD23A8A022E79B8300FE9D5A /* bellIcon.png in Resources */,
@@ -717,8 +730,10 @@
 				CD23A86A22D8604700FE9D5A /* GothamBold.ttf in Resources */,
 				CD73D88E22D36B890041B9E2 /* billGates.jpg in Resources */,
 				CD136731231EF71500E875E8 /* greenDoneIcon.png in Resources */,
+				CDE53E9C237AA60E00CF28B3 /* unchecked.png in Resources */,
 				CD004BED2305FBC900279B64 /* AddNumberCell.xib in Resources */,
 				CD23A87E22DCC55D00FE9D5A /* whiteSearchIcon.png in Resources */,
+				CDE53EA1237AB3E000CF28B3 /* PricesTableCell.xib in Resources */,
 				CD903F5922CB2BAD0088F473 /* Assets.xcassets in Resources */,
 				CD004BD722ECCAD600279B64 /* FindOrderCollectionCell.xib in Resources */,
 				CD73D89622D4708E0041B9E2 /* smsIcon.png in Resources */,
@@ -895,6 +910,7 @@
 				CD23A86422D750CC00FE9D5A /* CustomSelectButton.swift in Sources */,
 				CD73D87B22D1E5440041B9E2 /* FindDriverCollectionCell.swift in Sources */,
 				CDA542F823603A950070516D /* PhoneNumberCell.swift in Sources */,
+				CDE53EA0237AB3E000CF28B3 /* PricesTableCell.swift in Sources */,
 				CD136735232047B900E875E8 /* DriverRegController.swift in Sources */,
 				CD23A87622D8B53E00FE9D5A /* TetbiqViewController.swift in Sources */,
 				CD73D8AA22D601FE0041B9E2 /* MenuTableViewCell.swift in Sources */,

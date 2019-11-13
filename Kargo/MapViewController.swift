@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, UIGestureRecognizerDelegate{
+class MapViewController: UIViewController{
 
     @IBOutlet weak var map: MKMapView!
     var setCoord: ((String, String) -> ())?
@@ -23,12 +23,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      //  let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
-     //   longPress.minimumPressDuration = 0.2
-     //   longPress.delegate = self
-        map.isUserInteractionEnabled = true
-      //  map.addGestureRecognizer(longPress)
+        let _  = MKPointAnnotation()
         setUpBackButton()
         
         
@@ -36,30 +31,6 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate{
 
         // Do any additional setup after loading the view.
     }
-    
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        center = "\(mapView.centerCoordinate.latitude)" + ", " + "\(mapView.centerCoordinate.longitude)"
-        print(center)
-    }
-    
-//    @objc func longPressed(gesture: UILongPressGestureRecognizer){
-//        if(gesture.state == .began){
-//            self.map.removeAnnotations(self.map.annotations)
-//            let touchPoint = gesture.location(in: self.map)
-//            let touchMapCoord = self.map.convert(touchPoint, toCoordinateFrom: self.map)
-//
-//            let annot  = MKPointAnnotation()
-//            annot.coordinate = touchMapCoord
-//            coord_x = "\(touchMapCoord.latitude)"
-//            coord_y = "\(touchMapCoord.longitude)"
-//
-//            annot.title = "Yükün yeri"
-//            self.map.addAnnotation(annot)
-//            self.map.setCenter(touchMapCoord, animated: true)
-//
-//        }
-//
-//    }
     
     func setUpBackButton(){
         

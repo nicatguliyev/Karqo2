@@ -31,7 +31,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         MenuViewController.staticSelf = self
         
         if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
-            menuNames = ["Sifariş tap", "Elanlarım", "Sifarişlərim", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+            menuNames = ["Yüklər", "Elanlarım", "Sifarişlərim", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
             menuImages = ["searchIcon.png", "elanIcon.png", "sifarisIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
         }
         else{
