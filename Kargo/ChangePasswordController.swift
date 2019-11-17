@@ -46,6 +46,23 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
         //bottomView.setNeedsLayout()
         // added new line
         
+//        let test = CustomActionBar(url: "http://209.97.140.82/api/v1/valyuta/list")
+//        test.getValyutas { (data, error) in
+//            if(data != nil){
+//                do{
+//                    let jsonData = try JSONDecoder().decode(ValyutaListData.self, from: data!)
+//                    print(jsonData)
+//                }
+//                catch{
+//                    print("JsonXeta")
+//                }
+//                if(error != nil){
+//                  //  print(error)
+//                }
+//               // let jsonData = try JSONDecoder().decode(ValyutaListData.self, from: data)
+//            }
+//        }
+        
     }
     
     @objc func bottomTapped(){

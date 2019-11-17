@@ -152,6 +152,7 @@
 		CDE53E9D237AA60E00CF28B3 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9B237AA60C00CF28B3 /* checked.png */; };
 		CDE53EA0237AB3E000CF28B3 /* PricesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */; };
 		CDE53EA1237AB3E000CF28B3 /* PricesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */; };
+		CDE53EA3237BEA6700CF28B3 /* CustomActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */; };
 		CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */; };
 		CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D052237012880021CA0F /* sifarisIcon.png */; };
 		CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5D054237020240021CA0F /* MyOrdersController.swift */; };
@@ -340,6 +341,7 @@
 		CDE53E9B237AA60C00CF28B3 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesTableCell.swift; sourceTree = "<group>"; };
 		CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricesTableCell.xib; sourceTree = "<group>"; };
+		CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionBar.swift; sourceTree = "<group>"; };
 		CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon2.png; path = ../../../../Downloads/locationIcon2.png; sourceTree = "<group>"; };
 		CDF5D052237012880021CA0F /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sifarisIcon.png; path = ../../../../Downloads/sifarisIcon.png; sourceTree = "<group>"; };
 		CDF5D054237020240021CA0F /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				CDF5D054237020240021CA0F /* MyOrdersController.swift */,
 				CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */,
 				CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */,
+				CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */,
 			);
 			path = Kargo;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 			files = (
 				CDD7B6B223373395007B496D /* QuestionView.swift in Sources */,
 				CD004BEC2305FBC900279B64 /* AddNumberCell.swift in Sources */,
+				CDE53EA3237BEA6700CF28B3 /* CustomActionBar.swift in Sources */,
 				CD903F6922CB39D00088F473 /* InformationController.swift in Sources */,
 				CD23A89A22E6489D00FE9D5A /* ChangePasswordController.swift in Sources */,
 				CD23A86E22D8A03E00FE9D5A /* PayViewController.swift in Sources */,

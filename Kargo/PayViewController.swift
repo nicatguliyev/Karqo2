@@ -68,6 +68,9 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         valyutaView.addGestureRecognizer(valyutaGesture)
         
         addConnectionView()
+      //  let  test = CustomActionBar(connView: connView, checkConnButtonView: checkConnButtonView, checkConnIndicator: checkConnIndicator, viewController: self)
+      //  test.addConnectionView()
+        
         getValyutas()
         
     }
