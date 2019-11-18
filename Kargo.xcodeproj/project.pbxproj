@@ -153,6 +153,7 @@
 		CDE53EA0237AB3E000CF28B3 /* PricesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */; };
 		CDE53EA1237AB3E000CF28B3 /* PricesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */; };
 		CDE53EA3237BEA6700CF28B3 /* CustomActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */; };
+		CDE53EC52382868200CF28B3 /* closeWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC42382868000CF28B3 /* closeWindow.png */; };
 		CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */; };
 		CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D052237012880021CA0F /* sifarisIcon.png */; };
 		CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5D054237020240021CA0F /* MyOrdersController.swift */; };
@@ -342,6 +343,7 @@
 		CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesTableCell.swift; sourceTree = "<group>"; };
 		CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricesTableCell.xib; sourceTree = "<group>"; };
 		CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionBar.swift; sourceTree = "<group>"; };
+		CDE53EC42382868000CF28B3 /* closeWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeWindow.png; sourceTree = "<group>"; };
 		CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon2.png; path = ../../../../Downloads/locationIcon2.png; sourceTree = "<group>"; };
 		CDF5D052237012880021CA0F /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sifarisIcon.png; path = ../../../../Downloads/sifarisIcon.png; sourceTree = "<group>"; };
 		CDF5D054237020240021CA0F /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				CDE53E9A237AA60B00CF28B3 /* unchecked.png */,
 				CD136736232ABC5500E875E8 /* whitePlusIcon.png */,
 				CD13673E232EB6D500E875E8 /* elanIcon.png */,
+				CDE53EC42382868000CF28B3 /* closeWindow.png */,
 				CDF5D052237012880021CA0F /* sifarisIcon.png */,
 				CD004BE82305F39E00279B64 /* minus.png */,
 				CD73D88522D32D280041B9E2 /* helpIcon.png */,
@@ -749,6 +752,7 @@
 				CD73D8BD22D649730041B9E2 /* greenPhone.png in Resources */,
 				CD13673F232EB6D600E875E8 /* elanIcon.png in Resources */,
 				CD73D8A522D5D7F50041B9E2 /* Montserrat-Regular.ttf in Resources */,
+				CDE53EC52382868200CF28B3 /* closeWindow.png in Resources */,
 				CD73D8AB22D601FE0041B9E2 /* MenuTableViewCell.xib in Resources */,
 				CD903F5722CB2BAB0088F473 /* Main.storyboard in Resources */,
 				CD23A87222D8ADBC00FE9D5A /* tetbiqPay.png in Resources */,

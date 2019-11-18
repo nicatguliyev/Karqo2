@@ -98,14 +98,14 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     var elanType = ""
     var selectedAdv: TimeLineDataItem?
-    
+    var showServicePopup = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        OneSignal.sendTag("user_id", value: "\((UserDefaults.standard.string(forKey: "USERID"))!)")
+        OneSignal.sendTag("user_id", value: "\((UserDefaults.standard.string(forKey: "USERID"))!)") // ana sehife acilan kimi sendTag funksiyasindan istifade ederek database-de saxlanilan USERID-ni OneSignala set edirik(Bildirisleri Qebul etmek ucun)
         
-        if(vars.isNotf == true && UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+        if(vars.isNotf == true && UserDefaults.standard.string(forKey: "USERROLE") == "4"){ // Eger Proqram notfication-dan acilibsa ve user tipi sifarisci ise ana sehifede dayanmadan derhal kecir Notificationun detalina
             DispatchQueue.main.asyncAfter(deadline: .now()+0.00001, execute: {
                 self.performSegue(withIdentifier: "segueToNotf", sender: self)
             })
@@ -118,8 +118,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         addConnectionView()
         
         
-        self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
-        
+        self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)// menunu surusdurerek acmaq ucun
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.ovalView.roundCorners(corners: [.bottomRight, .topRight], cornerRadius: 90.0)
@@ -128,14 +127,14 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         filterBtn.layer.cornerRadius = 12.0
         addBtn.layer.cornerRadius = 12.0
 
-        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){  // User Sifarisci olarsa asagidaki deyisenleri set edirik
             elanType = "orderElan"
             findDriverLbl.text = "Sürücü tap"
             allDriversLbl.text = "Bütün sürücülər"
              getDrivers(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, carType: selectedCarType)
                  filterType = "driver"
         }
-        else{
+        else{ // eger user Surucu olarsa asagidaki deyisenleri set edirik
             elanType = "driverElan"
                 findDriverLbl.text = "Yüklər"
             allDriversLbl.isHidden = true
@@ -145,8 +144,9 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
           
         }
         
-       driverCollectionView.register(UINib(nibName: "FindOrderCollectionCell", bundle: nil), forCellWithReuseIdentifier: "cell2")
-    
+       driverCollectionView.register(UINib(nibName: "FindOrderCollectionCell", bundle: nil), forCellWithReuseIdentifier: "cell2") // collectionView-nun cell-i ucun qeydiyyatdan kecirik
+        
+      
     }
     
     func addConnectionView(){
@@ -200,14 +200,21 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewWillAppear(_ animated: Bool) {
       self.revealViewController()?.panGestureRecognizer()?.isEnabled = true
+        if(vars.showServicePopup == true && vars.isNotf == false){ // eger proqram ilk acilibsa onda service popup- i goster
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.performSegue(withIdentifier: "segueToServicePopup", sender: self)
+            })
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
+        vars.showServicePopup = false // bu ekrandan cixanda showServicePopup-i false edirikk ki yeniden bu sehifeye qayidanda popup-i yeniden gostermesin
     }
     
     func setUpNavigationBar(){
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.shadowImage = UIImage()// navigationBarda altdaki xetti itirmek ucun(Yoxsa navigation barda alt hissede nazik qara xett olur serhed kimi)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -226,15 +233,13 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             cell.removeBtn.isHidden = true
             cell.editBtn.isHidden = true
             cell.nameView.layer.cornerRadius = 10
-          //  cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
-          //  self.createShadow2(view: cell.priceView)
         
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
                 cell.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 50.0)
                 self.createShadow2(view: cell.priceView)
             })
         
-        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){ // Userin tipine gore CollectionViewnun cell-ni design edirik
            cell.tipLbl.text = "Nəqliyyat vasitəsinin tipi"
             
             cell.personNameLbl.text = orders[indexPath.row].owner?.name
@@ -280,8 +285,8 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                       let startDate = dateFormatter.date(from: startDate!)
                       let endDate = dateFormatter.date(from: endDate!)
                             
-                            dateFormatter.dateFormat = "d MMM yyyy"
-                            dateFormatter.locale = Locale.init(identifier: "az")
+                            dateFormatter.dateFormat = "d MMM yyyy" // 23  Okt 2019  tarixin tipi
+                            dateFormatter.locale = Locale.init(identifier: "az") // aylari azerbaycan dilinde gostermk ucun
                             let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
                             cell.dateLbl.text = goodDate
                       //cell.dateLbl.text = startDate! + " / " + endDate!
@@ -381,15 +386,15 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
-             selectedOrder = orders[indexPath.row]
-             performSegue(withIdentifier: "SegueToDriverInfo", sender: self)
+        if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){ // User sifarisci ise
+             selectedOrder = orders[indexPath.row] // hansi surucunun elanina tiklayibsa onu aliriq
+             performSegue(withIdentifier: "SegueToDriverInfo", sender: self) // sonra hemin Surucunun detalina gedirik
             
         }
-        else
+        else // Eger User surucu ise
         {
-            selectedOrder = orders[indexPath.row]
-            performSegue(withIdentifier: "segueToOrderDetail", sender: self)
+            selectedOrder = orders[indexPath.row] // tikladigi elani  gotururuk
+            performSegue(withIdentifier: "segueToOrderDetail", sender: self) // Sonra ise hemin sifariscinin elaninin detalina gedirik
         }
 
 
@@ -425,8 +430,8 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "SegueToService")
         {
-            let destVC = segue.destination as! ServiceViewController
-            destVC.serviceType = self.serviceType
+          //  let destVC = segue.destination as! ServiceViewController
+           // destVC.serviceType = self.serviceType
         }
         if(segue.identifier == "segueToOrderDetail"){
             let destVc = segue.destination as! OrderDetailController
@@ -436,9 +441,9 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         {
             
             let VC  = segue.destination as! FilterDriverController
-            VC.findOrderFunction = self.findFromFilter
-            VC.filterType = self.filterType
-            VC.findDriverFunction = self.findDriverFromFilter
+            VC.findOrderFunction = self.findFromFilter // Sifarisci axtaraciyiqsa ...
+            VC.filterType = self.filterType // neye gore axtaris edeceyik onu bildirirk (Surucu uzre yoxsa Sifarisci uzre)
+            VC.findDriverFunction = self.findDriverFromFilter // surucu axtaraciyiqsa ..
         }
         
         if(segue.identifier == "SegueToDriverInfo")
@@ -453,12 +458,13 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    func getDrivers(currentPage: Int, fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, carType: String){
+    func getDrivers(currentPage: Int, fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, carType: String){ // Butun suruculerin elanlarini getirmek ucun
         
         checkConnIndicator.isHidden = false
         checkConnButtonView.isHidden = true
+        isLoading = true  // Funksiya ise dusen kimi isLoading true olur(Yeniki datalar helede yuklenir)
         
-        isLoading = true
+        
         let timeLineUrl = "http://209.97.140.82/api/v1/driver/timeline"
         var urlComponent = URLComponents(string: timeLineUrl)
         
@@ -542,7 +548,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 }
             }
-            self.isLoading  = false
+            self.isLoading  = false // datalar yuklenib bitdikden sonra artiq isLoading false olur
             
             
             }.resume()
@@ -550,7 +556,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-    func getOrders(currentPage: Int, fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, cargoType: String){
+    func getOrders(currentPage: Int, fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, cargoType: String){ // Butun Orderlerin siyahisini alir
         
         checkConnIndicator.isHidden = false
         checkConnButtonView.isHidden = true
@@ -651,7 +657,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     
-    func findFromFilter(fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, cargoType: String) -> (){
+    func findFromFilter(fromCountry: String, fromRegion: String, toCountry: String, toRegion: String, startDate: String, endDate: String, cargoType: String) -> (){  // Bu funksiya FilterdriverController - da secilmis filterlere gore orderleri axtarir
         selectedFromCountry = fromCountry
         selectedFromRegion = fromRegion
         selectedTocountry = toCountry
@@ -685,16 +691,16 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     
     
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) { // bu funksiya Scroll dibe direnende yeni orderleri  load etmek ucundu
         let  height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if distanceFromBottom < height {
             
-            if(isLoading == false && nextPageUrl != nil){
+            if(isLoading == false && nextPageUrl != nil){  // Eger hecbir data yuklenmirse ve nextPageUrl nil deyilse(Yeniki yeni datalar varsa) yeni datalari yukleyir
 
                 if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
-                    print("currentpage \(currentPage)")
+                   // print("currentpage \(currentPage)")
                     getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
                 }
                 else
@@ -711,8 +717,6 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     func showMessage() -> () {
         self.view.makeToast("Yeni elan əlavə edildi")
     }
-    
-
     
 }
 

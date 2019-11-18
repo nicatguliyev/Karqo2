@@ -352,7 +352,7 @@
             questionView.cancelBtn.addTarget(self, action: #selector(cancelClicked), for: .touchUpInside)
             questionView.yesBTN.addTarget(self, action: #selector(yesClicked), for: .touchUpInside)
 
-            DispatchQueue.main.asyncAfter(wallDeadline: .now()+0.001, execute: {
+            DispatchQueue.main.asyncAfter(wallDeadline: .now()+0.01, execute: {
                 questionView.deleteView.roundCorners(corners: [.topRight, .bottomLeft], cornerRadius: 90.0)
             })
           

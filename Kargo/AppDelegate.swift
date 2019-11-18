@@ -11,11 +11,12 @@ import IQKeyboardManagerSwift
 import OneSignal
 
 
-class Global {
+class Global {  // Butun app-de istifade edilecek deyiskenler
     var user: LoginDataModel?
     var isExit: Bool?
-    var isNotf: Bool?
+    var isNotf = false
     var notfsenderId: Int?
+    var showServicePopup: Bool?
 }
 
 
@@ -31,16 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 0
         UIView.appearance().isExclusiveTouch = true
         
+        vars.showServicePopup = true  // app acilanda servicePopup-i goster
+        
         let handleNotification: OSHandleNotificationReceivedBlock = { notification in
+            
         }
         
-        let actionBlocak: OSHandleNotificationActionBlock = { result in
+        let actionBlocak: OSHandleNotificationActionBlock = { result in // deyisen notificationu click edende neler bas verecek
             
             let payload: OSNotificationPayload = result!.notification.payload
-            let additionalData = payload.additionalData
+            let additionalData = payload.additionalData  // notificationda gonderilen datani goturmek
             vars.notfsenderId = (additionalData!["sender_id"] as! Int)
-            print(additionalData)
-            vars.isNotf = true
+            vars.isNotf = true   // app acilanda notificationdan acildigini mueyyen etmek ucun
             
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
@@ -48,10 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             var initialViewController = UIViewController()
             
-            
             initialViewController = storyboard.instantiateViewController(withIdentifier: "SplashVC")
         
-            if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){
+            if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){ // local database-den userin tipini aliriq. Eger User sifarisci ise Splash screen acilacaq
                 self.window?.rootViewController = initialViewController
                            self.window?.makeKeyAndVisible()
             }
@@ -63,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: "62545622-542a-4615-ad03-489cf22a5b7a",
                                         handleNotificationReceived: handleNotification,
-                                        handleNotificationAction: actionBlocak,
+                                        handleNotificationAction: actionBlocak, // yuxarida tanimladigimiz actionBlock deyiseninin burda istifade edirik
                                         settings: onesignalInitSettings)
         
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;

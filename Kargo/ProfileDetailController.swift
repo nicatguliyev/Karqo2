@@ -585,19 +585,6 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
 
 extension ProfileDetailController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-//        guard let text = textField.text else {
-//            return true
-//        }
-//        let lastText = (text as NSString).replacingCharacters(in: range, with: string) as String
-//
-//        if phoneTextField == textField {
-//            textField.text = lastText.format("(+xxx) NN NNN NN NN", oldString: text)
-//            return false
-//        }
-//        return true
-        
-        
         var maxLength = 0
         //let cells = self.numbersTable.visibleCells as! Array<AddNumberCell>
         
@@ -612,8 +599,7 @@ extension ProfileDetailController: UITextFieldDelegate {
             maxLength = 16
         }
         
-        
-        
+    
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
