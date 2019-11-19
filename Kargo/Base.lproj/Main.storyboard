@@ -9662,7 +9662,7 @@ bilərsiniz</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqc-kt-Eh4">
-                                <rect key="frame" x="16" y="273" width="382" height="350"/>
+                                <rect key="frame" x="16" y="278" width="382" height="340"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skE-qZ-z3f" customClass="FontForService" customModule="Kargo" customModuleProvider="target">
                                         <rect key="frame" x="16" y="30" width="350" height="57.5"/>
@@ -9674,7 +9674,7 @@ bilərsiniz</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1x-Rm-sFo">
-                                        <rect key="frame" x="16" y="103.5" width="350" height="40"/>
+                                        <rect key="frame" x="16" y="95.5" width="350" height="40"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenPhone.png" translatesAutoresizingMaskIntoConstraints="NO" id="xw5-Bj-f1T">
                                                 <rect key="frame" x="0.0" y="10" width="28" height="20"/>
@@ -9708,19 +9708,19 @@ bilərsiniz</string>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="evakuatorImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="GM2-C7-eGg">
-                                        <rect key="frame" x="0.0" y="140" width="382" height="210"/>
+                                        <rect key="frame" x="0.0" y="140" width="382" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="210" id="Hsv-dW-A4I"/>
+                                            <constraint firstAttribute="height" constant="200" id="Hsv-dW-A4I"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJy-g6-cWa">
-                                        <rect key="frame" x="347" y="3" width="32" height="32"/>
+                                        <rect key="frame" x="349" y="3" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="Znh-TL-SRm"/>
                                             <constraint firstAttribute="width" constant="32" id="sZW-fD-81i"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="closeWindow.png"/>
+                                        <state key="normal" backgroundImage="closeWindow2.png"/>
                                         <connections>
                                             <action selector="closeBtnClicked:" destination="pat-FE-3Gm" eventType="touchUpInside" id="I77-lF-nRi"/>
                                         </connections>
@@ -9731,15 +9731,15 @@ bilərsiniz</string>
                                     <constraint firstItem="skE-qZ-z3f" firstAttribute="leading" secondItem="qqc-kt-Eh4" secondAttribute="leading" constant="16" id="3FA-HH-mzZ"/>
                                     <constraint firstItem="skE-qZ-z3f" firstAttribute="top" secondItem="qqc-kt-Eh4" secondAttribute="top" constant="30" id="8CD-pt-oH6"/>
                                     <constraint firstAttribute="bottom" secondItem="GM2-C7-eGg" secondAttribute="bottom" id="D6H-El-Cu8"/>
-                                    <constraint firstItem="y1x-Rm-sFo" firstAttribute="top" secondItem="skE-qZ-z3f" secondAttribute="bottom" constant="16" id="FIU-ND-pLm"/>
+                                    <constraint firstItem="y1x-Rm-sFo" firstAttribute="top" secondItem="skE-qZ-z3f" secondAttribute="bottom" constant="8" id="FIU-ND-pLm"/>
                                     <constraint firstItem="y1x-Rm-sFo" firstAttribute="leading" secondItem="qqc-kt-Eh4" secondAttribute="leading" constant="16" id="Irs-eD-PSb"/>
                                     <constraint firstAttribute="trailing" secondItem="y1x-Rm-sFo" secondAttribute="trailing" constant="16" id="Mn7-i2-BtR"/>
                                     <constraint firstItem="GM2-C7-eGg" firstAttribute="leading" secondItem="qqc-kt-Eh4" secondAttribute="leading" id="Ocs-6F-TG8"/>
                                     <constraint firstAttribute="trailing" secondItem="GM2-C7-eGg" secondAttribute="trailing" id="TF0-Dr-6h5"/>
                                     <constraint firstItem="kJy-g6-cWa" firstAttribute="top" secondItem="qqc-kt-Eh4" secondAttribute="top" constant="3" id="gj4-tL-eaR"/>
                                     <constraint firstAttribute="trailing" secondItem="skE-qZ-z3f" secondAttribute="trailing" constant="16" id="lWR-Se-ohx"/>
-                                    <constraint firstAttribute="trailing" secondItem="kJy-g6-cWa" secondAttribute="trailing" constant="3" id="qcp-s9-LEW"/>
-                                    <constraint firstAttribute="height" constant="350" id="zGL-as-APF"/>
+                                    <constraint firstAttribute="trailing" secondItem="kJy-g6-cWa" secondAttribute="trailing" constant="1" id="qcp-s9-LEW"/>
+                                    <constraint firstAttribute="height" constant="340" id="zGL-as-APF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -10007,7 +10007,7 @@ bilərsiniz</string>
         <image name="bigActionBar.png" width="1125" height="744"/>
         <image name="cargoLogo.png" width="576" height="496"/>
         <image name="changePassword.png" width="52" height="61"/>
-        <image name="closeWindow.png" width="50" height="50"/>
+        <image name="closeWindow2.png" width="64" height="64"/>
         <image name="cubeIcon.png" width="59" height="48"/>
         <image name="driver.png" width="300" height="300"/>
         <image name="dropdownIcon.png" width="24" height="12"/>

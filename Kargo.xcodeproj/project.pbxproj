@@ -156,6 +156,7 @@
 		CDE53EC52382868200CF28B3 /* closeWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC42382868000CF28B3 /* closeWindow.png */; };
 		CDE53EC72383C90F00CF28B3 /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC62383C90F00CF28B3 /* sifarisIcon.png */; };
 		CDE53EC92383C98C00CF28B3 /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC82383C98C00CF28B3 /* locationIcon2.png */; };
+		CDE53ECB2383CB3200CF28B3 /* closeWindow2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53ECA2383CB3200CF28B3 /* closeWindow2.png */; };
 		CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5D054237020240021CA0F /* MyOrdersController.swift */; };
 		EEC774465A95A2007F37F5AE /* Pods_Kargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D03C4362C06112D792C7559 /* Pods_Kargo.framework */; };
 /* End PBXBuildFile section */
@@ -346,6 +347,7 @@
 		CDE53EC42382868000CF28B3 /* closeWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeWindow.png; sourceTree = "<group>"; };
 		CDE53EC62383C90F00CF28B3 /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sifarisIcon.png; sourceTree = "<group>"; };
 		CDE53EC82383C98C00CF28B3 /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationIcon2.png; sourceTree = "<group>"; };
+		CDE53ECA2383CB3200CF28B3 /* closeWindow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeWindow2.png; sourceTree = "<group>"; };
 		CDF5D054237020240021CA0F /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
 		D997445299DF0CD925F568A3 /* Pods-Kargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kargo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kargo/Pods-Kargo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -519,6 +521,7 @@
 				CD13673E232EB6D500E875E8 /* elanIcon.png */,
 				CDE53EC42382868000CF28B3 /* closeWindow.png */,
 				CDE53EC82383C98C00CF28B3 /* locationIcon2.png */,
+				CDE53ECA2383CB3200CF28B3 /* closeWindow2.png */,
 				CD004BE82305F39E00279B64 /* minus.png */,
 				CD73D88522D32D280041B9E2 /* helpIcon.png */,
 				CDD7B6A4232EC3D8007B496D /* greenEditIcon.png */,
@@ -768,6 +771,7 @@
 				CD73D8B422D606FC0041B9E2 /* settingIcon.png in Resources */,
 				CD23A86C22D8606300FE9D5A /* GothamMedium.ttf in Resources */,
 				CD73D8B322D606FC0041B9E2 /* profileIcon.png in Resources */,
+				CDE53ECB2383CB3200CF28B3 /* closeWindow2.png in Resources */,
 				CD004BE022F4CA8500279B64 /* yukCategory.png in Resources */,
 				CD23A86822D75FD400FE9D5A /* selectArrow.png in Resources */,
 				CD23A89F22E79B8300FE9D5A /* langIcon.png in Resources */,
