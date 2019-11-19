@@ -154,8 +154,8 @@
 		CDE53EA1237AB3E000CF28B3 /* PricesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */; };
 		CDE53EA3237BEA6700CF28B3 /* CustomActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */; };
 		CDE53EC52382868200CF28B3 /* closeWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC42382868000CF28B3 /* closeWindow.png */; };
-		CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */; };
-		CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDF5D052237012880021CA0F /* sifarisIcon.png */; };
+		CDE53EC72383C90F00CF28B3 /* sifarisIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC62383C90F00CF28B3 /* sifarisIcon.png */; };
+		CDE53EC92383C98C00CF28B3 /* locationIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE53EC82383C98C00CF28B3 /* locationIcon2.png */; };
 		CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5D054237020240021CA0F /* MyOrdersController.swift */; };
 		EEC774465A95A2007F37F5AE /* Pods_Kargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D03C4362C06112D792C7559 /* Pods_Kargo.framework */; };
 /* End PBXBuildFile section */
@@ -344,8 +344,8 @@
 		CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricesTableCell.xib; sourceTree = "<group>"; };
 		CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionBar.swift; sourceTree = "<group>"; };
 		CDE53EC42382868000CF28B3 /* closeWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeWindow.png; sourceTree = "<group>"; };
-		CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locationIcon2.png; path = ../../../../Downloads/locationIcon2.png; sourceTree = "<group>"; };
-		CDF5D052237012880021CA0F /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sifarisIcon.png; path = ../../../../Downloads/sifarisIcon.png; sourceTree = "<group>"; };
+		CDE53EC62383C90F00CF28B3 /* sifarisIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sifarisIcon.png; sourceTree = "<group>"; };
+		CDE53EC82383C98C00CF28B3 /* locationIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationIcon2.png; sourceTree = "<group>"; };
 		CDF5D054237020240021CA0F /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
 		D997445299DF0CD925F568A3 /* Pods-Kargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kargo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kargo/Pods-Kargo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -512,12 +512,13 @@
 				CD73D89422D4708E0041B9E2 /* smsIcon.png */,
 				CD23A89522E62DC900FE9D5A /* rightArrow.png */,
 				CDD7B6AB233411C8007B496D /* whiteDone.png */,
+				CDE53EC62383C90F00CF28B3 /* sifarisIcon.png */,
 				CDE53E9B237AA60C00CF28B3 /* checked.png */,
 				CDE53E9A237AA60B00CF28B3 /* unchecked.png */,
 				CD136736232ABC5500E875E8 /* whitePlusIcon.png */,
 				CD13673E232EB6D500E875E8 /* elanIcon.png */,
 				CDE53EC42382868000CF28B3 /* closeWindow.png */,
-				CDF5D052237012880021CA0F /* sifarisIcon.png */,
+				CDE53EC82383C98C00CF28B3 /* locationIcon2.png */,
 				CD004BE82305F39E00279B64 /* minus.png */,
 				CD73D88522D32D280041B9E2 /* helpIcon.png */,
 				CDD7B6A4232EC3D8007B496D /* greenEditIcon.png */,
@@ -525,7 +526,6 @@
 				CD13672E231EF6D100E875E8 /* roundedRightIcon.png */,
 				CD23A87922D8CB0C00FE9D5A /* dropdownIcon.png */,
 				CD13673C232E887F00E875E8 /* editIcon.png */,
-				CDF5D04A236F8A1D0021CA0F /* locationIcon2.png */,
 				CD004BDA22ECD25600279B64 /* greenCalendar.png */,
 				CD136730231EF71400E875E8 /* greenDoneIcon.png */,
 				CD004BE62305CAC700279B64 /* plus-button.png */,
@@ -739,6 +739,7 @@
 				CDE53E9C237AA60E00CF28B3 /* unchecked.png in Resources */,
 				CD004BED2305FBC900279B64 /* AddNumberCell.xib in Resources */,
 				CD23A87E22DCC55D00FE9D5A /* whiteSearchIcon.png in Resources */,
+				CDE53EC92383C98C00CF28B3 /* locationIcon2.png in Resources */,
 				CDE53EA1237AB3E000CF28B3 /* PricesTableCell.xib in Resources */,
 				CD903F5922CB2BAD0088F473 /* Assets.xcassets in Resources */,
 				CD004BD722ECCAD600279B64 /* FindOrderCollectionCell.xib in Resources */,
@@ -760,7 +761,6 @@
 				CD13673D232E888000E875E8 /* editIcon.png in Resources */,
 				CD7FA538230B396D00A66483 /* noInternet.png in Resources */,
 				CD004BE72305CAC700279B64 /* plus-button.png in Resources */,
-				CDF5D053237012890021CA0F /* sifarisIcon.png in Resources */,
 				CD73D8A022D4BEEC0041B9E2 /* blueCircle.png in Resources */,
 				CD73D8B922D61F440041B9E2 /* ringIcon.png in Resources */,
 				CD004BD122EB7D1A00279B64 /* greenDoneImg.png in Resources */,
@@ -773,12 +773,12 @@
 				CD23A89F22E79B8300FE9D5A /* langIcon.png in Resources */,
 				CD23A89122E0E9BC00FE9D5A /* profilInf.png in Resources */,
 				CD23A88822DDF91D00FE9D5A /* CustomBildirisCell.xib in Resources */,
-				CDF5D04B236F8A1E0021CA0F /* locationIcon2.png in Resources */,
 				CD219F5E22CD2F4D00BC4DC6 /* bigActionBar.png in Resources */,
 				CD73D88822D32D290041B9E2 /* helpIcon.png in Resources */,
 				CD73D89822D4B1280041B9E2 /* eyeIcon.png in Resources */,
 				CD004BE92305F39F00279B64 /* minus.png in Resources */,
 				CD23A89E22E79B8300FE9D5A /* locationIcon.png in Resources */,
+				CDE53EC72383C90F00CF28B3 /* sifarisIcon.png in Resources */,
 				CD73D89522D4708E0041B9E2 /* phoneIcon.png in Resources */,
 				CD73D86A22CEAD620041B9E2 /* userIco.png in Resources */,
 				CD73D8A322D5D7E70041B9E2 /* Montserrat-Bold.ttf in Resources */,
