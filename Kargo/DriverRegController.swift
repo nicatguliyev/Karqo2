@@ -22,15 +22,37 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var nameSurnameLbl: UILabel!
+    @IBOutlet weak var voenLbl: UILabel!
+    @IBOutlet weak var contactNumberLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var passwordLbl: UILabel!
+    @IBOutlet weak var repeatPasswordLbl: UILabel!
+    @IBOutlet weak var finishRegistrationLbl: UILabel!
     
     var connView = UIView()
     var checkConnButtonView = UIView()
     var checkConnIndicator = UIActivityIndicatorView()
+    var selectedLanguage: String?
+    
+    var iconClick1 = false
+    var iconClick2 = false
     
     var errorMessages = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        nameSurnameLbl.text = "name_surname".addLocalizableString(str: selectedLanguage!)
+        basliqLbl.text = "register".addLocalizableString(str: selectedLanguage!)
+        voenLbl.text = "voen".addLocalizableString(str: selectedLanguage!)
+        contactNumberLbl.text = "contact_number".addLocalizableString(str: selectedLanguage!)
+        userNameLbl.text = "username_login".addLocalizableString(str: selectedLanguage!)
+        passwordLbl.text = "password".addLocalizableString(str: selectedLanguage!)
+        repeatPasswordLbl.text = "password_repeat".addLocalizableString(str: selectedLanguage!)
+        finishRegistrationLbl.text = "register_finish".addLocalizableString(str: selectedLanguage!)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
@@ -43,7 +65,7 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
         bottomView.addGestureRecognizer(bottomViewGesture)
         
         
-
+        
     }
     
     @objc func registerClicked(){
@@ -114,7 +136,7 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-
+    
     @IBAction func backClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -145,7 +167,7 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
         checkConnButtonView.isHidden = true
         
         var filteredNumbers = [String]()
-
+        
         
         let cells = self.numbersTable.visibleCells as! Array<AddNumberCell>
         for cell in cells {
@@ -168,7 +190,7 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
             "Content-type":"multipart/form-data",
             "Content-Disposition":"form-data"
         ]
-
+        
         Alamofire.upload(multipartFormData: { multipartFormData in
             
             for (key, value) in parameters
@@ -177,18 +199,18 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
         }, usingThreshold:UInt64.init(),
-           to: "http://209.97.140.82/api/v1/user/register", //URL Here
+           to: "http://carryup.az/api/v1/user/register", //URL Here
             method: .post,
             headers: headers, //pass header dictionary here
             encodingCompletion: { (result) in
                 
                 switch result {
                 case .success(let upload, _, _):
-
+                    
                     upload.responseString { response in
                         
                         self.connView.isHidden = true
-                         guard let data = response.data else {return}
+                        guard let data = response.data else {return}
                         
                         if let responseCode = response.response?.statusCode{
                             if(responseCode == 413)
@@ -200,23 +222,23 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
                                 
                                 do {
                                     let responseData = try JSONDecoder().decode(AddOrderSuccessModel.self, from: data)
-                                                                        if(responseData.status == "error"){
-                                                                            self.errorMessages = []
-                                                                            let requiredList = responseData.error!
-                                                                            for i in 0..<requiredList.count{
-                                                                                self.errorMessages.append(requiredList[i])
-                                                                            }
-                                                                            self.performSegue(withIdentifier: "segueToErrorController", sender: self)
-                                                                        }
-                                                                        else{
-                                                                             self.performSegue(withIdentifier: "segueToSuccess2", sender: self)
+                                    if(responseData.status == "error"){
+                                        self.errorMessages = []
+                                        let requiredList = responseData.error!
+                                        for i in 0..<requiredList.count{
+                                            self.errorMessages.append(requiredList[i])
+                                        }
+                                        self.performSegue(withIdentifier: "segueToErrorController", sender: self)
+                                    }
+                                    else{
+                                        self.performSegue(withIdentifier: "segueToSuccess2", sender: self)
                                     }
                                 }
                                     
                                 catch{
                                     DispatchQueue.main.async {
                                         self.view.makeToast("Json Error")
-                        
+                                        
                                     }
                                 }
                             }
@@ -283,6 +305,24 @@ class DriverRegController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    @IBAction func showPassPressed(_ sender: Any) {
+        if(iconClick1 == false){
+            passwordTextField.isSecureTextEntry = false
+        }
+        else{
+            passwordTextField.isSecureTextEntry = true
+        }
+        iconClick1 = !iconClick1
+    }
     
-
+    @IBAction func showRepeatPassPressed(_ sender: Any) {
+        if(iconClick2 == false){
+            repeatPasswordTextField.isSecureTextEntry = false
+        }
+        else{
+            repeatPasswordTextField.isSecureTextEntry = true
+        }
+        iconClick2 = !iconClick2
+    }
+    
 }

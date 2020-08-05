@@ -32,6 +32,7 @@ struct DriverUserModel:Decodable{
     let sound_status: Int?
     let vibration_status: Int?
     let active: Int?
+    let last_payment_date: String?
   
 }
 
@@ -353,7 +354,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         
         let userId = (UserDefaults.standard.string(forKey: "USERID"))!
         // tipler = []
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId)"
+        let driverDetailUrl = "http://carryup.az/api/v1/user/profile/\(userId)"
         guard let url = URL(string: driverDetailUrl) else {return}
         print(driverDetailUrl)
         
@@ -457,7 +458,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let carUrl = "http://209.97.140.82/api/v1/car/list"
+        let carUrl = "http://carryup.az/api/v1/car/list"
         guard let url = URL(string: carUrl) else {return}
         
         let urlRequest = URLRequest(url: url)
@@ -521,7 +522,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
     func getModels(carId: Int, type: Int){
         modeller = []
         selectedModelRow = 0
-        let carUrl = "http://209.97.140.82/api/v1/car/" + "\(carId)" + "/model/list"
+        let carUrl = "http://carryup.az/api/v1/car/" + "\(carId)" + "/model/list"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -591,7 +592,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
     
     func getCarTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/car/types"
+        let carUrl = "http://carryup.az/api/v1/car/types"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -721,7 +722,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
             }
             
         }, usingThreshold:UInt64.init(),
-           to: "http://209.97.140.82/api/v1/user/update/avatar", //URL Here
+           to: "http://carryup.az/api/v1/user/update/avatar", //URL Here
             method: .post,
             headers: headers, //pass header dictionary here
             encodingCompletion: { (result) in
@@ -810,7 +811,7 @@ class DriverProfileDetailController: UIViewController, UITableViewDelegate, UITa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let updateUrl = "http://209.97.140.82/api/v1/user/update/general"
+        let updateUrl = "http://carryup.az/api/v1/user/update/general"
         guard let url = URL(string: updateUrl) else {return}
         
         

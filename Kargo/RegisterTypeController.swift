@@ -18,9 +18,16 @@ class RegisterTypeController: UIViewController {
     @IBOutlet weak var driverLbl: UILabel!
     @IBOutlet weak var driverView: UIView!
     @IBOutlet weak var customerView: UIView!
+    @IBOutlet weak var basliqLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        driverLbl.text = "driver".addLocalizableString(str: selectedLanguage!)
+        customerLbl.text = "client".addLocalizableString(str: selectedLanguage!)
+        basliqLbl.text = "register".addLocalizableString(str: selectedLanguage!)
+         
         
         changeDimensions()
         createShadow(view: driverView)

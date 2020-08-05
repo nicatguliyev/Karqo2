@@ -14,10 +14,17 @@ class SuccessRegisterController: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     var userName = ""
     var password = ""
-    
+    @IBOutlet weak var succesLbl: UILabel!
+    @IBOutlet weak var fullSuccessLbl: UILabel!
+    @IBOutlet weak var loginLbl: UILabel!
+    var selectedLanguage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        succesLbl.text = "register_success".addLocalizableString(str: selectedLanguage!)
+        fullSuccessLbl.text = "register_successed".addLocalizableString(str: selectedLanguage!)
+        loginLbl.text = "login".addLocalizableString(str: selectedLanguage!)
         
         self.navigationController?.navigationBar.isHidden = true
         
@@ -40,7 +47,7 @@ class SuccessRegisterController: UIViewController {
         self.view.endEditing(true)
         self.indicator.isHidden = false
         
-        let loginUrl = "http://209.97.140.82/api/v1/user/login"
+        let loginUrl = "http://carryup.az/api/v1/user/login"
         
         guard let url = URL(string: loginUrl) else {return}
         
@@ -97,6 +104,8 @@ class SuccessRegisterController: UIViewController {
                                 UserDefaults.standard.set("\((userModel.user?.sms_status)!)", forKey: "SMSSTATUS")
                                 UserDefaults.standard.set("\((userModel.user?.sound_status)!)", forKey: "SOUNDSTATUS")
                                 UserDefaults.standard.set("\((userModel.user?.vibration_status)!)", forKey: "VIBSTATUS")
+                                 
+                                UserDefaults.standard.set(userModel.user?.last_payment_date, forKey: "LASTPAYMENT")
                                 self.performSegue(withIdentifier: "segueToMain", sender: self)
                                 //self.dismiss(animated: true, completion: nil)
                             }

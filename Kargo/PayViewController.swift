@@ -26,11 +26,11 @@ struct PriceModel: Decodable {
 }
 
 class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewControllerDelegate, UITableViewDelegate, UITableViewDataSource , UIPickerViewDelegate, UIPickerViewDataSource {
- 
+    
     var menuBtn = UIButton()
     var menuBarItem = UIBarButtonItem()
     @IBOutlet weak var bigActionBar: UIView!
-   // @IBOutlet weak var testImageView: UIImageView!
+    // @IBOutlet weak var testImageView: UIImageView!
     @IBOutlet weak var priceTable: UITableView!
     var selectedPriceIndex = 0
     var selectedValyutaIndex = 0
@@ -41,13 +41,23 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
     @IBOutlet weak var valyutaTextField: UITextField!
     var picker = UIPickerView()
     @IBOutlet weak var valyutaView: CustomSelectButton!
+    
+    @IBOutlet weak var valLbl: UILabel!
     @IBOutlet weak var valyutaLbl: UILabel!
     var prices = [PriceModel]()
     var tryAgaintype = 1
     @IBOutlet weak var bottomView: SenedeBaxButtonView!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var nextLbl: UILabel!
+    var selectedLang: String?
+    var selectedAznAmount: Float?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "payment".addLocalizableString(str: selectedLang!)
+        valLbl.text = "valyuta".addLocalizableString(str: selectedLang!)
+        nextLbl.text = "next".addLocalizableString(str: selectedLang!)
         setUpMenuButton()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
@@ -68,14 +78,23 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         valyutaView.addGestureRecognizer(valyutaGesture)
         
         addConnectionView()
-      //  let  test = CustomActionBar(connView: connView, checkConnButtonView: checkConnButtonView, checkConnIndicator: checkConnIndicator, viewController: self)
-      //  test.addConnectionView()
+        //  let  test = CustomActionBar(connView: connView, checkConnButtonView: checkConnButtonView, checkConnIndicator: checkConnIndicator, viewController: self)
+        //  test.addConnectionView()
+        
+        let bottomTapGesure = UITapGestureRecognizer(target: self, action: #selector(nextClicked))
+        bottomView.isUserInteractionEnabled = true
+        bottomView.addGestureRecognizer(bottomTapGesure)
+        
         
         getValyutas()
         
     }
     
-
+    @objc func nextClicked(){
+        //print("xxxxxxxxxxxxx")
+        print(selectedAznAmount!)
+        performSegue(withIdentifier: "segueToWebview", sender: self)
+    }
     
     @objc func valyutaTapped(){
         valyutaTextField.becomeFirstResponder()
@@ -87,12 +106,67 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
     
     
     override func viewWillAppear(_ animated: Bool) {
+        getProfileDetails()
         self.revealViewController()?.panGestureRecognizer()?.isEnabled = true
     }
     
     func revealControllerPanGestureBegan(_ revealController: SWRevealViewController!) {
     }
+    
+    func getProfileDetails(){
 
+        let userId = (UserDefaults.standard.string(forKey: "USERID"))!
+        // tipler = []
+        let driverDetailUrl = "http://carryup.az/api/v1/user/profile/\(userId)"
+        guard let url = URL(string: driverDetailUrl) else {return}
+        print(driverDetailUrl)
+        
+        
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 8.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        let session = URLSession(configuration: sessionConfig)
+        
+        session.dataTask(with: urlRequest){(data, response, error) in
+            
+            if(error == nil){
+                guard let data = data else {return}
+                
+                  let output =   String(data: data, encoding: String.Encoding.utf8)
+                  print("output: \(output)")
+                
+                do{
+                    let jsonData = try JSONDecoder().decode(DriverProfileData.self, from: data)
+                    if(jsonData.status == "success"){
+                        let userModel = jsonData.data
+                        if let payment_date = userModel?.last_payment_date{
+                            UserDefaults.standard.set(payment_date, forKey: "LASTPAYMENT")
+                        }
+                       // print(userModel?.last_payment_date!)
+                       // print(userModel.l)
+                        
+                    }
+                    
+                }
+                    
+                catch let jsonError{
+                    print("JsonError: \(jsonError)")
+                    DispatchQueue.main.async {
+                        self.view.makeToast("Json Error")
+                    }
+                    
+                }
+                
+            }
+   
+            }.resume()
+    }
+    
     func setUpMenuButton(){
         
         menuBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -117,15 +191,15 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return prices.count
-     }
-     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          let nib: [PricesTableCell] = Bundle.main.loadNibNamed("PricesTableCell", owner: self, options: nil) as! [PricesTableCell]
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let nib: [PricesTableCell] = Bundle.main.loadNibNamed("PricesTableCell", owner: self, options: nil) as! [PricesTableCell]
         
-          let cell = nib[0]
+        let cell = nib[0]
         cell.ovalView.layer.cornerRadius = 10.0
-                cell.ovalView.layer.borderColor = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1).cgColor
-                 cell.ovalView.layer.borderWidth = 1.0
+        cell.ovalView.layer.borderColor = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1).cgColor
+        cell.ovalView.layer.borderWidth = 1.0
         
         
         if(indexPath.row == selectedPriceIndex){
@@ -140,32 +214,34 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         cell.priceLbl.text = "\((prices[indexPath.row].amount)!) \((prices[indexPath.row].valyuta?.code)!)"
         
         return cell
-     }
-     
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       selectedPriceIndex = indexPath.row
-       if let cell = tableView.cellForRow(at: indexPath) as? PricesTableCell {
-        UIView.transition(with: cell.radioBtn,
-                            duration: 0.3,
-            options: .transitionCrossDissolve,
-            animations: { cell.radioBtn.image = UIImage(named: "checked.png") },
-              completion: nil)
-    }
+        selectedPriceIndex = indexPath.row
+        if let cell = tableView.cellForRow(at: indexPath) as? PricesTableCell {
+            UIView.transition(with: cell.radioBtn,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: { cell.radioBtn.image = UIImage(named: "checked.png") },
+                              completion: nil)
+        }
         priceTable.reloadData()
+        selectedAznAmount = self.prices[indexPath.row].amount_azn
+        // print(prices[indexPath.row])
     }
     
-//    @IBAction func testClciked(_ sender: Any) {
-//        UIView.transition(with: testImageView,
-//                          duration: 0.3,
-//        options: .transitionCrossDissolve,
-//        animations: { self.testImageView.image = UIImage(named: "checked.png") },
-//        completion: nil)
-//    }
+    //    @IBAction func testClciked(_ sender: Any) {
+    //        UIView.transition(with: testImageView,
+    //                          duration: 0.3,
+    //        options: .transitionCrossDissolve,
+    //        animations: { self.testImageView.image = UIImage(named: "checked.png") },
+    //        completion: nil)
+    //    }
     
     
     func getValyutas(){
@@ -174,7 +250,7 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         checkConnIndicator.isHidden = false
         checkConnButtonView.isHidden = true
         
-        let carUrl = "http://209.97.140.82/api/v1/valyuta/list"
+        let carUrl = "http://carryup.az/api/v1/valyuta/list"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -194,7 +270,7 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
                 }
                     
                 catch _{
-                  //  print(jsonError)
+                    //  print(jsonError)
                     DispatchQueue.main.async {
                         self.view.makeToast("Xəta baş verdi")
                     }
@@ -216,7 +292,7 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
             }
             
             
-            }.resume()
+        }.resume()
         
     }
     
@@ -225,7 +301,7 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         checkConnIndicator.isHidden = false
         checkConnButtonView.isHidden = true
         
-        let carUrl = "http://209.97.140.82/api/v1/monthly/prices?valyuta=" + "\((valyutas[selectedValyutaIndex].id)!)"
+        let carUrl = "http://carryup.az/api/v1/monthly/prices?valyuta=" + "\((valyutas[selectedValyutaIndex].id)!)"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -234,23 +310,25 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
                 guard let data = data else {return}
                 do{
                     let jsonData = try JSONDecoder().decode(PriceDataModel.self, from: data)
+                    
                     for i in 0..<jsonData.data!.count{
                         self.prices.append(jsonData.data![i])
                     }
                     DispatchQueue.main.async {
+                        self.selectedAznAmount = self.prices[0].amount_azn
                         self.priceTable.reloadData()
                     }
                 }
                     
                 catch _{
-                  //  print(jsonError)
+                    //  print(jsonError)
                     DispatchQueue.main.async {
                         self.view.makeToast("Xəta baş verdi")
                     }
                 }
                 
                 DispatchQueue.main.async {
-                      self.connView.isHidden = true
+                    self.connView.isHidden = true
                 }
             }
             else
@@ -269,7 +347,7 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
             }
             
             
-            }.resume()
+        }.resume()
         
     }
     
@@ -298,7 +376,7 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         else{
             getPrices()
         }
-      
+        
     }
     
     
@@ -322,6 +400,14 @@ class PayViewController: UIViewController, UITextFieldDelegate, SWRevealViewCont
         getPrices()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueToWebview"){
+            let destVc = segue.destination as! PayWebviewController
+            destVc.amount = self.selectedAznAmount
+        }
+    }
+    
     
     
 }

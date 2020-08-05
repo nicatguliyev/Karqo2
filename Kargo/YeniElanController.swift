@@ -70,6 +70,25 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
     @IBOutlet weak var betweenMapAndBottomConst: NSLayoutConstraint!
     
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var fromCountryLbl: UILabel!
+    @IBOutlet weak var fromCityLbl: UILabel!
+    @IBOutlet weak var fromRegionLbl: UILabel!
+    @IBOutlet weak var toCountryLbl: UILabel!
+    @IBOutlet weak var toCityLbl: UILabel!
+    @IBOutlet weak var toRegionLbl: UILabel!
+    @IBOutlet weak var yukTypeLbl: UILabel!
+    @IBOutlet weak var weightLbl: UILabel!
+    @IBOutlet weak var volumeLbl: UILabel!
+    @IBOutlet weak var lengthLbl: UILabel!
+    @IBOutlet weak var widthLbl: UILabel!
+    @IBOutlet weak var heightLbl: UILabel!
+    @IBOutlet weak var tarixLbl: UILabel!
+    @IBOutlet weak var valLbl: UILabel!
+    @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var mapLbl: UILabel!
+    @IBOutlet weak var noteLbl: UILabel!
+    
     
     var fromCountryPicker = UIPickerView()
     var fromCityPicker = UIPickerView()
@@ -112,12 +131,41 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var errorMessages = [String]()
     
     var showMessage: (()->())?
+    var selectedLang: String?
     
     @IBOutlet weak var moreDetailTxt: UITextView!
     var dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        fromCountryLbl.text = "from_country".addLocalizableString(str: selectedLang!)
+        fromCityLbl.text = "from_city".addLocalizableString(str: selectedLang!)
+        fromRegionLbl.text = "from_region".addLocalizableString(str: selectedLang!)
+        toCountryLbl.text = "to_country".addLocalizableString(str: selectedLang!)
+        toCityLbl.text = "to_city".addLocalizableString(str: selectedLang!)
+        toRegionLbl.text = "to_region".addLocalizableString(str: selectedLang!)
+        yukTypeLbl.text = "cargo_type".addLocalizableString(str: selectedLang!)
+        weightLbl.text = "cargo_weight".addLocalizableString(str: selectedLang!)
+        volumeLbl.text = "cargo_capacity_m3".addLocalizableString(str: selectedLang!)
+        lengthLbl.text = "cargo_length".addLocalizableString(str: selectedLang!)
+        widthLbl.text = "cargo_width".addLocalizableString(str: selectedLang!)
+        heightLbl.text = "cargo_height".addLocalizableString(str: selectedLang!)
+        tarixLbl.text = "date_interval".addLocalizableString(str: selectedLang!)
+        valLbl.text = "valyuta".addLocalizableString(str: selectedLang!)
+        priceLbl.text = "price".addLocalizableString(str: selectedLang!)
+        mapLbl.text = "cargo_coordinant".addLocalizableString(str: selectedLang!)
+        noteLbl.text = "more_info".addLocalizableString(str: selectedLang!)
+        basliqLbl.text = "new_adv".addLocalizableString(str: selectedLang!)
+        imtinaBtn.setTitle("cancel".addLocalizableString(str: selectedLang!), for: .normal)
+        createBtn.setTitle("create".addLocalizableString(str: selectedLang!), for: .normal)
+        
+        
+        
+        
+        
+        
         customBtnArray = [haradanCountryView, haradanCityView, harayaCountryView, harayaCityView, typeView, dateView, valyutaView, mapView]
         setUpDesign()
         addConnectionView()
@@ -229,7 +277,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         secondDatePicker.datePickerMode = .date
         secondDateTextField.inputView = secondDatePicker
         
-        let loc = Locale(identifier: "az")
+        let loc = Locale(identifier: selectedLang!)
         firstDatePicker.locale = loc
         secondDatePicker.locale = loc
         
@@ -562,7 +610,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let loginUrl = "http://209.97.140.82/api/v1/order/create"
+        let loginUrl = "http://carryup.az/api/v1/order/create"
         
         guard let url = URL(string: loginUrl) else {return}
         
@@ -681,7 +729,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let loginUrl = "http://209.97.140.82/api/v1/driver/create"
+        let loginUrl = "http://carryup.az/api/v1/driver/create"
         
         guard let url = URL(string: loginUrl) else {return}
         
@@ -782,7 +830,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let countryUrl = "http://209.97.140.82/api/v1/country/list"
+        let countryUrl = "http://carryup.az/api/v1/country/list"
         guard let url = URL(string: countryUrl) else {return}
         
         let sessionConfig = URLSessionConfiguration.default
@@ -839,7 +887,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func getCargoTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/order/categories"
+        let carUrl = "http://carryup.az/api/v1/order/categories"
         guard let url = URL(string: carUrl) else {return}
         
         var urlRequest = URLRequest(url: url)
@@ -896,7 +944,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func getValyutas(){
       //  tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/valyuta/list"
+        let carUrl = "http://carryup.az/api/v1/valyuta/list"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -954,7 +1002,7 @@ class YeniElanController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //    toRegionPicker.reloadAllComponents()
          //   volumeLbl.text = "Seçilməyib"
         }
-        let regionUrl = "http://209.97.140.82/api/v1/country/\(countryId)/region/list"
+        let regionUrl = "http://carryup.az/api/v1/country/\(countryId)/region/list"
         guard let url = URL(string: regionUrl) else {return}
         
         let sessionConfig = URLSessionConfiguration.default

@@ -24,10 +24,26 @@ class BildirisSettingsController: UIViewController {
     @IBOutlet weak var smsSwitch: UISwitch!
     @IBOutlet weak var sesSwitch: UISwitch!
     @IBOutlet weak var vibrationSwitch: UISwitch!
+    @IBOutlet weak var emailLbl: UILabel!
+    @IBOutlet weak var pushLbl: UILabel!
+    @IBOutlet weak var smsLbl: UILabel!
+    @IBOutlet weak var soundLbl: UILabel!
+    @IBOutlet weak var vibratorLbl: UILabel!
+    @IBOutlet weak var basliqLbl: UILabel!
+    
+    var selectedLang: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "my_notifications".addLocalizableString(str: selectedLang!)
+        emailLbl.text = "email_notif".addLocalizableString(str: selectedLang!)
+        pushLbl.text = "push_notif".addLocalizableString(str: selectedLang!)
+        smsLbl.text = "sms_notif".addLocalizableString(str: selectedLang!)
+        soundLbl.text = "sound_notif".addLocalizableString(str: selectedLang!)
+        vibratorLbl.text = "vibrator_notif".addLocalizableString(str: selectedLang!)
         
         if(UserDefaults.standard.string(forKey: "PUSHSTATUS") == "1"){
             pushSwitch.setOn(true, animated: true)
@@ -157,7 +173,7 @@ class BildirisSettingsController: UIViewController {
     func updateProfileDetails(notfName: String, status: Int){
             addQuestionView()
             
-            let updateUrl = "http://209.97.140.82/api/v1/user/update/settings/\(notfName)/" + "\(status)"
+            let updateUrl = "http://carryup.az/api/v1/user/update/settings/\(notfName)/" + "\(status)"
             guard let url = URL(string: updateUrl) else {return}
           
             

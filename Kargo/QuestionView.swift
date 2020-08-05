@@ -14,6 +14,9 @@ class QuestionView: UIView {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var yesBTN: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var deleteAdvLbl: UILabel!
+    @IBOutlet weak var areYouSureLbl: UILabel!
+    
     
 
 

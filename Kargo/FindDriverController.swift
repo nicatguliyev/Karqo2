@@ -99,9 +99,12 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     var elanType = ""
     var selectedAdv: TimeLineDataItem?
     var showServicePopup = true
+    var selectedLanguage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
         
         OneSignal.sendTag("user_id", value: "\((UserDefaults.standard.string(forKey: "USERID"))!)") // ana sehife acilan kimi sendTag funksiyasindan istifade ederek database-de saxlanilan USERID-ni OneSignala set edirik(Bildirisleri Qebul etmek ucun)
         
@@ -129,14 +132,14 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
 
         if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){  // User Sifarisci olarsa asagidaki deyisenleri set edirik
             elanType = "orderElan"
-            findDriverLbl.text = "Sürücü tap"
-            allDriversLbl.text = "Bütün sürücülər"
+            findDriverLbl.text = "all_drivers".addLocalizableString(str: selectedLanguage!)
+            allDriversLbl.isHidden = true
              getDrivers(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, carType: selectedCarType)
                  filterType = "driver"
         }
         else{ // eger user Surucu olarsa asagidaki deyisenleri set edirik
             elanType = "driverElan"
-                findDriverLbl.text = "Yüklər"
+            findDriverLbl.text = "all_cargos".addLocalizableString(str: selectedLanguage!)
             allDriversLbl.isHidden = true
                     // allDriversLbl.text = "Bütün sifarişlər"
                 getOrders(currentPage: currentPage, fromCountry: selectedFromCountry, fromRegion: selectedFromRegion, toCountry: selectedTocountry, toRegion: selectedToRegion, startDate: startDate, endDate: endDate, cargoType: selectedCargoType)
@@ -228,6 +231,12 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! FindOrderCollectionCell
+        
+        cell.fromLbl.text = "from".addLocalizableString(str: selectedLanguage!)
+        cell.toLbl.text = "to".addLocalizableString(str: selectedLanguage!)
+        cell.tarixLbl.text = "date".addLocalizableString(str: selectedLanguage!)
+        
+        
             createShadow(view: cell.mainView)
             createShadow2(view: cell.nameView)
             cell.removeBtn.isHidden = true
@@ -240,7 +249,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
             })
         
         if(UserDefaults.standard.string(forKey: "USERROLE") == "4"){ // Userin tipine gore CollectionViewnun cell-ni design edirik
-           cell.tipLbl.text = "Nəqliyyat vasitəsinin tipi"
+            cell.tipLbl.text = "transportation_type".addLocalizableString(str: selectedLanguage!)
             
             cell.personNameLbl.text = orders[indexPath.row].owner?.name
             let fromCountryName = orders[indexPath.row].from_country?.name
@@ -286,7 +295,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                       let endDate = dateFormatter.date(from: endDate!)
                             
                             dateFormatter.dateFormat = "d MMM yyyy" // 23  Okt 2019  tarixin tipi
-                            dateFormatter.locale = Locale.init(identifier: "az") // aylari azerbaycan dilinde gostermk ucun
+                            dateFormatter.locale = Locale.init(identifier: selectedLanguage!) // aylari azerbaycan dilinde gostermk ucun
                             let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
                             cell.dateLbl.text = goodDate
                       //cell.dateLbl.text = startDate! + " / " + endDate!
@@ -302,7 +311,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
            cell.typeLbl.text = orders[indexPath.row].car_type?.name
         }
         else{
-            cell.tipLbl.text = "Yükün növü"
+            cell.tipLbl.text = "cargo_type".addLocalizableString(str: selectedLanguage!)
             cell.personNameLbl.text = orders[indexPath.row].owner?.name
             let fromCountryName = orders[indexPath.row].from_country?.name
             let fromRegionName = orders[indexPath.row].from_region?.name
@@ -347,7 +356,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
                 let endDate = dateFormatter.date(from: endDate!)
                       
                       dateFormatter.dateFormat = "d MMM yyyy"
-                      dateFormatter.locale = Locale.init(identifier: "az")
+                      dateFormatter.locale = Locale.init(identifier: selectedLanguage!)
                       let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
                       cell.dateLbl.text = goodDate
                 //cell.dateLbl.text = startDate! + " / " + endDate!
@@ -465,7 +474,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         isLoading = true  // Funksiya ise dusen kimi isLoading true olur(Yeniki datalar helede yuklenir)
         
         
-        let timeLineUrl = "http://209.97.140.82/api/v1/driver/timeline"
+        let timeLineUrl = "http://carryup.az/api/v1/driver/timeline"
         var urlComponent = URLComponents(string: timeLineUrl)
         
         urlComponent?.queryItems = [
@@ -493,8 +502,8 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         session.dataTask(with: urlRequest){(data, response, error) in
             if(error == nil){
                 guard let data = data else {return}
-                //   let output =   String(data: data, encoding: String.Encoding.utf8)
-                // print("output: \(output)")
+                   //let output =   String(data: data, encoding: String.Encoding.utf8)
+                 //  print("output: \(output)")
                 
                 do{
                     let jsonData = try JSONDecoder().decode(TimeLineFullData.self, from: data)
@@ -562,7 +571,7 @@ class FindDriverController: UIViewController, UICollectionViewDelegate, UICollec
         checkConnButtonView.isHidden = true
 
         isLoading = true
-        let timeLineUrl = "http://209.97.140.82/api/v1/order/timeline"
+        let timeLineUrl = "http://carryup.az/api/v1/order/timeline"
         var urlComponent = URLComponents(string: timeLineUrl)
         
         urlComponent?.queryItems = [

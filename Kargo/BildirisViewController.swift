@@ -48,11 +48,14 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
     var backButton = UIButton()
     var barItem = UIBarButtonItem()
     var driverId = Int()
+    @IBOutlet weak var basliqLbl: UILabel!
+    var selectedLang: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "my_notifications".addLocalizableString(str: selectedLang!)
         setUpMenuButton()
         
     
@@ -236,7 +239,7 @@ class BildirisViewController: UIViewController, UITableViewDelegate, UITableView
             self.checkConnButtonView.isHidden = true
             self.checkConnIndicator.isHidden = false
         }
-           let carUrl = "http://209.97.140.82/api/v1/user/notifications?page=" + "\(page)"
+           let carUrl = "http://carryup.az/api/v1/user/notifications?page=" + "\(page)"
            guard let url = URL(string: carUrl) else {return}
            
            var urlRequest = URLRequest(url: url)

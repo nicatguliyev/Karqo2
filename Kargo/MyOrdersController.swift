@@ -21,10 +21,16 @@ class MyOrdersController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var myOrderCollectionView: UICollectionView!
     var orders = [TimeLineDataItem]()
     var selectedOrder: TimeLineDataItem?
+    @IBOutlet weak var basliqLbl: UILabel!
+    
+    var selectedLang: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "my_orders".addLocalizableString(str: selectedLang!)
         
         myOrderCollectionView.delegate  = self
         myOrderCollectionView.dataSource = self
@@ -229,7 +235,7 @@ class MyOrdersController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func getDriverAdvs(){
-        let ordersUrl = "http://209.97.140.82/api/v1/driver/orders"
+        let ordersUrl = "http://carryup.az/api/v1/driver/orders"
         
         guard let url = URL(string: ordersUrl) else {return}
         

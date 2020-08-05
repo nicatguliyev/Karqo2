@@ -53,7 +53,8 @@
     var menuBarItem = UIBarButtonItem()
     @IBOutlet weak var elanCollectionView: UICollectionView!
     @IBOutlet weak var advCollectionView: UICollectionView!
-
+    @IBOutlet weak var basliqLbl: UILabel!
+        
     var connView = UIView()
     var checkConnButtonView = UIView()
     var checkConnIndicator = UIActivityIndicatorView()
@@ -64,10 +65,13 @@
     var selectedAdvId: Int?
         var selectedAdv: TimeLineDataItem?
         var selectedIndex = 0
+        var selectedLang: String?
         
     override func viewDidLoad() {
         super.viewDidLoad()
      //  print(vars.user?.data?.token)
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "my_adv".addLocalizableString(str: selectedLang!)
         setUpMenuButton()
       
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001, execute: {
@@ -139,9 +143,12 @@
         
         cell.editBtn.tag = indexPath.row
         cell.editBtn.addTarget(self, action: #selector(editAdv), for: .touchUpInside)
+        cell.fromLbl.text = "from".addLocalizableString(str: selectedLang!)
+        cell.toLbl.text = "to".addLocalizableString(str: selectedLang!)
+        cell.tarixLbl.text = "date".addLocalizableString(str: selectedLang!)
         
         if(UserDefaults.standard.string(forKey: "USERROLE")! == "4"){
-            cell.tipLbl.text = "Yükün növü"
+            cell.tipLbl.text = "cargo_type".addLocalizableString(str: selectedLang!)
             
             cell.personNameLbl.text = advs[indexPath.row].owner?.name
             let fromCountryName = advs[indexPath.row].from_country?.name
@@ -187,7 +194,7 @@
                       let endDate = dateFormatter.date(from: endDate!)
                             
                             dateFormatter.dateFormat = "d MMM yyyy"
-                            dateFormatter.locale = Locale.init(identifier: "az")
+                            dateFormatter.locale = Locale.init(identifier: selectedLang!)
                             let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
                             cell.dateLbl.text = goodDate
                       //cell.dateLbl.text = startDate! + " / " + endDate!
@@ -203,7 +210,7 @@
             cell.typeLbl.text = advs[indexPath.row].category?.name
         }
         else{
-            cell.tipLbl.text = "Nəqliyyat vasitəsinin tipi"
+            cell.tipLbl.text = "type_of_transport".addLocalizableString(str: selectedLang!)
             cell.personNameLbl.text = advs[indexPath.row].owner?.name
             let fromCountryName = advs[indexPath.row].from_country?.name
             let fromRegionName = advs[indexPath.row].from_region?.name
@@ -248,7 +255,7 @@
                       let endDate = dateFormatter.date(from: endDate!)
                             
                             dateFormatter.dateFormat = "d MMM yyyy"
-                            dateFormatter.locale = Locale.init(identifier: "az")
+                            dateFormatter.locale = Locale.init(identifier: selectedLang!)
                             let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
                             cell.dateLbl.text = goodDate
                       //cell.dateLbl.text = startDate! + " / " + endDate!
@@ -346,6 +353,10 @@
             self.questionIndicator = questionView.indicator
             questionView.yesBTN.layer.cornerRadius = 15.0
             questionView.cancelBtn.layer.cornerRadius = 15.0
+            questionView.yesBTN.setTitle("yes".addLocalizableString(str: selectedLang!), for: .normal)
+            questionView.cancelBtn.setTitle("no".addLocalizableString(str: selectedLang!), for: .normal)
+            questionView.deleteAdvLbl.text = "delete_adv".addLocalizableString(str: selectedLang!)
+            questionView.areYouSureLbl.text = "delete_adv_desc".addLocalizableString(str: selectedLang!)
             
             
             
@@ -383,11 +394,11 @@
             var deleteUrl = ""
             
             if(UserDefaults.standard.string(forKey: "USERROLE")! == "4"){
-                deleteUrl = "http://209.97.140.82/api/v1/order/delete"
+                deleteUrl = "http://carryup.az/api/v1/order/delete"
             }
             else
             {
-                deleteUrl = "http://209.97.140.82/api/v1/driver/delete"
+                deleteUrl = "http://carryup.az/api/v1/driver/delete"
             }
             
             
@@ -473,11 +484,11 @@
         var carUrl = ""
         if(type == 1)
         {
-            carUrl = "http://209.97.140.82/api/v1/order/all"
+            carUrl = "http://carryup.az/api/v1/order/all"
         }
         else
         {
-            carUrl = "http://209.97.140.82/api/v1/driver/all"
+            carUrl = "http://carryup.az/api/v1/driver/all"
         }
         
         guard let url = URL(string: carUrl) else {return}
@@ -508,7 +519,7 @@
                 
                 do{
                     let jsonData = try JSONDecoder().decode(TimeLine.self, from: data)
-                    print(jsonData)
+                    //print(jsonData)
                     if(jsonData.data != nil){
                        self.advs = jsonData.data!
                       // DispatchQueue
@@ -522,9 +533,9 @@
                     }
                 }
                     
-                catch let jsonError{
+                catch  _{
                     DispatchQueue.main.async {
-                        print(jsonError)
+                        //print(jsonError)
                         self.view.makeToast("Xəta baş verdi")
                     }
                 }

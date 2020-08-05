@@ -44,6 +44,11 @@ class DocumentsController: UIViewController,  UIImagePickerControllerDelegate, U
     @IBOutlet weak var image1Height: NSLayoutConstraint!
     @IBOutlet weak var image2Height: NSLayoutConstraint!
     @IBOutlet weak var image3Height: NSLayoutConstraint!
+    @IBOutlet weak var foreignPasspordLbl: UILabel!
+    @IBOutlet weak var registerLbl: UILabel!
+    @IBOutlet weak var semiRegisterLbl: UILabel!
+    @IBOutlet weak var basliqLbl: UILabel!
+    var selectedLanguage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +58,12 @@ class DocumentsController: UIViewController,  UIImagePickerControllerDelegate, U
 //            flowLayout.estimatedItemSize = CGSize(width: w, height: 300)
 //        }
 //
-
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "documents".addLocalizableString(str: selectedLanguage!)
+        foreignPasspordLbl.text = "driver_foreign_passport".addLocalizableString(str: selectedLanguage!)
+        registerLbl.text = "register_certificate".addLocalizableString(str: selectedLanguage!)
+        semiRegisterLbl.text = "semi_trailer_register_certificate".addLocalizableString(str: selectedLanguage!)
+        
          self.revealViewController()?.panGestureRecognizer()?.isEnabled = false
     
         editIcon.layer.cornerRadius = 27
@@ -174,7 +184,7 @@ class DocumentsController: UIViewController,  UIImagePickerControllerDelegate, U
         self.checkConnButtonView.isHidden = true
         
         let userId =  UserDefaults.standard.string(forKey: "USERID")!
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId)"
+        let driverDetailUrl = "http://carryup.az/api/v1/user/profile/\(userId)"
         guard let url = URL(string: driverDetailUrl) else {return}
         print(driverDetailUrl)
         
@@ -271,13 +281,13 @@ class DocumentsController: UIViewController,  UIImagePickerControllerDelegate, U
         var url = ""
         
         if(selectedRow == 0) {
-            url = "http://209.97.140.82/api/v1/user/update/foreign_passport"
+            url = "http://carryup.az/api/v1/user/update/foreign_passport"
         }
         else if(selectedRow == 1 ){
-            url = "http://209.97.140.82/api/v1/user/update/car_register_doc"
+            url = "http://carryup.az/api/v1/user/update/car_register_doc"
         }
         else{
-              url = "http://209.97.140.82/api/v1/user/update/half_car_register_doc"
+              url = "http://carryup.az/api/v1/user/update/half_car_register_doc"
         }
         
         let headers = [

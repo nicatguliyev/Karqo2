@@ -1,0 +1,114 @@
+/* 
+  Localizable.strings
+  Kargo
+
+  Created by Nicat Guliyev on 7/7/20.
+  Copyright © 2020 Nicat Guliyev. All rights reserved.
+*/
+"welcome_to" = "Welcome to";
+"login" = "Вход";
+"register" = "Регистрация";
+"driver" = "Водитель";
+"client" = "Клиент";
+"username_login" = "Имя пользователя для входа";
+"contact_number" = "Контактный номер";
+"password" = "Пароль";
+"password_repeat" = "Подтверждение пароля";
+"register_finish" = "Завершить регистрацию";
+"register_success" = "Регистрация успешна";
+"register_successed" = "Вы успешно зарегистрировались";
+"username" = "Имя пользователя";
+"forgot_password" = "Забыли пароль?";
+"not_registered" = "Не зарегистрированы?";
+"from" = "Откуда";
+"to" =  "Куда";
+"transportation_type" = "Тип средства передвижения";
+"cargo_type" = "Тип груза";
+"date" = "Дата";
+"all_cargos" = "Все грузы";
+"all_drivers" = "Все водители";
+"capacity_m3" = "Объем (m3)";
+"capacity_kg" = "Вес (kg)";
+"accept" = "Принять";
+"payment" = "Оплата";
+"my_notifications" = "Уведомления";
+"my_profile" = "Аккаунт";
+"my_adv" = "Объявления";
+"my_orders" = "Заказы";
+"settings" = "Настройки";
+"exit" = "Выход";
+"cargos" = "Грузы";
+"transportations" = "Средства передвижения";
+"email" = "Э-почта";
+"name_surname" = "Имя и Фамилия / Название компании";
+"driver_info" = "Данные водителя";
+"driver_foreign_passport" = "Загранпаспорт водителя";
+"browse" = "Просматривать";
+"register_certificate" = "Регистрационное удостоверение средства передвижения";
+"semi_trailer_register_certificate" = "Регистрационное удостоверение полуприцепа";
+"work_experience" = "Рабочий стаж (лет)";
+"car_info" = "Информация о средстве передвижения";
+"car_weight" = "Вес (kg)";
+"type_of_transport" = "Тип транспорта";
+"semi_trailer_info" = "Информация о полуприцепе";
+"brend" = "Марка";
+"model" = "Модель";
+"voen" = "ИНН";
+"look_documents" = "Обзор документов";
+"documents" = "Документы";
+"yes" = "Да";
+"no" = "Нет";
+"exit_desc" = "Вы уверены что хотите выйти?";
+"delete_adv_desc" = "Вы уверены, что хотите удалить объявление?";
+"delete_adv" = "Удалить объявление";
+"from_country" = "Откуда (Страна)";
+"from_region" = "Откуда (Регион)";
+"from_city" = "Откуда (Город)";
+"to_country" = "Куда (Страна)";
+"to_region" = "Куда (Регион)";
+"to_city" = "Куда (Город)";
+"cargo_capacity_m3" = "Объем груза (m3)";
+"cargo_weight" = "Вес груза (kg)";
+"date_interval" = "Диапазон дат";
+"valyuta" = "Валюта";
+"price" = "Цена";
+"cargo_length" = "Длинна груза (cm)";
+"cargo_height" = "Высота груза (cm)";
+"cargo_width" = "Ширина груза (cm)";
+"cargo_coordinant" = "Местонахождение груза";
+"more_info" = "Подробно";
+"cancel" = "Отмена";
+"change_adv" = "Изменить объявление";
+"save" = "Сохранить";
+"next" = "Следующий";
+"my_profile_info" = "Данные аккаунта";
+"change_password" = "Сменить пароль";
+"old_pass" = "Старый пароль";
+"new_pass" = "Новый пароль";
+"new_pass_confirm" = "Подтверждение нового пароля";
+"language_options" = "Язык";
+"email_notif" = "Уведомления по э-почте";
+"push_notif" = "Push уведомления";
+"sms_notif" = "Уведомления по SMS";
+"sound_notif" = "Звуковые уведомления";
+"vibrator_notif" = "Вибрационное уведомление";
+"create" = "Создать";
+"new_adv" = "Новое объявление";
+"search_more" = "Расширенный поиск";
+"search" = "Искать";
+"clear" = "Очистеть";
+"next_payment" = "Следующий платеж";
+"pending" = "В ожидании";
+
+
+
+
+
+
+
+
+
+
+
+
+

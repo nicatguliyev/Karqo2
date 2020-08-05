@@ -25,17 +25,41 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var imageHeight: NSLayoutConstraint!
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
     static var staticSelf: MenuViewController?
+    var selectedLanguage: String?
+    
+    @IBOutlet weak var nextPaymentLbl: UILabel!
+    @IBOutlet weak var nextPaymentDateLbl: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         MenuViewController.staticSelf = self
-        
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
         if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
-            menuNames = ["Yüklər", "Elanlarım", "Sifarişlərim", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+            menuNames = [
+                "cargos".addLocalizableString(str: selectedLanguage!),
+                "my_adv".addLocalizableString(str: selectedLanguage!),
+                "my_orders".addLocalizableString(str: selectedLanguage!),
+                "payment".addLocalizableString(str: selectedLanguage!),
+                "my_notifications".addLocalizableString(str: selectedLanguage!),
+                "my_profile".addLocalizableString(str: selectedLanguage!),
+                "settings".addLocalizableString(str: selectedLanguage!),
+                "exit".addLocalizableString(str: selectedLanguage!)
+            ]
+         //   menuNames = ["Yüklər", "Elanlarım", "Sifarişlərim", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
             menuImages = ["searchIcon.png", "elanIcon.png", "sifarisIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
         }
         else{
-            menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+            menuNames = [
+                "transportations".addLocalizableString(str: selectedLanguage!),
+                "my_adv".addLocalizableString(str: selectedLanguage!),
+                "payment".addLocalizableString(str: selectedLanguage!),
+                "my_notifications".addLocalizableString(str: selectedLanguage!),
+                "my_profile".addLocalizableString(str: selectedLanguage!),
+                "settings".addLocalizableString(str: selectedLanguage!),
+                "exit".addLocalizableString(str: selectedLanguage!)
+            ]
+           // menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
                      menuImages = ["searchIcon.png", "elanIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
         }
         
@@ -49,11 +73,46 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         phoneNumber.text = UserDefaults.standard.string(forKey: "USERPHONE")!.components(separatedBy: ",")[0]
         userName.text = UserDefaults.standard.string(forKey: "USERNAME")
+        nextPaymentDateLbl.text = UserDefaults.standard.string(forKey: "LASTPAYMENT")
         // Do any additional setup after loading the view.
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        nextPaymentLbl.text = "next_payment".addLocalizableString(str: selectedLanguage!)
+        nextPaymentDateLbl.text = UserDefaults.standard.string(forKey: "LASTPAYMENT")
+            if(UserDefaults.standard.string(forKey: "USERROLE") == "3"){
+                menuNames = [
+                    "cargos".addLocalizableString(str: selectedLanguage!),
+                    "my_adv".addLocalizableString(str: selectedLanguage!),
+                    "my_orders".addLocalizableString(str: selectedLanguage!),
+                    "payment".addLocalizableString(str: selectedLanguage!),
+                    "my_notifications".addLocalizableString(str: selectedLanguage!),
+                    "my_profile".addLocalizableString(str: selectedLanguage!),
+                    "settings".addLocalizableString(str: selectedLanguage!),
+                    "exit".addLocalizableString(str: selectedLanguage!)
+                ]
+             //   menuNames = ["Yüklər", "Elanlarım", "Sifarişlərim", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+                menuImages = ["searchIcon.png", "elanIcon.png", "sifarisIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
+            }
+            else{
+                menuNames = [
+                    "transportations".addLocalizableString(str: selectedLanguage!),
+                    "my_adv".addLocalizableString(str: selectedLanguage!),
+                    "payment".addLocalizableString(str: selectedLanguage!),
+                    "my_notifications".addLocalizableString(str: selectedLanguage!),
+                    "my_profile".addLocalizableString(str: selectedLanguage!),
+                    "settings".addLocalizableString(str: selectedLanguage!),
+                    "exit".addLocalizableString(str: selectedLanguage!)
+                ]
+               // menuNames = ["Sürücü tap", "Elanlarım", "Ödəniş", "Bildirişlərim", "Profilim", "Tənzimləmələr", "Çıxış"]
+                         menuImages = ["searchIcon.png", "elanIcon.png", "transferIcon.png", "ringIcon.png", "profilIcon2.png", "settingIcon.png", "logoutIcon.png" ]
+            }
+        
+        menuTable.reloadData()
+        
         darkView.addGestureRecognizer(revealViewController().tapGestureRecognizer())
 
         darkView.backgroundColor = UIColor.black.withAlphaComponent(0.5)

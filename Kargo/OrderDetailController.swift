@@ -11,6 +11,7 @@ import SDWebImage
 
 
 struct  OrderDetail:Decodable {
+    let open: Bool?
     let requested: Bool?
     let data: OrderDetailDataModel?
 }
@@ -62,7 +63,7 @@ struct SendRequestModel: Decodable{
 }
 
 class OrderDetailController: UIViewController, UIScrollViewDelegate
-
+    
     
 {
     
@@ -84,6 +85,12 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var bottomView: SenedeBaxButtonView!
     @IBOutlet weak var acceptLbl: UILabel!
+    @IBOutlet weak var haradanLbl: UILabel!
+    @IBOutlet weak var harayaLbl: UILabel!
+    @IBOutlet weak var kateqoriyaLbl: UILabel!
+    @IBOutlet weak var cekiLbl: UILabel!
+    @IBOutlet weak var olcuLbl: UILabel!
+    @IBOutlet weak var tarixLbl: UILabel!
     
     
     var selectedOrder: TimeLineDataItem?
@@ -99,19 +106,29 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
     var phoneNumbers: String?
     @IBOutlet weak var phoneView: CustomView!
     @IBOutlet weak var whatsAppView: CustomView!
+    var selectedLanguage: String?
     
     var actionType = 0
     
     @IBOutlet weak var thirdView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        
+        haradanLbl.text = "from".addLocalizableString(str: selectedLanguage!)
+        harayaLbl.text = "to".addLocalizableString(str: selectedLanguage!)
+        kateqoriyaLbl.text = "cargo_type".addLocalizableString(str: selectedLanguage!)
+        tarixLbl.text = "date".addLocalizableString(str: selectedLanguage!)
+        cekiLbl.text = "capacity_kg".addLocalizableString(str: selectedLanguage!)
+        olcuLbl.text = "capacity_m3".addLocalizableString(str: selectedLanguage!)
+        acceptLbl.text = "accept".addLocalizableString(str: selectedLanguage!)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-//            self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
-//            self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
-//            self.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
-//            self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
-//
+            //            self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+            //            self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+            //            self.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
+            //            self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
+            //
         })
         
         let messageGesture = UITapGestureRecognizer(target: self, action: #selector(messageTapped))
@@ -141,26 +158,26 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
     }
     
     override func viewWillLayoutSubviews() {
-             self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
-               self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
-               self.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
-               self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
-           self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
+        self.userImageView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+        self.contactsView.roundCorners(corners: [.bottomRight], cornerRadius: 90.0)
+        self.priceView.roundCorners(corners: [.bottomRight, .topLeft], cornerRadius: 60.0)
+        self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
+        self.bottomView.roundCorners(corners: [.topRight], cornerRadius: 90.0)
     }
     
     @objc func acceptTapped(){
-        if(self.acceptLbl.text == "ACCEPT"){
+        if(self.acceptLbl.text == "accept".addLocalizableString(str: selectedLanguage!)){
             SendRequest()
         }
-       }
+    }
     
     @objc func messageTapped(){
         actionType = 3
         if(self.phoneNumbers != nil){
             performSegue(withIdentifier: "segueToPhoneNumbers", sender: self)
-
+            
         }
-
+        
     }
     
     @objc func phoneTapped(){
@@ -184,7 +201,7 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
     func setupDesign(){
         
         setUpBackButton()
-       // createShadow2(view: voenView)
+        // createShadow2(view: voenView)
         createShadow2(view: destinationView)
         createShadow2(view: thirdView)
     }
@@ -217,7 +234,7 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
         view.layer.shadowRadius = 4
         view.layer.masksToBounds = false
         view.layer.cornerRadius = 30.0
-       
+        
     }
     
     
@@ -226,8 +243,8 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
         if let connectionView = Bundle.main.loadNibNamed("CheckConnectionView", owner: self, options: nil)?.first as? CheckConnectionView {
             connectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             
-           // let currentWindow = UIApplication.shared.keyWindow
-           // currentWindow?.addSubview(connectionView)
+            // let currentWindow = UIApplication.shared.keyWindow
+            // currentWindow?.addSubview(connectionView)
             self.view.addSubview(connectionView);
             connectionView.buttonView.clipsToBounds = true
             
@@ -259,8 +276,8 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
         self.connView.isHidden = false
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
-       // tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/order/detail/\((selectedOrder?.id)!)"
+        // tipler = []
+        let carUrl = "http://carryup.az/api/v1/order/detail/\((selectedOrder?.id)!)"
         guard let url = URL(string: carUrl) else {return}
         
         
@@ -274,8 +291,8 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
             if(error == nil){
                 guard let data = data else {return}
                 
-                  // let output =   String(data: data, encoding: String.Encoding.utf8)
-               //  print("output: \(output)")
+                //let output =   String(data: data, encoding: String.Encoding.utf8)
+                // print("output: \(output)")
                 
                 do{
                     let jsonData = try JSONDecoder().decode(OrderDetail.self, from: data)
@@ -285,7 +302,7 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
                     DispatchQueue.main.async {
                         
                         if(jsonData.requested ?? true){
-                            self.acceptLbl.text = "PENDING"
+                            self.acceptLbl.text = "pending".addLocalizableString(str: self.selectedLanguage!)
                         }
                         
                         let fromCntry = jsonData.data?.from_country?.name ?? ""
@@ -331,17 +348,29 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
                             dateFormatter.locale = Locale.init(identifier: "az")
                             let goodDate = dateFormatter.string(from: startDate!) + " - " + dateFormatter.string(from: endDate!)
                             self.dateLbl.text = goodDate
-                                
-                                }
+                            
+                        }
                         
                         
                         if let price = self.selectedOrder?.price, let valyuta = self.selectedOrder?.valyuta?.code{
-                           // self.priceBtn.setTitle(price + " " + valyuta, for: .normal)
+                            // self.priceBtn.setTitle(price + " " + valyuta, for: .normal)
                             self.priceLbl.text = price + " " + valyuta
                         }
-                       
                         
-                        self.getOrderOwnerDetail()
+                        if(jsonData.open!){
+                            self.getOrderOwnerDetail()
+                        }
+                        else{
+                            let refreshAlert = UIAlertController(title: "Ödəniş", message: "Ödəniş etməmisiniz.", preferredStyle: UIAlertController.Style.alert)
+                            
+                            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                                self.navigationController?.popViewController(animated: true)
+                            }))
+                            
+                          
+                            self.present(refreshAlert, animated: true, completion: nil)
+                        }
+                        
                     }
                 }
                     
@@ -351,8 +380,8 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
                 }
                 
                 DispatchQueue.main.async {
-                   // self.tipPickerView.reloadAllComponents()
-                   // self.tipLbl.text  = self.tipler[0].name
+                    // self.tipPickerView.reloadAllComponents()
+                    // self.tipLbl.text  = self.tipler[0].name
                 }
             }
             else
@@ -366,13 +395,13 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
                             self.checkConnIndicator.isHidden = true
                             self.checkConnButtonView.isHidden = false
                         }
-                      
+                        
                     }
                 }
             }
             
             
-            }.resume()
+        }.resume()
         
     }
     
@@ -382,7 +411,7 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         // tipler = []
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(driverId!)"
+        let driverDetailUrl = "http://carryup.az/api/v1/user/profile/\(driverId!)"
         guard let url = URL(string: driverDetailUrl) else {return}
         
         
@@ -396,8 +425,8 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
             if(error == nil){
                 guard let data = data else {return}
                 
-          //       let output =   String(data: data, encoding: String.Encoding.utf8)
-          //        print("output: \(output)")
+                //       let output =   String(data: data, encoding: String.Encoding.utf8)
+                //        print("output: \(output)")
                 
                 do{
                     let jsonData = try JSONDecoder().decode(UserDetailModel.self, from: data)
@@ -406,15 +435,15 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
                     if let avatar = avatar{
                         let avatarUrl = URL(string: avatar)
                         DispatchQueue.main.async {
-                           self.userImage.sd_setImage(with: avatarUrl)
+                            self.userImage.sd_setImage(with: avatarUrl)
                         }
                     }
                     
                     if let ownerName = jsonData.data?.name{
                         DispatchQueue.main.async {
-                             self.orderOwnerNameLbl.text = ownerName
+                            self.orderOwnerNameLbl.text = ownerName
                         }
-                       
+                        
                     }
                     self.phoneNumbers = jsonData.data?.phone
                     
@@ -446,48 +475,48 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
             }
             
             
-            }.resume()
+        }.resume()
         
     }
     
     func SendRequest(){
-
-         self.connView.isHidden = false
-         self.checkConnIndicator.isHidden = false
-         self.checkConnButtonView.isHidden = true
-         
-         let loginUrl = "http://209.97.140.82/api/v1/user/request/" + "\((selectedOrder?.id)!)"
-         
-         guard let url = URL(string: loginUrl) else {return}
-         
-         var urlRequest = URLRequest(url: url)
-         urlRequest.httpMethod = "GET"
-         
-         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-         urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
-         
-         
-         let sessionConfig = URLSessionConfiguration.default
-         sessionConfig.timeoutIntervalForRequest = 5.0
-         sessionConfig.timeoutIntervalForResource = 60.0
-         let session = URLSession(configuration: sessionConfig)
-         
-         session.dataTask(with: urlRequest){(data, response, error) in
+        
+        self.connView.isHidden = false
+        self.checkConnIndicator.isHidden = false
+        self.checkConnButtonView.isHidden = true
+        
+        let loginUrl = "http://carryup.az/api/v1/user/request/" + "\((selectedOrder?.id)!)"
+        
+        guard let url = URL(string: loginUrl) else {return}
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer " + (UserDefaults.standard.string(forKey: "USERTOKEN"))!, forHTTPHeaderField: "Authorization")
+        
+        
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 5.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        let session = URLSession(configuration: sessionConfig)
+        
+        session.dataTask(with: urlRequest){(data, response, error) in
             
-             DispatchQueue.main.async {
-                 self.connView.isHidden = true
-             }
-              guard let data = data else {return}
+            DispatchQueue.main.async {
+                self.connView.isHidden = true
+            }
+            guard let data = data else {return}
             
-          //  let output =   String(data: data, encoding: String.Encoding.utf8)
-          //  print("output: \(output)")
-             if(error == nil){
+            //  let output =   String(data: data, encoding: String.Encoding.utf8)
+            //  print("output: \(output)")
+            if(error == nil){
                 
-                 do{
-                             let responseModel = try JSONDecoder().decode(SendRequestModel.self, from: data)
+                do{
+                    let responseModel = try JSONDecoder().decode(SendRequestModel.self, from: data)
                     if(responseModel.status == "success"){
                         DispatchQueue.main.async {
-                            self.acceptLbl.text = "PENDING"
+                            self.acceptLbl.text = "pending".addLocalizableString(str: self.selectedLanguage!)
                         }
                     }
                     else
@@ -497,45 +526,45 @@ class OrderDetailController: UIViewController, UIScrollViewDelegate
                         }
                     }
                     
-                 }
-                     
-                 catch let jsonError{
-                     DispatchQueue.main.async {
-                          print(jsonError)
-                          self.view.makeToast("Model Json Error")
-                     }
+                }
                     
-                 }
-             }
-             else
-             {
-                 
-                 if let error = error as NSError?
-                 {
-                     
-                     if error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorCannotConnectToHost || error.code == NSURLErrorTimedOut{
-                         DispatchQueue.main.async {
-                             self.view.makeToast("İnternet bağlantısını yoxlayın")
-                         }
-                         
-                     }
-                 }
-             }
-             
-             
-             }.resume()
-     }
-    
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-                whatsAppView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
-               phoneView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
-          messageView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+                catch let jsonError{
+                    DispatchQueue.main.async {
+                        print(jsonError)
+                        self.view.makeToast("Model Json Error")
+                    }
+                    
+                }
+            }
+            else
+            {
+                
+                if let error = error as NSError?
+                {
+                    
+                    if error.code == NSURLErrorNotConnectedToInternet || error.code == NSURLErrorCannotConnectToHost || error.code == NSURLErrorTimedOut{
+                        DispatchQueue.main.async {
+                            self.view.makeToast("İnternet bağlantısını yoxlayın")
+                        }
+                        
+                    }
+                }
+            }
             
-          
-           
+            
+        }.resume()
     }
     
     
-
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        whatsAppView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+        phoneView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+        messageView.backgroundColor = UIColor(red: 25/255, green: 82/255, blue: 95/255, alpha: 1)
+        
+        
+        
+    }
+    
+    
+    
 }

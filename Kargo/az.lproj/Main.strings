@@ -1,0 +1,816 @@
+
+/* Class = "UILabel"; text = "İngilis"; ObjectID = "0HU-pz-fms"; */
+"0HU-pz-fms.text" = "İngilis";
+
+/* Class = "UILabel"; text = "S 600"; ObjectID = "0UU-d9-2Fj"; */
+"0UU-d9-2Fj.text" = "S 600";
+
+/* Class = "UITextField"; placeholder = "Haraya(Şəhər)"; ObjectID = "0Vu-TW-mqj"; */
+"0Vu-TW-mqj.placeholder" = "Haraya(Şəhər)";
+
+/* Class = "UILabel"; text = "Model"; ObjectID = "0es-mm-Ope"; */
+"0es-mm-Ope.text" = "Model";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "12x-6R-FDZ"; */
+"12x-6R-FDZ.text" = "Location";
+
+/* Class = "UILabel"; text = "Pulu göndərəcəyiniz kartın nömrəsi"; ObjectID = "1Su-oo-0qL"; */
+"1Su-oo-0qL.text" = "Pulu göndərəcəyiniz kartın nömrəsi";
+
+/* Class = "UILabel"; text = "Bildirişlər"; ObjectID = "1dY-uW-sMK"; */
+"1dY-uW-sMK.text" = "Bildirişlər";
+
+/* Class = "UILabel"; text = "Haraya"; ObjectID = "1eU-rR-itx"; */
+"1eU-rR-itx.text" = "Haraya";
+
+/* Class = "UILabel"; text = "SÜRÜCÜNÜN MƏLUMATLARI"; ObjectID = "1rn-Sy-AiZ"; */
+"1rn-Sy-AiZ.text" = "SÜRÜCÜNÜN MƏLUMATLARI";
+
+/* Class = "UILabel"; text = "AVTOMOBİLİN MƏLUMATLARI"; ObjectID = "1xt-2l-1Ua"; */
+"1xt-2l-1Ua.text" = "AVTOMOBİLİN MƏLUMATLARI";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "2AR-HK-qKC"; */
+"2AR-HK-qKC.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Yükün tutumu"; ObjectID = "2Aw-Si-eRi"; */
+"2Aw-Si-eRi.text" = "Yükün tutumu";
+
+/* Class = "UITextField"; placeholder = "Haradan(Şəhər)"; ObjectID = "2Ca-cc-JFu"; */
+"2Ca-cc-JFu.placeholder" = "Haradan(Şəhər)";
+
+/* Class = "UILabel"; text = "Köhnə şifrə"; ObjectID = "2F5-Ae-EcU"; */
+"2F5-Ae-EcU.text" = "Köhnə şifrə";
+
+/* Class = "UILabel"; text = "Mercedes"; ObjectID = "2GK-4T-aSP"; */
+"2GK-4T-aSP.text" = "Mercedes";
+
+/* Class = "UITextField"; placeholder = "Yükün növü"; ObjectID = "2tm-Af-ELL"; */
+"2tm-Af-ELL.placeholder" = "Yükün növü";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "3MG-qG-xs9"; */
+"3MG-qG-xs9.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Haradan(Region)"; ObjectID = "3rY-uI-Ytn"; */
+"3rY-uI-Ytn.text" = "Haradan(Region)";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "5Gl-OA-727"; */
+"5Gl-OA-727.text" = "null";
+
+/* Class = "UILabel"; text = "YADDA SAXLA"; ObjectID = "5Q3-2l-gxg"; */
+"5Q3-2l-gxg.text" = "YADDA SAXLA";
+
+/* Class = "UILabel"; text = "İş stajı"; ObjectID = "5jY-dz-ZRo"; */
+"5jY-dz-ZRo.text" = "İş stajı";
+
+/* Class = "UILabel"; text = "Yükün çəkisi"; ObjectID = "5ql-TX-917"; */
+"5ql-TX-917.text" = "Yükün çəkisi";
+
+/* Class = "UILabel"; text = "Qeydiyyat"; ObjectID = "6CG-2e-fty"; */
+"6CG-2e-fty.text" = "Qeydiyyat";
+
+/* Class = "UILabel"; text = "Yükün tutumu"; ObjectID = "6EK-7m-u5s"; */
+"6EK-7m-u5s.text" = "Yükün tutumu";
+
+/* Class = "UILabel"; text = "Nəq.vasitəsinin qeydiyyat şəhadətnaməsi "; ObjectID = "6Ia-ra-F0u"; */
+"6Ia-ra-F0u.text" = "Nəq.vasitəsinin qeydiyyat şəhadətnaməsi ";
+
+/* Class = "UILabel"; text = "Etibarlıdır"; ObjectID = "6cK-Hv-vhS"; */
+"6cK-Hv-vhS.text" = "Etibarlıdır";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "6hS-T2-4C2"; */
+"6hS-T2-4C2.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Ad və soyad"; ObjectID = "6xy-A3-UQW"; */
+"6xy-A3-UQW.text" = "Ad və soyad";
+
+/* Class = "UILabel"; text = "Ad, soyad"; ObjectID = "746-ca-o5O"; */
+"746-ca-o5O.text" = "Ad, soyad";
+
+/* Class = "UILabel"; text = "Mercedes"; ObjectID = "7VB-aR-JuF"; */
+"7VB-aR-JuF.text" = "Mercedes";
+
+/* Class = "UILabel"; text = "Sifarişlərim"; ObjectID = "7YO-iG-Hgf"; */
+"7YO-iG-Hgf.text" = "Sifarişlərim";
+
+/* Class = "UILabel"; text = "Pul vahidi"; ObjectID = "7YQ-SX-HGD"; */
+"7YQ-SX-HGD.text" = "Pul vahidi";
+
+/* Class = "UILabel"; text = "SMS bildirişlər"; ObjectID = "8Bw-wJ-qQj"; */
+"8Bw-wJ-qQj.text" = "SMS bildirişlər";
+
+/* Class = "UILabel"; text = "Yeni şifrə"; ObjectID = "8De-Hg-Shu"; */
+"8De-Hg-Shu.text" = "Yeni şifrə";
+
+/* Class = "UITextField"; text = "vladimir@gmail.com"; ObjectID = "8HR-cB-vds"; */
+"8HR-cB-vds.text" = "vladimir@gmail.com";
+
+/* Class = "UILabel"; text = "Şifrə"; ObjectID = "8UG-QV-EPN"; */
+"8UG-QV-EPN.text" = "Şifrə";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "8W3-GC-vkV"; */
+"8W3-GC-vkV.text" = "----";
+
+/* Class = "UILabel"; text = "Azərbaycan"; ObjectID = "8hw-3V-DDa"; */
+"8hw-3V-DDa.text" = "Azərbaycan";
+
+/* Class = "UILabel"; text = "Haradan(Ölkə)"; ObjectID = "8xL-9C-jsy"; */
+"8xL-9C-jsy.text" = "Haradan(Ölkə)";
+
+/* Class = "UILabel"; text = "Giriş"; ObjectID = "8z2-K9-Y2Q"; */
+"8z2-K9-Y2Q.text" = "Giriş";
+
+/* Class = "UIButton"; normalTitle = "İmtina"; ObjectID = "9Ev-Tw-PO3"; */
+"9Ev-Tw-PO3.normalTitle" = "İmtina";
+
+/* Class = "UILabel"; text = "Profil məlumatlarım"; ObjectID = "9Na-bc-lY0"; */
+"9Na-bc-lY0.text" = "Profil məlumatlarım";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "9hy-HL-Vpd"; */
+"9hy-HL-Vpd.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Haraya(Şəhər)"; ObjectID = "9n6-6V-DES"; */
+"9n6-6V-DES.text" = "Haraya(Şəhər)";
+
+/* Class = "UILabel"; text = "Tutumu (m3)"; ObjectID = "9pz-Jy-te4"; */
+"9pz-Jy-te4.text" = "Tutumu (m3)";
+
+/* Class = "UILabel"; text = "Qeydiyyat uğurla başa çatdı."; ObjectID = "APv-Ev-7Kg"; */
+"APv-Ev-7Kg.text" = "Qeydiyyat uğurla başa çatdı.";
+
+/* Class = "UILabel"; text = "Yarımqoşqunun qeydiyyat şəhadətnaməsi "; ObjectID = "B2L-Wj-mQC"; */
+"B2L-Wj-mQC.text" = "Yarımqoşqunun qeydiyyat şəhadətnaməsi ";
+
+/* Class = "UILabel"; text = "Xarici passport"; ObjectID = "B6y-7C-sQz"; */
+"B6y-7C-sQz.text" = "Xarici passport";
+
+/* Class = "UILabel"; text = "Sürücüyəm"; ObjectID = "B7W-zV-qvG"; */
+"B7W-zV-qvG.text" = "Sürücüyəm";
+
+/* Class = "UILabel"; text = "Yükün uzunluğu(sm)"; ObjectID = "BJ6-tO-BdP"; */
+"BJ6-tO-BdP.text" = "Yükün uzunluğu(sm)";
+
+/* Class = "UILabel"; text = "Qiymət"; ObjectID = "Ce2-qF-LWo"; */
+"Ce2-qF-LWo.text" = "Qiymət";
+
+/* Class = "UILabel"; text = "Azərbaycan"; ObjectID = "Cir-BX-Xek"; */
+"Cir-BX-Xek.text" = "Azərbaycan";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "DS5-OA-MN5"; */
+"DS5-OA-MN5.text" = "null";
+
+/* Class = "UILabel"; text = "Qeydiyyatdan keçməmisiniz?"; ObjectID = "Di9-25-D6b"; */
+"Di9-25-D6b.text" = "Qeydiyyatdan keçməmisiniz?";
+
+/* Class = "UILabel"; text = "Tarix aralığı"; ObjectID = "Dlp-8w-oge"; */
+"Dlp-8w-oge.text" = "Tarix aralığı";
+
+/* Class = "UITextField"; placeholder = "Bitmə tarixi"; ObjectID = "DoK-Rg-WZJ"; */
+"DoK-Rg-WZJ.placeholder" = "Bitmə tarixi";
+
+/* Class = "UITextField"; text = "Rusiya"; ObjectID = "Dy7-dw-8Vq"; */
+"Dy7-dw-8Vq.text" = "Rusiya";
+
+/* Class = "UILabel"; text = "YARIMQOŞQUNUN MƏLUMATLARI"; ObjectID = "E1U-yK-SQi"; */
+"E1U-yK-SQi.text" = "YARIMQOŞQUNUN MƏLUMATLARI";
+
+/* Class = "UILabel"; text = "Əlaqə nömrəsi"; ObjectID = "ECh-wV-4yp"; */
+"ECh-wV-4yp.text" = "Əlaqə nömrəsi";
+
+/* Class = "UILabel"; text = "Dil seçimləri"; ObjectID = "EG8-gT-euY"; */
+"EG8-gT-euY.text" = "Dil seçimləri";
+
+/* Class = "UILabel"; text = "Label dfklndlkf jdfjk kldfjndsf sdosfin dslnsdof sdsdofsdf lsdfsdf"; ObjectID = "Ec9-go-hb0"; */
+"Ec9-go-hb0.text" = "Label dfklndlkf jdfjk kldfjndsf sdosfin dslnsdof sdsdofsdf lsdfsdf";
+
+/* Class = "UILabel"; text = "Ətraflı axtarış"; ObjectID = "Eq6-ac-3ux"; */
+"Eq6-ac-3ux.text" = "Ətraflı axtarış";
+
+/* Class = "UILabel"; text = "Haraya(Ölkə)"; ObjectID = "F2x-Ph-9A2"; */
+"F2x-Ph-9A2.text" = "Haraya(Ölkə)";
+
+/* Class = "UILabel"; text = "CVC"; ObjectID = "FX8-Pa-uCV"; */
+"FX8-Pa-uCV.text" = "CVC";
+
+/* Class = "UILabel"; text = "Haradan(Ölkə)"; ObjectID = "G0Z-Z2-s2R"; */
+"G0Z-Z2-s2R.text" = "Haradan(Ölkə)";
+
+/* Class = "UILabel"; text = "Şifrəni dəyiş"; ObjectID = "Gpc-mP-DT0"; */
+"Gpc-mP-DT0.text" = "Şifrəni dəyiş";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "GuG-e9-l4d"; */
+"GuG-e9-l4d.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Çəkisi (kg)"; ObjectID = "H6e-ao-kiG"; */
+"H6e-ao-kiG.text" = "Çəkisi (kg)";
+
+/* Class = "UILabel"; text = "Haraya(Ölkə)"; ObjectID = "HAS-uw-pBI"; */
+"HAS-uw-pBI.text" = "Haraya(Ölkə)";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "HEr-NP-TlB"; */
+"HEr-NP-TlB.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Haradan(Region)"; ObjectID = "HQQ-t4-cju"; */
+"HQQ-t4-cju.text" = "Haradan(Region)";
+
+/* Class = "UIButton"; normalTitle = "Şifrəni unutdun?"; ObjectID = "HhW-TC-sFL"; */
+"HhW-TC-sFL.normalTitle" = "Şifrəni unutdun?";
+
+/* Class = "UILabel"; text = "Azərbaycan"; ObjectID = "I03-qs-wi3"; */
+"I03-qs-wi3.text" = "Azərbaycan";
+
+/* Class = "UILabel"; text = "İngilis"; ObjectID = "I5v-JO-zGi"; */
+"I5v-JO-zGi.text" = "İngilis";
+
+/* Class = "UIButton"; normalTitle = "Təmizlə"; ObjectID = "IaH-wv-kAq"; */
+"IaH-wv-kAq.normalTitle" = "Təmizlə";
+
+/* Class = "UILabel"; text = "Yeni şifrənin təkrarı"; ObjectID = "JKY-ke-KWQ"; */
+"JKY-ke-KWQ.text" = "Yeni şifrənin təkrarı";
+
+/* Class = "UILabel"; text = "Çəkisi (kg)"; ObjectID = "JTh-1z-8UF"; */
+"JTh-1z-8UF.text" = "Çəkisi (kg)";
+
+/* Class = "UILabel"; text = "Vahid Quluzade"; ObjectID = "JTz-w1-4ER"; */
+"JTz-w1-4ER.text" = "Vahid Quluzade";
+
+/* Class = "UILabel"; text = "İstifadəçi adı"; ObjectID = "Jff-9l-Cmf"; */
+"Jff-9l-Cmf.text" = "İstifadəçi adı";
+
+/* Class = "UIButton"; normalTitle = "ÖDƏ"; ObjectID = "K5C-k3-wpq"; */
+"K5C-k3-wpq.normalTitle" = "ÖDƏ";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "KIz-ia-XFG"; */
+"KIz-ia-XFG.text" = "null";
+
+/* Class = "UILabel"; text = "Tarix aralığı"; ObjectID = "KJu-Mp-HvE"; */
+"KJu-Mp-HvE.text" = "Tarix aralığı";
+
+/* Class = "UILabel"; text = "Yükün xəritədə yeri"; ObjectID = "LE1-es-XgW"; */
+"LE1-es-XgW.text" = "Yükün xəritədə yeri";
+
+/* Class = "UILabel"; text = "S 600"; ObjectID = "LbX-DM-QRV"; */
+"LbX-DM-QRV.text" = "S 600";
+
+/* Class = "UILabel"; text = "Ətraflı"; ObjectID = "M19-2C-SCO"; */
+"M19-2C-SCO.text" = "Ətraflı";
+
+/* Class = "UILabel"; text = "1554161231616"; ObjectID = "MMx-W6-jsg"; */
+"MMx-W6-jsg.text" = "1554161231616";
+
+/* Class = "UILabel"; text = "Dil seçimləri"; ObjectID = "NNx-XY-nsW"; */
+"NNx-XY-nsW.text" = "Dil seçimləri";
+
+/* Class = "UILabel"; text = "Tutumu (m3)"; ObjectID = "NXN-vH-x26"; */
+"NXN-vH-x26.text" = "Tutumu (m3)";
+
+/* Class = "UIButton"; normalTitle = "Dəyiş"; ObjectID = "Nag-Ys-oCT"; */
+"Nag-Ys-oCT.normalTitle" = "Dəyiş";
+
+/* Class = "UILabel"; text = "İstifadəçi adı "; ObjectID = "Ne0-yw-Bn9"; */
+"Ne0-yw-Bn9.text" = "İstifadəçi adı ";
+
+/* Class = "UILabel"; text = "Şifrənin təkrarı"; ObjectID = "NqW-eF-aWR"; */
+"NqW-eF-aWR.text" = "Şifrənin təkrarı";
+
+/* Class = "UITextField"; placeholder = "Haradan(Ölkə)"; ObjectID = "Nz3-Fx-zSC"; */
+"Nz3-Fx-zSC.placeholder" = "Haradan(Ölkə)";
+
+/* Class = "UILabel"; text = "Haradan(Ölkə)"; ObjectID = "O6I-2h-8ro"; */
+"O6I-2h-8ro.text" = "Haradan(Ölkə)";
+
+/* Class = "UILabel"; text = "GİRİŞ"; ObjectID = "O9Z-uM-Xm6"; */
+"O9Z-uM-Xm6.text" = "GİRİŞ";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "OF7-Wg-KUs"; */
+"OF7-Wg-KUs.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Sənədlər"; ObjectID = "Oic-zw-pv2"; */
+"Oic-zw-pv2.text" = "Sənədlər";
+
+/* Class = "UILabel"; text = "Yükün kateqoriyası"; ObjectID = "Oyd-K8-tf2"; */
+"Oyd-K8-tf2.text" = "Yükün kateqoriyası";
+
+/* Class = "UILabel"; text = "Aylıq"; ObjectID = "PAu-jT-lLd"; */
+"PAu-jT-lLd.text" = "Aylıq";
+
+/* Class = "UITextField"; placeholder = "İstifadəçi adı"; ObjectID = "POP-CS-NuN"; */
+"POP-CS-NuN.placeholder" = "İstifadəçi adı";
+
+/* Class = "UITextField"; text = "NatiqDriver"; ObjectID = "POP-CS-NuN"; */
+"POP-CS-NuN.text" = "NatiqDriver";
+
+/* Class = "UITextField"; placeholder = "Valyuta"; ObjectID = "PeN-kH-g8q"; */
+"PeN-kH-g8q.placeholder" = "Valyuta";
+
+/* Class = "UILabel"; text = "Yükün eni(sm)"; ObjectID = "Peb-2G-lY8"; */
+"Peb-2G-lY8.text" = "Yükün eni(sm)";
+
+/* Class = "UITextField"; placeholder = "Başlanğıc tarix"; ObjectID = "Poc-oC-4RB"; */
+"Poc-oC-4RB.placeholder" = "Başlanğıc tarix";
+
+/* Class = "UIButton"; normalTitle = "Browse"; ObjectID = "Pqh-6x-sV2"; */
+"Pqh-6x-sV2.normalTitle" = "Browse";
+
+/* Class = "UILabel"; text = "Yükün növü"; ObjectID = "Pty-jb-0D4"; */
+"Pty-jb-0D4.text" = "Yükün növü";
+
+/* Class = "UILabel"; text = "Yükün hündürlüyü(sm)"; ObjectID = "Py6-l4-XJ4"; */
+"Py6-l4-XJ4.text" = "Yükün hündürlüyü(sm)";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "QG3-E9-m22"; */
+"QG3-E9-m22.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "QPx-Ad-2C3"; */
+"QPx-Ad-2C3.text" = "null";
+
+/* Class = "UILabel"; text = "Səsli bildirişlər"; ObjectID = "QWh-6c-oFJ"; */
+"QWh-6c-oFJ.text" = "Səsli bildirişlər";
+
+/* Class = "UILabel"; text = "AZN"; ObjectID = "Qm3-ws-NYe"; */
+"Qm3-ws-NYe.text" = "AZN";
+
+/* Class = "UILabel"; text = "Çəkisi (kg)"; ObjectID = "QoS-gJ-HqX"; */
+"QoS-gJ-HqX.text" = "Çəkisi (kg)";
+
+/* Class = "UILabel"; text = "Yükün ölçüsü (m3)"; ObjectID = "Qzb-Q0-wfB"; */
+"Qzb-Q0-wfB.text" = "Yükün ölçüsü (m3)";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "R0s-RM-L7b"; */
+"R0s-RM-L7b.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Uğurlu qeydiyyat"; ObjectID = "RNB-LU-SVq"; */
+"RNB-LU-SVq.text" = "Uğurlu qeydiyyat";
+
+/* Class = "UILabel"; text = "Yükün uzunluğu(sm)"; ObjectID = "RWM-Yn-5Bh"; */
+"RWM-Yn-5Bh.text" = "Yükün uzunluğu(sm)";
+
+/* Class = "UILabel"; text = "Şifrənin təkrarı"; ObjectID = "Rpa-c8-1sC"; */
+"Rpa-c8-1sC.text" = "Şifrənin təkrarı";
+
+/* Class = "UILabel"; text = "Əlaqə nömrəsi"; ObjectID = "Rpr-Wd-9xQ"; */
+"Rpr-Wd-9xQ.text" = "Əlaqə nömrəsi";
+
+/* Class = "UITextField"; placeholder = "Haradan(Şəhər)"; ObjectID = "SA5-XL-5wr"; */
+"SA5-XL-5wr.placeholder" = "Haradan(Şəhər)";
+
+/* Class = "UILabel"; text = "Yükün növü"; ObjectID = "SAo-pk-5qq"; */
+"SAo-pk-5qq.text" = "Yükün növü";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "SKk-xV-O2o"; */
+"SKk-xV-O2o.text" = "Email";
+
+/* Class = "UILabel"; text = "Məbləğ"; ObjectID = "SS6-Lh-dJf"; */
+"SS6-Lh-dJf.text" = "Məbləğ";
+
+/* Class = "UILabel"; text = "Yeni elan"; ObjectID = "Sp3-Rf-bpS"; */
+"Sp3-Rf-bpS.text" = "Yeni elan";
+
+/* Class = "UILabel"; text = "Ödənişlər"; ObjectID = "Srj-O8-j1y"; */
+"Srj-O8-j1y.text" = "Ödənişlər";
+
+/* Class = "UILabel"; text = "Etibarlıdır"; ObjectID = "TB4-oy-iJn"; */
+"TB4-oy-iJn.text" = "Etibarlıdır";
+
+/* Class = "UILabel"; text = "Ətraflı"; ObjectID = "TPM-df-6jb"; */
+"TPM-df-6jb.text" = "Ətraflı";
+
+/* Class = "UILabel"; text = "Ödənişin növü"; ObjectID = "TsZ-pG-HJS"; */
+"TsZ-pG-HJS.text" = "Ödənişin növü";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "TxU-Qd-viM"; */
+"TxU-Qd-viM.text" = "----";
+
+/* Class = "UILabel"; text = "Elanlarım"; ObjectID = "UEc-7w-2Gf"; */
+"UEc-7w-2Gf.text" = "Elanlarım";
+
+/* Class = "UILabel"; text = "Sifarişçiyəm"; ObjectID = "UIK-gh-Cwa"; */
+"UIK-gh-Cwa.text" = "Sifarişçiyəm";
+
+/* Class = "UIButton"; normalTitle = "Browse"; ObjectID = "UOq-AV-0su"; */
+"UOq-AV-0su.normalTitle" = "Browse";
+
+/* Class = "UITextField"; text = "Vladimir Putin"; ObjectID = "VDy-Ft-EAx"; */
+"VDy-Ft-EAx.text" = "Vladimir Putin";
+
+/* Class = "UIButton"; normalTitle = "img01"; ObjectID = "VIo-Vs-zCM"; */
+"VIo-Vs-zCM.normalTitle" = "img01";
+
+/* Class = "UILabel"; text = "CVC"; ObjectID = "VKk-Mn-lTd"; */
+"VKk-Mn-lTd.text" = "CVC";
+
+/* Class = "UIButton"; normalTitle = "Axtar"; ObjectID = "WMG-m1-i5o"; */
+"WMG-m1-i5o.normalTitle" = "Axtar";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "WY1-cn-yfY"; */
+"WY1-cn-yfY.text" = "Phone";
+
+/* Class = "UILabel"; text = "+90 523 625 78 79"; ObjectID = "XAD-u1-sM9"; */
+"XAD-u1-sM9.text" = "+90 523 625 78 79";
+
+/* Class = "UITextField"; placeholder = "Haraya(Ölkə)"; ObjectID = "XVo-CZ-3fj"; */
+"XVo-CZ-3fj.placeholder" = "Haraya(Ölkə)";
+
+/* Class = "UILabel"; text = "Haradan(Region)"; ObjectID = "XaI-fh-tnu"; */
+"XaI-fh-tnu.text" = "Haradan(Region)";
+
+/* Class = "UILabel"; text = "Markası"; ObjectID = "Xpj-nI-ylJ"; */
+"Xpj-nI-ylJ.text" = "Markası";
+
+/* Class = "UILabel"; text = "  Məbləğ"; ObjectID = "YCj-rw-95s"; */
+"YCj-rw-95s.text" = "  Məbləğ";
+
+/* Class = "UILabel"; text = "Valyuta"; ObjectID = "YPa-MR-jkc"; */
+"YPa-MR-jkc.text" = "Valyuta";
+
+/* Class = "UILabel"; text = "Elanı dəyiş"; ObjectID = "YPi-Al-tVG"; */
+"YPi-Al-tVG.text" = "Elanı dəyiş";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "YVT-hQ-rPt"; */
+"YVT-hQ-rPt.text" = "USD";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "Yd6-sZ-pcD"; */
+"Yd6-sZ-pcD.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Bildirişlərim"; ObjectID = "ZBb-xo-p6Y"; */
+"ZBb-xo-p6Y.text" = "Bildirişlərim";
+
+/* Class = "UILabel"; text = "Tipi"; ObjectID = "ZGH-UJ-uU7"; */
+"ZGH-UJ-uU7.text" = "Tipi";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "ZGU-73-Xfa"; */
+"ZGU-73-Xfa.text" = "Seçilməyib";
+
+/* Class = "UIButton"; normalTitle = "QEYDIYYAT"; ObjectID = "Ziy-mD-CPY"; */
+"Ziy-mD-CPY.normalTitle" = "QEYDIYYAT";
+
+/* Class = "UITextField"; placeholder = "AA/İİ"; ObjectID = "ZkW-cX-fsi"; */
+"ZkW-cX-fsi.placeholder" = "AA/İİ";
+
+/* Class = "UITextField"; placeholder = "Haradan(Ölkə)"; ObjectID = "ZsK-4p-O6R"; */
+"ZsK-4p-O6R.placeholder" = "Haradan(Ölkə)";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "aOi-Qq-LNu"; */
+"aOi-Qq-LNu.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "aaM-RB-ZO7"; */
+"aaM-RB-ZO7.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Ad və soyad / Şirkətin adı"; ObjectID = "agh-H2-kif"; */
+"agh-H2-kif.text" = "Ad və soyad / Şirkətin adı";
+
+/* Class = "UILabel"; text = "AVTOMOBİLİN MƏLUMATLARI"; ObjectID = "ahz-RP-1qH"; */
+"ahz-RP-1qH.text" = "AVTOMOBİLİN MƏLUMATLARI";
+
+/* Class = "UILabel"; text = "Qeydiyyat"; ObjectID = "ajO-fu-VCk"; */
+"ajO-fu-VCk.text" = "Qeydiyyat";
+
+/* Class = "UILabel"; text = "Yükün eni(sm)"; ObjectID = "alU-xS-ul6"; */
+"alU-xS-ul6.text" = "Yükün eni(sm)";
+
+/* Class = "UILabel"; text = "Haraya(Region)"; ObjectID = "an7-BR-5da"; */
+"an7-BR-5da.text" = "Haraya(Region)";
+
+/* Class = "UILabel"; text = "YADDA SAXLA"; ObjectID = "ao3-zh-riP"; */
+"ao3-zh-riP.text" = "YADDA SAXLA";
+
+/* Class = "UILabel"; text = "SƏNƏDLƏRİNƏ BAX"; ObjectID = "bjv-OE-CPT"; */
+"bjv-OE-CPT.text" = "SƏNƏDLƏRİNƏ BAX";
+
+/* Class = "UIButton"; normalTitle = "Qeydiyyat"; ObjectID = "c0T-pc-7gP"; */
+"c0T-pc-7gP.normalTitle" = "Qeydiyyat";
+
+/* Class = "UILabel"; text = "Haradan"; ObjectID = "c2D-KN-aqH"; */
+"c2D-KN-aqH.text" = "Haradan";
+
+/* Class = "UILabel"; text = "Şifrəni dəyiş"; ObjectID = "c9V-es-Qwk"; */
+"c9V-es-Qwk.text" = "Şifrəni dəyiş";
+
+/* Class = "UILabel"; text = "Model"; ObjectID = "cAu-HR-dNR"; */
+"cAu-HR-dNR.text" = "Model";
+
+/* Class = "UILabel"; text = "Haraya(Region)"; ObjectID = "cFm-25-1ha"; */
+"cFm-25-1ha.text" = "Haraya(Region)";
+
+/* Class = "UILabel"; text = "Tarix"; ObjectID = "cRL-EE-uo4"; */
+"cRL-EE-uo4.text" = "Tarix";
+
+/* Class = "UILabel"; text = "Sürücünün xarici passportu"; ObjectID = "cRg-nH-aeA"; */
+"cRg-nH-aeA.text" = "Sürücünün xarici passportu";
+
+/* Class = "UIButton"; normalTitle = "Sifariş yarat"; ObjectID = "cYz-gn-tvi"; */
+"cYz-gn-tvi.normalTitle" = "Sifariş yarat";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "ciH-VO-rRh"; */
+"ciH-VO-rRh.text" = "Phone";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "dFi-aY-iEV"; */
+"dFi-aY-iEV.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Yükün çəkisi"; ObjectID = "dH4-TG-EME"; */
+"dH4-TG-EME.text" = "Yükün çəkisi";
+
+/* Class = "UILabel"; text = "Rus"; ObjectID = "dIL-Ff-QCG"; */
+"dIL-Ff-QCG.text" = "Rus";
+
+/* Class = "UILabel"; text = "Markası"; ObjectID = "dJ4-19-8gL"; */
+"dJ4-19-8gL.text" = "Markası";
+
+/* Class = "UIButton"; normalTitle = "BƏLİ"; ObjectID = "dPh-kM-slC"; */
+"dPh-kM-slC.normalTitle" = "BƏLİ";
+
+/* Class = "UILabel"; text = "  Ad, Soyad"; ObjectID = "f6l-Ng-s8s"; */
+"f6l-Ng-s8s.text" = "  Ad, Soyad";
+
+/* Class = "UITextField"; placeholder = "Bitmə tarixi"; ObjectID = "f8M-VO-vlq"; */
+"f8M-VO-vlq.placeholder" = "Bitmə tarixi";
+
+/* Class = "UILabel"; text = "www.kargox.az/service"; ObjectID = "fFR-Ss-Wcx"; */
+"fFR-Ss-Wcx.text" = "www.kargox.az/service";
+
+/* Class = "UILabel"; text = "QEYDİYYATI BİTİR"; ObjectID = "fmt-6i-dui"; */
+"fmt-6i-dui.text" = "QEYDİYYATI BİTİR";
+
+/* Class = "UILabel"; text = "Əlaqə nömrəsi"; ObjectID = "g0n-NT-1KO"; */
+"g0n-NT-1KO.text" = "Əlaqə nömrəsi";
+
+/* Class = "UILabel"; text = "Qeydiyyat"; ObjectID = "g8i-aR-Mj1"; */
+"g8i-aR-Mj1.text" = "Qeydiyyat";
+
+/* Class = "UIButton"; normalTitle = "GİRİŞ"; ObjectID = "gFo-Fj-GaO"; */
+"gFo-Fj-GaO.normalTitle" = "GİRİŞ";
+
+/* Class = "UILabel"; text = "İstifadəçi adı (Bu adla giriş edəcəksiniz)"; ObjectID = "gMU-bG-0Hj"; */
+"gMU-bG-0Hj.text" = "İstifadəçi adı (Bu adla giriş edəcəksiniz)";
+
+/* Class = "UILabel"; text = "İstifadəçi adı (Bu adla giriş edəcəksiniz)"; ObjectID = "gP6-mI-b9f"; */
+"gP6-mI-b9f.text" = "İstifadəçi adı (Bu adla giriş edəcəksiniz)";
+
+/* Class = "UITextField"; placeholder = "Başlanğıc tarix"; ObjectID = "gZC-YN-fU9"; */
+"gZC-YN-fU9.placeholder" = "Başlanğıc tarix";
+
+/* Class = "UILabel"; text = "Azərbaycan"; ObjectID = "gj5-Fz-oZM"; */
+"gj5-Fz-oZM.text" = "Azərbaycan";
+
+/* Class = "UILabel"; text = "Şifrə"; ObjectID = "gwD-8A-Pou"; */
+"gwD-8A-Pou.text" = "Şifrə";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "gxc-xE-8Tv"; */
+"gxc-xE-8Tv.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Ehtiyyat hissələrinə ehtiyyac olarsa\naşağıdakı nömrələrlə əlaqə saxlaya\nbilərsiniz"; ObjectID = "hAk-Kg-dFI"; */
+"hAk-Kg-dFI.text" = "Ehtiyyat hissələrinə ehtiyyac olarsa\naşağıdakı nömrələrlə əlaqə saxlaya\nbilərsiniz";
+
+/* Class = "UITextField"; placeholder = "Valyuta"; ObjectID = "hDe-8p-6md"; */
+"hDe-8p-6md.placeholder" = "Valyuta";
+
+/* Class = "UIButton"; normalTitle = "Browse"; ObjectID = "ihn-6G-212"; */
+"ihn-6G-212.normalTitle" = "Browse";
+
+/* Class = "UILabel"; text = "Tənzimləmələr"; ObjectID = "ijD-6a-qtR"; */
+"ijD-6a-qtR.text" = "Tənzimləmələr";
+
+/* Class = "UIButton"; normalTitle = "img02"; ObjectID = "ilF-jm-iAX"; */
+"ilF-jm-iAX.normalTitle" = "img02";
+
+/* Class = "UILabel"; text = "Ehtiyyat hissələri"; ObjectID = "ioz-kK-Eta"; */
+"ioz-kK-Eta.text" = "Ehtiyyat hissələri";
+
+/* Class = "UILabel"; text = "YADDA SAXLA"; ObjectID = "iqE-Td-DHF"; */
+"iqE-Td-DHF.text" = "YADDA SAXLA";
+
+/* Class = "UILabel"; text = "QEYDİYYATI BİTİR"; ObjectID = "iqj-G0-hd1"; */
+"iqj-G0-hd1.text" = "QEYDİYYATI BİTİR";
+
+/* Class = "UILabel"; text = "Titrıməli  bildirişlər"; ObjectID = "jKD-kO-LKA"; */
+"jKD-kO-LKA.text" = "Titrıməli  bildirişlər";
+
+/* Class = "UILabel"; text = "Email  bildirişləri"; ObjectID = "jOD-OD-wgz"; */
+"jOD-OD-wgz.text" = "Email  bildirişləri";
+
+/* Class = "UILabel"; text = "Valyuta"; ObjectID = "jQw-3W-h3a"; */
+"jQw-3W-h3a.text" = "Valyuta";
+
+/* Class = "UILabel"; text = "N/v-nin növü"; ObjectID = "jYx-Ny-AkI"; */
+"jYx-Ny-AkI.text" = "N/v-nin növü";
+
+/* Class = "UILabel"; text = "Qiymət"; ObjectID = "jsF-6I-RoX"; */
+"jsF-6I-RoX.text" = "Qiymət";
+
+/* Class = "UILabel"; text = "ACCEPT"; ObjectID = "jsF-V4-cYY"; */
+"jsF-V4-cYY.text" = "ACCEPT";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "jv9-TT-NhF"; */
+"jv9-TT-NhF.text" = "null";
+
+/* Class = "UILabel"; text = "Kartın nömrəsi"; ObjectID = "kWU-jj-z8D"; */
+"kWU-jj-z8D.text" = "Kartın nömrəsi";
+
+/* Class = "UIButton"; normalTitle = "XEYR"; ObjectID = "kno-5l-FrP"; */
+"kno-5l-FrP.normalTitle" = "XEYR";
+
+/* Class = "UIButton"; normalTitle = "GÖNDƏR"; ObjectID = "kp6-7g-fbo"; */
+"kp6-7g-fbo.normalTitle" = "GÖNDƏR";
+
+/* Class = "UILabel"; text = "Profil məlumatlarım"; ObjectID = "kxc-2o-pcS"; */
+"kxc-2o-pcS.text" = "Profil məlumatlarım";
+
+/* Class = "UILabel"; text = "1 il"; ObjectID = "ldr-Op-SYU"; */
+"ldr-Op-SYU.text" = "1 il";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "lom-4d-quO"; */
+"lom-4d-quO.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Profil məlumatlarım"; ObjectID = "lpg-wX-WKB"; */
+"lpg-wX-WKB.text" = "Profil məlumatlarım";
+
+/* Class = "UITextField"; placeholder = "Haraya(Şəhər)"; ObjectID = "lqv-Gb-dxg"; */
+"lqv-Gb-dxg.placeholder" = "Haraya(Şəhər)";
+
+/* Class = "UILabel"; text = "Haradan(Şəhər)"; ObjectID = "ltE-TX-4dq"; */
+"ltE-TX-4dq.text" = "Haradan(Şəhər)";
+
+/* Class = "UILabel"; text = "SMS"; ObjectID = "mh0-oy-tj8"; */
+"mh0-oy-tj8.text" = "SMS";
+
+/* Class = "UILabel"; text = "Yükün xəritədə yeri"; ObjectID = "mjv-Qg-Qzw"; */
+"mjv-Qg-Qzw.text" = "Yükün xəritədə yeri";
+
+/* Class = "UILabel"; text = "SMS"; ObjectID = "nbc-jl-4ig"; */
+"nbc-jl-4ig.text" = "SMS";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "ndo-f6-kvP"; */
+"ndo-f6-kvP.text" = "null";
+
+/* Class = "UILabel"; text = "San Francisco, CA"; ObjectID = "nwV-5y-vfo"; */
+"nwV-5y-vfo.text" = "San Francisco, CA";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "o3s-B0-bxW"; */
+"o3s-B0-bxW.text" = "null";
+
+/* Class = "UILabel"; text = "Yükün hündürlüyü(sm)"; ObjectID = "obc-lz-WHQ"; */
+"obc-lz-WHQ.text" = "Yükün hündürlüyü(sm)";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "pEW-9O-UTa"; */
+"pEW-9O-UTa.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "ƏTRAFLI AXTARIŞ"; ObjectID = "pSK-Ft-fBu"; */
+"pSK-Ft-fBu.text" = "ƏTRAFLI AXTARIŞ";
+
+/* Class = "UILabel"; text = "Telefon"; ObjectID = "pub-LY-qU7"; */
+"pub-LY-qU7.text" = "Telefon";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "q5M-zG-d2q"; */
+"q5M-zG-d2q.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "(994) 50 210 20 30"; ObjectID = "q7p-Fj-nUH"; */
+"q7p-Fj-nUH.text" = "(994) 50 210 20 30";
+
+/* Class = "UILabel"; text = "YARIMQOŞQUNUN MƏLUMATLARI"; ObjectID = "qHL-K3-qC4"; */
+"qHL-K3-qC4.text" = "YARIMQOŞQUNUN MƏLUMATLARI";
+
+/* Class = "UILabel"; text = "WhatsApp"; ObjectID = "qTS-jK-vlB"; */
+"qTS-jK-vlB.text" = "WhatsApp";
+
+/* Class = "UILabel"; text = "Haraya(Şəhər)"; ObjectID = "qcN-j5-LmN"; */
+"qcN-j5-LmN.text" = "Haraya(Şəhər)";
+
+/* Class = "UILabel"; text = "Çıxış"; ObjectID = "rUG-UA-be1"; */
+"rUG-UA-be1.text" = "Çıxış";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "rko-sQ-0h0"; */
+"rko-sQ-0h0.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Yarımqoşqunun qeydiyyat şəhadətnaməsi"; ObjectID = "rpW-xh-drr"; */
+"rpW-xh-drr.text" = "Yarımqoşqunun qeydiyyat şəhadətnaməsi";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sH6-0h-Mia"; */
+"sH6-0h-Mia.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Yükün növü"; ObjectID = "sME-YJ-IZy"; */
+"sME-YJ-IZy.placeholder" = "Yükün növü";
+
+/* Class = "UILabel"; text = "Profilim"; ObjectID = "sde-WO-DNj"; */
+"sde-WO-DNj.text" = "Profilim";
+
+/* Class = "UILabel"; text = "Ehtiyyat hissələrinə ehtiyyac olarsa\naşağıdakı nömrələrlə əlaqə saxlaya\nbilərsiniz"; ObjectID = "skE-qZ-z3f"; */
+"skE-qZ-z3f.text" = "Ehtiyyat hissələrinə ehtiyyac olarsa\naşağıdakı nömrələrlə əlaqə saxlaya\nbilərsiniz";
+
+/* Class = "UITextField"; placeholder = "Başlanğıc tarixi"; ObjectID = "t6R-Xp-ehp"; */
+"t6R-Xp-ehp.placeholder" = "Başlanğıc tarixi";
+
+/* Class = "UILabel"; text = "Haraya(Region)"; ObjectID = "tGW-tw-7Eb"; */
+"tGW-tw-7Eb.text" = "Haraya(Region)";
+
+/* Class = "UILabel"; text = "Tətbiq ödənişi"; ObjectID = "tT8-xS-2Tt"; */
+"tT8-xS-2Tt.text" = "Tətbiq ödənişi";
+
+/* Class = "UILabel"; text = "VÖEN"; ObjectID = "tiS-0V-dxb"; */
+"tiS-0V-dxb.text" = "VÖEN";
+
+/* Class = "UILabel"; text = "Ad və soyad"; ObjectID = "tkW-GU-tmd"; */
+"tkW-GU-tmd.text" = "Ad və soyad";
+
+/* Class = "UILabel"; text = "Haraya(Ölkə)"; ObjectID = "tnT-Zg-qtZ"; */
+"tnT-Zg-qtZ.text" = "Haraya(Ölkə)";
+
+/* Class = "UILabel"; text = "Bildirişlər"; ObjectID = "u0R-AI-SX1"; */
+"u0R-AI-SX1.text" = "Bildirişlər";
+
+/* Class = "UILabel"; text = "Yükün çəkisi (kg)"; ObjectID = "u7r-5T-eal"; */
+"u7r-5T-eal.text" = "Yükün çəkisi (kg)";
+
+/* Class = "UILabel"; text = "NEXT"; ObjectID = "uDg-T8-mOK"; */
+"uDg-T8-mOK.text" = "NEXT";
+
+/* Class = "UILabel"; text = "  Kartın nömrəsi"; ObjectID = "uYY-pA-Gef"; */
+"uYY-pA-Gef.text" = "  Kartın nömrəsi";
+
+/* Class = "UITextField"; placeholder = "Şifrə"; ObjectID = "uoN-hP-Q3X"; */
+"uoN-hP-Q3X.placeholder" = "Şifrə";
+
+/* Class = "UITextField"; text = "123456"; ObjectID = "uoN-hP-Q3X"; */
+"uoN-hP-Q3X.text" = "123456";
+
+/* Class = "UILabel"; text = "Rus"; ObjectID = "v4p-3J-wqk"; */
+"v4p-3J-wqk.text" = "Rus";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "vFm-Vh-hrL"; */
+"vFm-Vh-hrL.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Seçilməyib"; ObjectID = "vKL-eN-Qcb"; */
+"vKL-eN-Qcb.text" = "Seçilməyib";
+
+/* Class = "UILabel"; text = "Push  bildirişlər"; ObjectID = "voa-Ns-RWW"; */
+"voa-Ns-RWW.text" = "Push  bildirişlər";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "w92-o1-2YJ"; */
+"w92-o1-2YJ.text" = "null";
+
+/* Class = "UILabel"; text = "Haradan(Şəhər)"; ObjectID = "wAA-HR-wHE"; */
+"wAA-HR-wHE.text" = "Haradan(Şəhər)";
+
+/* Class = "UILabel"; text = "Pul köçür"; ObjectID = "wCa-e3-K1l"; */
+"wCa-e3-K1l.text" = "Pul köçür";
+
+/* Class = "UILabel"; text = "Sənədlərim"; ObjectID = "wNH-FL-WE9"; */
+"wNH-FL-WE9.text" = "Sənədlərim";
+
+/* Class = "UITextField"; placeholder = "Bitmə tarixi"; ObjectID = "wU5-Fi-awe"; */
+"wU5-Fi-awe.placeholder" = "Bitmə tarixi";
+
+/* Class = "UIButton"; normalTitle = "GİRİŞ"; ObjectID = "wlL-MR-oVB"; */
+"wlL-MR-oVB.normalTitle" = "GİRİŞ";
+
+/* Class = "UILabel"; text = "Yükün növü"; ObjectID = "wpy-f5-u8L"; */
+"wpy-f5-u8L.text" = "Yükün növü";
+
+/* Class = "UITextField"; text = "Yoxdur"; ObjectID = "wsE-xE-8a6"; */
+"wsE-xE-8a6.text" = "Yoxdur";
+
+/* Class = "UIButton"; normalTitle = "İmtina"; ObjectID = "xEU-MW-hOY"; */
+"xEU-MW-hOY.normalTitle" = "İmtina";
+
+/* Class = "UILabel"; text = "Valyuta"; ObjectID = "xVD-X8-0ya"; */
+"xVD-X8-0ya.text" = "Valyuta";
+
+/* Class = "UILabel"; text = "Bütün sürücülər"; ObjectID = "xbs-Tx-VQC"; */
+"xbs-Tx-VQC.text" = "Bütün sürücülər";
+
+/* Class = "UILabel"; text = "Sürücü tap"; ObjectID = "xdN-x9-wCk"; */
+"xdN-x9-wCk.text" = "Sürücü tap";
+
+/* Class = "UITextField"; placeholder = "Haraya(Ölkə)"; ObjectID = "xiI-sT-qBd"; */
+"xiI-sT-qBd.placeholder" = "Haraya(Ölkə)";
+
+/* Class = "UILabel"; text = "Tipi"; ObjectID = "y7Y-oe-i8w"; */
+"y7Y-oe-i8w.text" = "Tipi";
+
+/* Class = "UILabel"; text = "N.v qeydiyyat şəhadətnaməsi"; ObjectID = "yIZ-hV-4df"; */
+"yIZ-hV-4df.text" = "N.v qeydiyyat şəhadətnaməsi";
+
+/* Class = "UILabel"; text = "null"; ObjectID = "yN8-fX-4Et"; */
+"yN8-fX-4Et.text" = "null";
+
+/* Class = "UILabel"; text = "Çıxış etmək istədiyinizdən əminsiniz?"; ObjectID = "yR5-Pc-2Mp"; */
+"yR5-Pc-2Mp.text" = "Çıxış etmək istədiyinizdən əminsiniz?";
+
+/* Class = "UIButton"; normalTitle = "img03"; ObjectID = "yft-yf-Ihh"; */
+"yft-yf-Ihh.normalTitle" = "img03";
+
+/* Class = "UILabel"; text = "WhatsApp"; ObjectID = "yqT-vv-EwY"; */
+"yqT-vv-EwY.text" = "WhatsApp";
+
+/* Class = "UILabel"; text = "Tarix aralığı"; ObjectID = "zFq-TI-Jym"; */
+"zFq-TI-Jym.text" = "Tarix aralığı";
+
+/* Class = "UILabel"; text = "(994) 50 210 20 30"; ObjectID = "zS8-bz-6rr"; */
+"zS8-bz-6rr.text" = "(994) 50 210 20 30";
+
+/* Class = "UILabel"; text = "San Francisco, CA"; ObjectID = "zcl-DJ-o2y"; */
+"zcl-DJ-o2y.text" = "San Francisco, CA";
+
+/* Class = "UIButton"; normalTitle = "BAĞLA"; ObjectID = "zmd-cc-8fQ"; */
+"zmd-cc-8fQ.normalTitle" = "BAĞLA";
+
+/* Class = "UILabel"; text = "Çəkisi (kg)"; ObjectID = "zmt-jx-NOT"; */
+"zmt-jx-NOT.text" = "Çəkisi (kg)";

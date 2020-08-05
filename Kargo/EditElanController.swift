@@ -103,6 +103,24 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
     @IBOutlet weak var betweenBottomAndMapConst: NSLayoutConstraint!
     @IBOutlet weak var moreDetailTextView: UITextView!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var fromLbl: UILabel!
+    @IBOutlet weak var fromLbl2: UILabel!
+    @IBOutlet weak var fromLbl3: UILabel!
+    @IBOutlet weak var toLbl: UILabel!
+    @IBOutlet weak var toLbl2: UILabel!
+    @IBOutlet weak var toLbl3: UILabel!
+    @IBOutlet weak var tipLbl: UILabel!
+    @IBOutlet weak var cekiLbl: UILabel!
+    @IBOutlet weak var tutumLbl: UILabel!
+    @IBOutlet weak var uzunluqLbl: UILabel!
+    @IBOutlet weak var enLbl: UILabel!
+    @IBOutlet weak var hundurLbl: UILabel!
+    @IBOutlet weak var tarixLbl: UILabel!
+    @IBOutlet weak var valLbl: UILabel!
+    @IBOutlet weak var qiymetLbl: UILabel!
+    @IBOutlet weak var xeriteLbl: UILabel!
+    @IBOutlet weak var moreInfoLbl: UILabel!
     
     
     var connView = UIView()
@@ -144,6 +162,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var errorMessages = [String]()
     var dateFormatter = DateFormatter()
     var updateElanList: (()->())?
+    var selectedLang: String?
     
     
     override func viewDidLoad() {
@@ -156,6 +175,27 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     func setUpDesign(){
+        
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        fromLbl.text = "from_country".addLocalizableString(str: selectedLang!)
+        fromLbl2.text = "from_city".addLocalizableString(str: selectedLang!)
+        fromLbl3.text = "from_region".addLocalizableString(str: selectedLang!)
+        toLbl.text = "to_country".addLocalizableString(str: selectedLang!)
+        toLbl2.text = "to_city".addLocalizableString(str: selectedLang!)
+        toLbl3.text  = "to_region".addLocalizableString(str: selectedLang!)
+        tipLbl.text = "cargo_type".addLocalizableString(str: selectedLang!)
+        cekiLbl.text = "cargo_weight".addLocalizableString(str: selectedLang!)
+        tutumLbl.text = "cargo_capacity_m3".addLocalizableString(str: selectedLang!)
+        uzunluqLbl.text = "cargo_length".addLocalizableString(str: selectedLang!)
+        enLbl.text = "cargo_width".addLocalizableString(str: selectedLang!)
+        hundurLbl.text = "cargo_height".addLocalizableString(str: selectedLang!)
+        tarixLbl.text = "date_interval".addLocalizableString(str: selectedLang!)
+        valLbl.text = "valyuta".addLocalizableString(str: selectedLang!)
+        xeriteLbl.text = "cargo_coordinant".addLocalizableString(str: selectedLang!)
+        moreInfoLbl.text = "more_info".addLocalizableString(str: selectedLang!)
+        cancelBtn.setTitle("cancel".addLocalizableString(str: selectedLang!), for: .normal)
+        basliqLbl.text = "change_adv".addLocalizableString(str: selectedLang!)
+        changeBtn.setTitle("save".addLocalizableString(str: selectedLang!), for: .normal)
         
         customBtnArray = [fromCountrySelectBtn, fromCitySelectBtn, toCountrySelectBtn, toCitySelectBtn, yukTypeSelectBtn, dateSelectBtn, valyutaSelectBtn]
         scrollView.delegate = self
@@ -555,7 +595,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let countryUrl = "http://209.97.140.82/api/v1/country/list"
+        let countryUrl = "http://carryup.az/api/v1/country/list"
         guard let url = URL(string: countryUrl) else {return}
         
         let sessionConfig = URLSessionConfiguration.default
@@ -633,7 +673,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     func getCarTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/car/types"
+        let carUrl = "http://carryup.az/api/v1/car/types"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -696,7 +736,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     func getCargoTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/order/categories"
+        let carUrl = "http://carryup.az/api/v1/order/categories"
         guard let url = URL(string: carUrl) else {return}
         
         var urlRequest = URLRequest(url: url)
@@ -765,10 +805,10 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         var orderDetailUrl = ""
         if((UserDefaults.standard.string(forKey: "USERROLE")) == "3")
         {
-            orderDetailUrl = "http://209.97.140.82/api/v1/driver/detail/" + "\((self.selectedAdv?.id)!)"
+            orderDetailUrl = "http://carryup.az/api/v1/driver/detail/" + "\((self.selectedAdv?.id)!)"
         }
         else{
-            orderDetailUrl = "http://209.97.140.82/api/v1/order/detail/" + "\((self.selectedAdv?.id)!)"
+            orderDetailUrl = "http://carryup.az/api/v1/order/detail/" + "\((self.selectedAdv?.id)!)"
         }
         
         guard let url = URL(string: orderDetailUrl) else {return}
@@ -837,7 +877,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     func getValyutas(){
         valyutas = []
-        let carUrl = "http://209.97.140.82/api/v1/valyuta/list"
+        let carUrl = "http://carryup.az/api/v1/valyuta/list"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -905,7 +945,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         if(type == 2){
             toRegionList = []
         }
-        let regionUrl = "http://209.97.140.82/api/v1/country/\(countryId)/region/list"
+        let regionUrl = "http://carryup.az/api/v1/country/\(countryId)/region/list"
         guard let url = URL(string: regionUrl) else {return}
         
         let sessionConfig = URLSessionConfiguration.default
@@ -1072,7 +1112,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let loginUrl = "http://209.97.140.82/api/v1/driver/update"
+        let loginUrl = "http://carryup.az/api/v1/driver/update"
         
         guard let url = URL(string: loginUrl) else {return}
         
@@ -1186,7 +1226,7 @@ class EditElanController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let loginUrl = "http://209.97.140.82/api/v1/order/update"
+        let loginUrl = "http://carryup.az/api/v1/order/update"
         
         guard let url = URL(string: loginUrl) else {return}
         

@@ -17,6 +17,11 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var replyNewPassword: UITextField!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var oldPassLbl: UILabel!
+    @IBOutlet weak var newPassLbl: UILabel!
+    @IBOutlet weak var repeatPassLbl: UILabel!
+    @IBOutlet weak var saveLbl: UILabel!
     
     var backButton = UIButton()
     var barItem = UIBarButtonItem()
@@ -25,10 +30,21 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
     var checkConnButtonView = UIView()
     var checkConnIndicator = UIActivityIndicatorView()
     var errorMessages = [String]()
+    var selectedLang: String?
+    
+    var iconClick1 = false
+    var iconClick2 = false
+    var iconClick3 = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "change_password".addLocalizableString(str: selectedLang!)
+        newPassLbl.text = "new_pass".addLocalizableString(str: selectedLang!)
+        oldPassLbl.text = "old_pass".addLocalizableString(str: selectedLang!)
+        repeatPassLbl.text = "new_pass_confirm".addLocalizableString(str: selectedLang!)
+        saveLbl.text = "save".addLocalizableString(str: selectedLang!)
         
         addConnectionView()
         setUpBackButton()
@@ -166,7 +182,7 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let updateUrl = "http://209.97.140.82/api/v1/user/update/password"
+        let updateUrl = "http://carryup.az/api/v1/user/update/password"
         guard let url = URL(string: updateUrl) else {return}
         
         
@@ -266,5 +282,34 @@ class ChangePasswordController: UIViewController, UITextFieldDelegate {
         }
     }
     
-
+    @IBAction func showOldPass(_ sender: Any) {
+        if(iconClick1 == false){
+                   oldPassword.isSecureTextEntry = false
+               }
+               else{
+                   oldPassword.isSecureTextEntry = true
+               }
+               iconClick1 = !iconClick1
+    }
+    
+    @IBAction func showNewPass(_ sender: Any) {
+        if(iconClick2 == false){
+                   newPassword.isSecureTextEntry = false
+               }
+               else{
+                   newPassword.isSecureTextEntry = true
+               }
+               iconClick2 = !iconClick2
+    }
+    
+    @IBAction func showRepeatPass(_ sender: Any) {
+        if(iconClick3 == false){
+                   replyNewPassword.isSecureTextEntry = false
+               }
+               else{
+                   replyNewPassword.isSecureTextEntry = true
+               }
+               iconClick3 = !iconClick3
+    }
+    
 }

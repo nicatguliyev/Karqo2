@@ -24,7 +24,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var whatsAppView: CustomView!
     var backButton = UIButton()
     var barItem = UIBarButtonItem()
-    var paramaterNames = ["Markası", "Modeli",  "Növü", "N/v-nin tutumu(kq)", "N/v-nin tutumu(m3)"]
+    var paramaterNames = [String]()
     var paramValues = [String]()
     var selectedOrder: TimeLineDataItem?
     var connView = UIView()
@@ -43,6 +43,8 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     var driverId = Int()
     var acceptedCell: BildirisDetailCollectionCell?
     var questionView = QuestionView()
+    var selectedLanguage: String?
+    @IBOutlet weak var lookDocumentsLbl: UILabel!
     
     
     @IBOutlet weak var distanceBetwenTableAndBottom: NSLayoutConstraint!
@@ -50,6 +52,16 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        paramaterNames = [
+            "brend".addLocalizableString(str: selectedLanguage!),
+            "model".addLocalizableString(str: selectedLanguage!),
+            "type_of_transport".addLocalizableString(str: selectedLanguage!),
+            "capacity_m3".addLocalizableString(str: selectedLanguage!),
+            "capacity_kg".addLocalizableString(str: selectedLanguage!)
+        ]
+        lookDocumentsLbl.text = "look_documents".addLocalizableString(str: selectedLanguage!)
         
         addConnectionView()
         print(driverId)
@@ -164,7 +176,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         let nib: [InfoTableViewCell] = Bundle.main.loadNibNamed("InfoTableViewCell", owner: self, options: nil) as! [InfoTableViewCell]
         let cell = nib[0]
         
-        cell.paramNameLbl.text = paramaterNames[indexPath.row]
+        cell.paramNameLbl.text = paramaterNames[indexPath.row] 
         if(paramaterNames.count == paramValues.count){
             cell.paramValLbl.text = paramValues[indexPath.row]
         }
@@ -255,15 +267,15 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
         // tipler = []
         var driverDetailUrl = ""
         if(vars.isNotf == true){
-            driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((vars.notfsenderId!))"
+            driverDetailUrl = "http://carryup.az/api/v1/user/profile/\((vars.notfsenderId!))"
         }
         else
         {
             if(selectedOrder != nil){
-                driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\((selectedOrder?.owner?.id)!)"
+                driverDetailUrl = "http://carryup.az/api/v1/user/profile/\((selectedOrder?.owner?.id)!)"
             }
             else{
-                driverDetailUrl =    "http://209.97.140.82/api/v1/user/profile/\((driverId))"
+                driverDetailUrl =    "http://carryup.az/api/v1/user/profile/\((driverId))"
             }
             
         }
@@ -478,7 +490,7 @@ class DriverInfoController: UIViewController, UITableViewDelegate, UITableViewDa
                //  self.questionView.deleteView.isHidden = true
                  addQuestionView()
                  
-                 let confirmUrl = "http://209.97.140.82/api/v1/user/request/confirm"
+                 let confirmUrl = "http://carryup.az/api/v1/user/request/confirm"
                  
                  guard let url = URL(string: confirmUrl) else {return}
                  

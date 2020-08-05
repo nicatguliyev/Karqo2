@@ -24,6 +24,10 @@ class FindOrderCollectionCell: UICollectionViewCell
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var removeBtn: UIButton!
     @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var fromLbl: UILabel!
+    @IBOutlet weak var toLbl: UILabel!
+    @IBOutlet weak var tarixLbl: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

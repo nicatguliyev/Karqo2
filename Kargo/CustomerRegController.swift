@@ -79,6 +79,7 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tipTextField: UITextField!
     @IBOutlet weak var modelLbl: UILabel!
     
+    
     @IBOutlet weak var stajSelectView: CustomSelectButton!
     @IBOutlet weak var markaSelectView: CustomSelectButton!
     @IBOutlet weak var markaLbl: UILabel!
@@ -86,6 +87,30 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tipSelectView: CustomSelectButton!
     @IBOutlet weak var tipLbl: UILabel!
     
+    @IBOutlet weak var driverInfoLbl: UILabel!
+    @IBOutlet weak var nameSurnameLbl: UILabel!
+    @IBOutlet weak var foreginPassportLbl: UILabel!
+    @IBOutlet weak var registerPassportLbl: UILabel!
+    @IBOutlet weak var semiRegisterPassportLbl: UILabel!
+    @IBOutlet weak var workExperienceLbl: UILabel!
+    @IBOutlet weak var phoneNumberLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var passwordLbl: UILabel!
+    @IBOutlet weak var repeatPasswordLbl: UILabel!
+    @IBOutlet weak var carInfoLbl: UILabel!
+    @IBOutlet weak var brendLbl: UILabel!
+    @IBOutlet weak var carWeightLbl: UILabel!
+    @IBOutlet weak var semiCarInfoLbl: UILabel!
+    @IBOutlet weak var semiCarVolumeLbl: UILabel!
+    @IBOutlet weak var semiCarWeightLbl: UILabel!
+    @IBOutlet weak var semiCarTypeLbl: UILabel!
+    @IBOutlet weak var registerFinishLbl: UILabel!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var modelInfLbl: UILabel!
+    
+    
+    var iconClick1 = false
+    var iconClick2 = false
     var markalar = [Car]()
     var modeller = [Car]()
     var tipler = [Type]()
@@ -99,6 +124,7 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     var selectedImage3 = UIImage()
     
     var errorMessages = [String]()
+    var selectedLanguage: String?
     
    // var selectedMarka = 0
     
@@ -107,6 +133,31 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var numbersTableHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "register".addLocalizableString(str: selectedLanguage!)
+        nameSurnameLbl.text = "name_surname".addLocalizableString(str: selectedLanguage!)
+        driverInfoLbl.text = "driver_info".addLocalizableString(str: selectedLanguage!)
+        foreginPassportLbl.text = "driver_foreign_passport".addLocalizableString(str: selectedLanguage!)
+        browse1Btn.setTitle("browse".addLocalizableString(str: selectedLanguage!), for: .normal)
+        registerPassportLbl.text = "register_certificate".addLocalizableString(str: selectedLanguage!)
+         browse2Btn.setTitle("browse".addLocalizableString(str: selectedLanguage!), for: .normal)
+         browse3Btn.setTitle("browse".addLocalizableString(str: selectedLanguage!), for: .normal)
+        semiRegisterPassportLbl.text = "semi_trailer_register_certificate".addLocalizableString(str: selectedLanguage!)
+        workExperienceLbl.text = "work_experience".addLocalizableString(str: selectedLanguage!)
+        userNameLbl.text = "username_login".addLocalizableString(str: selectedLanguage!)
+        passwordLbl.text = "password".addLocalizableString(str: selectedLanguage!)
+        repeatPasswordLbl.text = "password_repeat".addLocalizableString(str: selectedLanguage!)
+        carInfoLbl.text = "car_info".addLocalizableString(str: selectedLanguage!)
+        brendLbl.text = "brend".addLocalizableString(str: selectedLanguage!)
+        carWeightLbl.text = "capacity_kg".addLocalizableString(str: selectedLanguage!)
+        modelInfLbl.text = "model".addLocalizableString(str: selectedLanguage!)
+        semiCarInfoLbl.text = "semi_trailer_info".addLocalizableString(str: selectedLanguage!)
+        semiCarVolumeLbl.text = "capacity_m3".addLocalizableString(str: selectedLanguage!)
+        semiCarWeightLbl.text = "capacity_kg".addLocalizableString(str: selectedLanguage!)
+        semiCarTypeLbl.text = "type_of_transport".addLocalizableString(str: selectedLanguage!)
+        registerFinishLbl.text = "register_finish".addLocalizableString(str: selectedLanguage!)
+        phoneNumberLbl.text = "contact_number".addLocalizableString(str: selectedLanguage!)
         
         addConnectionView()
         getCars()
@@ -136,8 +187,8 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
         
         scrollView.delegate = self
         
-        var imageBtns = [image01Btn, image02Btn, image03Btn]
-        var browseBtns = [browse1Btn, browse2Btn, browse3Btn]
+        let imageBtns = [image01Btn, image02Btn, image03Btn]
+        let browseBtns = [browse1Btn, browse2Btn, browse3Btn]
         
         for i in 0..<3 {
             imageBtns[i]?.layer.borderColor = UIColor(red: 112/255, green: 112/255, blue: 112/255, alpha: 1).cgColor
@@ -478,7 +529,7 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let carUrl = "http://209.97.140.82/api/v1/car/list"
+        let carUrl = "http://carryup.az/api/v1/car/list"
         guard let url = URL(string: carUrl) else {return}
         
         let urlRequest = URLRequest(url: url)
@@ -535,7 +586,7 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     func getModels(carId: Int){
         modeller = []
         selectedModelRow = 0
-        let carUrl = "http://209.97.140.82/api/v1/car/" + "\(carId)" + "/model/list"
+        let carUrl = "http://carryup.az/api/v1/car/" + "\(carId)" + "/model/list"
         guard let url = URL(string: carUrl) else {return}
 
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -583,7 +634,7 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     
     func getCarTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/car/types"
+        let carUrl = "http://carryup.az/api/v1/car/types"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -686,7 +737,7 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
             }
 
         }, usingThreshold:UInt64.init(),
-           to: "http://209.97.140.82/api/v1/user/register", //URL Here
+           to: "http://carryup.az/api/v1/user/register", //URL Here
             method: .post,
             headers: headers, //pass header dictionary here
             encodingCompletion: { (result) in
@@ -776,7 +827,25 @@ class CustomerRegController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
    
+    @IBAction func showPassPressed(_ sender: Any) {
+        if(iconClick1 == false){
+            passwordTextField.isSecureTextEntry = false
+        }
+        else{
+            passwordTextField.isSecureTextEntry = true
+        }
+        iconClick1 = !iconClick1
+    }
     
     
-
+    @IBAction func showRepeatedPassPressed(_ sender: Any) {
+        if(iconClick2 == false){
+                repeatPasswordTextField.isSecureTextEntry = false
+            }
+            else{
+                repeatPasswordTextField.isSecureTextEntry = true
+            }
+            iconClick2 = !iconClick2
+    }
+    
 }

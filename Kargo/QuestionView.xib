@@ -81,7 +81,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="areYouSureLbl" destination="yUT-cT-6Si" id="JH3-yq-07J"/>
                 <outlet property="cancelBtn" destination="dLh-Pd-cx7" id="br7-iT-wPE"/>
+                <outlet property="deleteAdvLbl" destination="vwb-Pg-HGE" id="Eki-PV-TGC"/>
                 <outlet property="deleteView" destination="L5s-DE-Myp" id="YuO-ca-on3"/>
                 <outlet property="indicator" destination="DH6-bl-DRe" id="jlp-rw-NVj"/>
                 <outlet property="yesBTN" destination="YVQ-l4-ehV" id="lZD-pH-Om0"/>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -259,14 +257,17 @@
                 <outlet property="dateLbl" destination="2BK-kC-sx6" id="gvT-5C-fvQ"/>
                 <outlet property="editBtn" destination="XOS-p0-wl5" id="46D-el-rX0"/>
                 <outlet property="fromCountryLbl" destination="fgR-cJ-w5c" id="az5-Cf-eFi"/>
+                <outlet property="fromLbl" destination="heU-ar-Hhg" id="scG-kX-bqw"/>
                 <outlet property="mainView" destination="UhN-6p-met" id="a5B-br-PIy"/>
                 <outlet property="nameView" destination="v1H-c7-quc" id="NgC-hX-F6C"/>
                 <outlet property="personNameLbl" destination="T7w-yM-wGh" id="ecv-qL-Y95"/>
                 <outlet property="priceLbl" destination="iNv-3L-SdB" id="t7H-3d-aH5"/>
                 <outlet property="priceView" destination="6Lf-SJ-eOl" id="muW-eF-LZd"/>
                 <outlet property="removeBtn" destination="FXx-OB-TYj" id="aen-gF-wcb"/>
+                <outlet property="tarixLbl" destination="m1K-PM-D9y" id="Bag-sb-kh5"/>
                 <outlet property="tipLbl" destination="odP-md-VNX" id="Ij6-0b-2WV"/>
                 <outlet property="toCountryLbl" destination="MmJ-LE-6gY" id="YT6-zN-Mw5"/>
+                <outlet property="toLbl" destination="xIQ-kB-VSR" id="vuX-Yb-cZM"/>
                 <outlet property="typeLbl" destination="2lU-oM-IHo" id="Zna-ej-KVU"/>
             </connections>
             <point key="canvasLocation" x="90" y="137"/>

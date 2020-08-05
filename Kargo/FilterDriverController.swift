@@ -83,6 +83,16 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var yukTypeLblHeight: NSLayoutConstraint!
     @IBOutlet weak var cleanBtn: UIButton!
     @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var fromCountryLbl: UILabel!
+    @IBOutlet weak var toCountryLbl: UILabel!
+    @IBOutlet weak var dateIntervalLbl: UILabel!
+    @IBOutlet weak var carTypeLbl: UILabel!
+    @IBOutlet weak var cargoTypeLbl: UILabel!
+    @IBOutlet weak var fromCityLbl: UILabel!
+    @IBOutlet weak var toCityLbl: UILabel!
+    
+    var selectedLang: String?
     
     var screenHeight = 0.0
     var filterType = ""
@@ -106,6 +116,19 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        fromCountryLbl.text = "from_country".addLocalizableString(str: selectedLang!)
+        toCountryLbl.text = "to_country".addLocalizableString(str: selectedLang!)
+        dateIntervalLbl.text = "date_interval".addLocalizableString(str: selectedLang!)
+        carTypeLbl.text = "transportation_type".addLocalizableString(str: selectedLang!)
+        cargoTypeLbl.text = "cargo_type".addLocalizableString(str: selectedLang!)
+        cleanBtn.setTitle("clear".addLocalizableString(str: selectedLang!), for: .normal)
+        searchBtn.setTitle("search".addLocalizableString(str: selectedLang!), for: .normal)
+        basliqLbl.text = "search_more".addLocalizableString(str: selectedLang!)
+        fromCityLbl.text = "from_city".addLocalizableString(str: selectedLang!)
+        toCityLbl.text = "to_city".addLocalizableString(str: selectedLang!)
+        
         
         textFieldArray = [locationTextfield, tecrubeTextField, typeTextFiled, volumeTextField, weightTextField, registerTextfield]
         viewArray = [locationView, tecrubeView, typeView, volumeView, weightView, registerView, yukTypeSelectBtn]
@@ -131,7 +154,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         //firstDatePicker.date = Calendar.current.date
         
-        let loc = Locale(identifier: "az")
+        let loc = Locale(identifier: selectedLang!)
         firstDatePicker.locale = loc
         secondDatePicker.locale = loc
         
@@ -548,7 +571,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
       
-        let countryUrl = "http://209.97.140.82/api/v1/country/list"
+        let countryUrl = "http://carryup.az/api/v1/country/list"
         guard let url = URL(string: countryUrl) else {return}
         
         let sessionConfig = URLSessionConfiguration.default
@@ -626,7 +649,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
             toRegionPicker.reloadAllComponents()
             volumeLbl.text = "Seçilməyib"
         }
-        let regionUrl = "http://209.97.140.82/api/v1/country/\(countryId)/region/list"
+        let regionUrl = "http://carryup.az/api/v1/country/\(countryId)/region/list"
         guard let url = URL(string: regionUrl) else {return}
         
         let sessionConfig = URLSessionConfiguration.default
@@ -739,7 +762,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func getCarTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/car/types"
+        let carUrl = "http://carryup.az/api/v1/car/types"
         guard let url = URL(string: carUrl) else {return}
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -788,7 +811,7 @@ class FilterDriverController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func getCargoTypes(){
         tipler = []
-        let carUrl = "http://209.97.140.82/api/v1/order/categories"
+        let carUrl = "http://carryup.az/api/v1/order/categories"
         guard let url = URL(string: carUrl) else {return}
         
         var urlRequest = URLRequest(url: url)

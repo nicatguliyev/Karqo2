@@ -16,9 +16,34 @@ class SelectLanguageController: UIViewController, SWRevealViewControllerDelegate
     @IBOutlet weak var view1: CustomSelectButton!
     @IBOutlet weak var view2: CustomSelectButton!
     @IBOutlet weak var view3: CustomSelectButton!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var iamge3: UIImageView!
+    
+    var selectedLang: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        
+        if(selectedLang == "en"){
+            image1.isHidden = true
+            image2.isHidden = true
+            iamge3.isHidden = false
+        }
+        
+        if(selectedLang == "ru"){
+            image1.isHidden = true
+            image2.isHidden = false
+            iamge3.isHidden = true
+        }
+        
+        if(selectedLang == "az"){
+            image1.isHidden = false
+            image2.isHidden = true
+            iamge3.isHidden = true
+        }
         
         setUpBackButton()
         
@@ -84,15 +109,30 @@ class SelectLanguageController: UIViewController, SWRevealViewControllerDelegate
     }
     
     @objc func azTapped(){
-        
+        UserDefaults.standard.set("az", forKey: "Lang")
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "language_options".addLocalizableString(str: selectedLang!)
+        image1.isHidden = false
+        image2.isHidden = true
+        iamge3.isHidden = true
     }
     
     @objc func rusTapped(){
-        
+        UserDefaults.standard.set("ru", forKey: "Lang")
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "language_options".addLocalizableString(str: selectedLang!)
+        image1.isHidden = true
+        image2.isHidden = false
+        iamge3.isHidden = true
     }
     
     @objc func engTapped(){
-        
+        UserDefaults.standard.set("en", forKey: "Lang")
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "language_options".addLocalizableString(str: selectedLang!)
+        image1.isHidden = true
+        image2.isHidden = true
+        iamge3.isHidden = false
     }
     
     func createShadow(view: UIView){

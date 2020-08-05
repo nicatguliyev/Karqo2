@@ -30,6 +30,12 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var phoneTableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var fieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var nameSurnameLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var phoneLbl: UILabel!
+    @IBOutlet weak var saveLbl: UILabel!
+    
     
     var imageController = UIImagePickerController()
     var backButton = UIButton()
@@ -41,10 +47,18 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
     var checkConnIndicator = UIActivityIndicatorView()
     var selectedImage: UIImage?
     var errorMessages = [String]()
+    var selectedLang: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedLang  = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "my_profile_info".addLocalizableString(str: selectedLang!)
+        nameSurnameLbl.text = "name_surname".addLocalizableString(str: selectedLang!)
+        userNameLbl.text = "username".addLocalizableString(str: selectedLang!)
+        phoneLbl.text = "contact_number".addLocalizableString(str: selectedLang!)
+        saveLbl.text = "save".addLocalizableString(str: selectedLang!)
         
         setUpBackButton()
         
@@ -233,7 +247,7 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
         
         let userId = (UserDefaults.standard.string(forKey: "USERID"))!
         // tipler = []
-        let driverDetailUrl = "http://209.97.140.82/api/v1/user/profile/\(userId)"
+        let driverDetailUrl = "http://carryup.az/api/v1/user/profile/\(userId)"
         guard let url = URL(string: driverDetailUrl) else {return}
         print(driverDetailUrl)
         
@@ -253,7 +267,7 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
             if(error == nil){
                 guard let data = data else {return}
                 
-                //let output =   String(data: data, encoding: String.Encoding.utf8)
+               // let output =   String(data: data, encoding: String.Encoding.utf8)
                // print("output: \(output)")
                 
                 do{
@@ -321,7 +335,7 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let updateUrl = "http://209.97.140.82/api/v1/user/update/general"
+        let updateUrl = "http://carryup.az/api/v1/user/update/general"
         guard let url = URL(string: updateUrl) else {return}
       
         
@@ -464,7 +478,7 @@ class ProfileDetailController: UIViewController, UITableViewDelegate, UITableVie
             }
             
         }, usingThreshold:UInt64.init(),
-           to: "http://209.97.140.82/api/v1/user/update/avatar", //URL Here
+           to: "http://carryup.az/api/v1/user/update/avatar", //URL Here
             method: .post,
             headers: headers, //pass header dictionary here
             encodingCompletion: { (result) in

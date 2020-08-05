@@ -20,13 +20,23 @@ class ProfileController: UIViewController, SWRevealViewControllerDelegate {
     @IBOutlet weak var senedViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var mainViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileInfoLbl: UILabel!
+    @IBOutlet weak var documentsLbl: UILabel!
+    @IBOutlet weak var changePasswordLbl: UILabel!
+    @IBOutlet weak var basliqLbl: UILabel!
     
     var foreignPassportUrl: String?
     var carRegisterUrl: String?
     var halfcarRegisterUrl: String?
+    var selectedLang: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "my_profile".addLocalizableString(str: selectedLang!)
+        profileInfoLbl.text = "my_profile_info".addLocalizableString(str: selectedLang!)
+        documentsLbl.text = "documents".addLocalizableString(str: selectedLang!)
+        changePasswordLbl.text = "change_password".addLocalizableString(str: selectedLang!)
 
         setUpMenuButton()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {

@@ -16,12 +16,20 @@ class SettingsController: UIViewController, SWRevealViewControllerDelegate {
     var menuBtn = UIButton()
     var menuBarItem = UIBarButtonItem()
     @IBOutlet weak var locationView: CustomSelectButton!
+    @IBOutlet weak var basliqLbl: UILabel!
+    @IBOutlet weak var languageLbl: UILabel!
+    @IBOutlet weak var notificationLbl: UILabel!
+    
+    var selectedLang: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "settings".addLocalizableString(str: selectedLang!)
+        languageLbl.text = "language_options".addLocalizableString(str: selectedLang!)
+        notificationLbl.text = "my_notifications".addLocalizableString(str: selectedLang!)
         setUpMenuButton()
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             self.bigActionBar.roundCorners(corners: [.bottomRight], cornerRadius: 70.0)
             self.mainView.roundCorners(corners: [.topRight, .bottomRight], cornerRadius: 30.0)
@@ -46,7 +54,7 @@ class SettingsController: UIViewController, SWRevealViewControllerDelegate {
         ringView.isUserInteractionEnabled = true
         ringTap.cancelsTouchesInView = false
         ringView.addGestureRecognizer(ringTap)
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -60,6 +68,10 @@ class SettingsController: UIViewController, SWRevealViewControllerDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        selectedLang = UserDefaults.standard.string(forKey: "Lang")
+        basliqLbl.text = "settings".addLocalizableString(str: selectedLang!)
+        languageLbl.text = "language_options".addLocalizableString(str: selectedLang!)
+        notificationLbl.text = "my_notifications".addLocalizableString(str: selectedLang!)
         self.revealViewController()?.panGestureRecognizer()?.isEnabled = true
     }
     
@@ -67,7 +79,7 @@ class SettingsController: UIViewController, SWRevealViewControllerDelegate {
         langView.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.05)
         ringView.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.05)
         locationView.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.05)
-
+        
     }
     
     
@@ -93,5 +105,7 @@ class SettingsController: UIViewController, SWRevealViewControllerDelegate {
         
     }
     
-
+    
+    
+    
 }

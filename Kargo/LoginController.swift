@@ -43,6 +43,7 @@ struct UserModel:Decodable{
     var sound_status: Int?
     var vibration_status: Int?
     var active: Int?
+    var last_payment_date: String?
     //let settings: [String: String]?
   //  let settings: [UserSettingModel]?
 }
@@ -64,6 +65,12 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     var userName = ""
+    @IBOutlet weak var forgotPasswordBtn: UIButton!
+    @IBOutlet weak var notRegisterLbl: UILabel!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var basliqLbl: UILabel!
+    
+    var iconClick = false
     
     var connView = UIView()
     var checkConnButtonView = UIView()
@@ -74,6 +81,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+        userTextField.attributedPlaceholder = NSAttributedString(string: "username".addLocalizableString(str: selectedLanguage!), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+         passTextField.attributedPlaceholder = NSAttributedString(string: "password".addLocalizableString(str: selectedLanguage!), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        loginBtn.setTitle("login".addLocalizableString(str: selectedLanguage!), for: .normal)
+        registerBtn.setTitle("register".addLocalizableString(str: selectedLanguage!), for: .normal)
+        forgotPasswordBtn.setTitle("forgot_password".addLocalizableString(str: selectedLanguage!), for: .normal)
+        notRegisterLbl.text = "not_registered".addLocalizableString(str: selectedLanguage!)
+        basliqLbl.text = "login".addLocalizableString(str: selectedLanguage!)
         
         vars.isExit = false
         
@@ -138,7 +153,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         self.checkConnIndicator.isHidden = false
         self.checkConnButtonView.isHidden = true
         
-        let loginUrl = "http://209.97.140.82/api/v1/user/login"
+        let loginUrl = "http://carryup.az/api/v1/user/login"
         
         guard let url = URL(string: loginUrl) else {return}
         
@@ -170,6 +185,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
                 guard let data = data else {return}
                 
             let outputStr  = String(data: data, encoding: String.Encoding.utf8)
+                //print("output: \(outputStr)")
                 do{
                     
                     if let outputStr = outputStr{
@@ -195,6 +211,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
                                 UserDefaults.standard.set("\((userModel.user?.sms_status)!)", forKey: "SMSSTATUS")
                                 UserDefaults.standard.set("\((userModel.user?.sound_status)!)", forKey: "SOUNDSTATUS")
                                 UserDefaults.standard.set("\((userModel.user?.vibration_status)!)", forKey: "VIBSTATUS")
+                                
+                                UserDefaults.standard.set(userModel.user?.last_payment_date, forKey: "LASTPAYMENT")
                                 self.performSegue(withIdentifier: "segueToSWReveal", sender: self)
                               //  self.dismiss(animated: true, completion: nil)
                                 
@@ -240,6 +258,18 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        let selectedLanguage = UserDefaults.standard.string(forKey: "Lang")
+           userTextField.attributedPlaceholder = NSAttributedString(string: "username".addLocalizableString(str: selectedLanguage!), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            passTextField.attributedPlaceholder = NSAttributedString(string: "password".addLocalizableString(str: selectedLanguage!), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+           loginBtn.setTitle("login".addLocalizableString(str: selectedLanguage!), for: .normal)
+           registerBtn.setTitle("register".addLocalizableString(str: selectedLanguage!), for: .normal)
+           forgotPasswordBtn.setTitle("forgot_password".addLocalizableString(str: selectedLanguage!), for: .normal)
+           notRegisterLbl.text = "not_registered".addLocalizableString(str: selectedLanguage!)
+           basliqLbl.text = "login".addLocalizableString(str: selectedLanguage!)
+        
+        
+        
         if(vars.isExit!)
         {
             userTextField.text = ""
@@ -247,6 +277,19 @@ class LoginController: UIViewController, UITextFieldDelegate {
             vars.isExit = false
         }
     }
+    
+    @IBAction func showPassPressed(_ sender: Any) {
+        if(iconClick == false){
+            passTextField.isSecureTextEntry = false
+        }
+        else{
+            passTextField.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+    }
+    
+
+    
 }
 
 extension Dictionary {

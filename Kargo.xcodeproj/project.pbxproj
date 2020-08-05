@@ -23,6 +23,8 @@
 		CD004BE92305F39F00279B64 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = CD004BE82305F39E00279B64 /* minus.png */; };
 		CD004BEC2305FBC900279B64 /* AddNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD004BEA2305FBC900279B64 /* AddNumberCell.swift */; };
 		CD004BED2305FBC900279B64 /* AddNumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD004BEB2305FBC900279B64 /* AddNumberCell.xib */; };
+		CD0D7CFB24CF3771004E0B06 /* eye_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0D7CFA24CF3771004E0B06 /* eye_icon.png */; };
+		CD0D7D0024D87442004E0B06 /* PayWebviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0D7CFF24D87442004E0B06 /* PayWebviewController.swift */; };
 		CD13672F231EF6D200E875E8 /* roundedRightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD13672E231EF6D100E875E8 /* roundedRightIcon.png */; };
 		CD136731231EF71500E875E8 /* greenDoneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD136730231EF71400E875E8 /* greenDoneIcon.png */; };
 		CD136733231EF8D500E875E8 /* SuccessRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD136732231EF8D500E875E8 /* SuccessRegisterController.swift */; };
@@ -32,6 +34,8 @@
 		CD13673B232E7F2000E875E8 /* DocumentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD13673A232E7F2000E875E8 /* DocumentCollectionCell.swift */; };
 		CD13673D232E888000E875E8 /* editIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD13673C232E887F00E875E8 /* editIcon.png */; };
 		CD13673F232EB6D600E875E8 /* elanIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD13673E232EB6D500E875E8 /* elanIcon.png */; };
+		CD21592B24B4E8B1008EEEE8 /* ChooseLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21592A24B4E8B1008EEEE8 /* ChooseLanguageController.swift */; };
+		CD21592E24B4F0D5008EEEE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD21593024B4F0D5008EEEE8 /* Localizable.strings */; };
 		CD219F5E22CD2F4D00BC4DC6 /* bigActionBar.png in Resources */ = {isa = PBXBuildFile; fileRef = CD219F5D22CD2F4D00BC4DC6 /* bigActionBar.png */; };
 		CD219F6022CD30B500BC4DC6 /* RegisterTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD219F5F22CD30B500BC4DC6 /* RegisterTypeController.swift */; };
 		CD219F6222CD3F4300BC4DC6 /* whiteBackIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD219F6122CD3F4200BC4DC6 /* whiteBackIcon.png */; };
@@ -207,6 +211,11 @@
 		CD004BE82305F39E00279B64 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
 		CD004BEA2305FBC900279B64 /* AddNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNumberCell.swift; sourceTree = "<group>"; };
 		CD004BEB2305FBC900279B64 /* AddNumberCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNumberCell.xib; sourceTree = "<group>"; };
+		CD0D7CFA24CF3771004E0B06 /* eye_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye_icon.png; sourceTree = "<group>"; };
+		CD0D7CFC24D3126A004E0B06 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Main.strings; sourceTree = "<group>"; };
+		CD0D7CFD24D3126A004E0B06 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CD0D7CFE24D3126A004E0B06 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CD0D7CFF24D87442004E0B06 /* PayWebviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWebviewController.swift; sourceTree = "<group>"; };
 		CD13672E231EF6D100E875E8 /* roundedRightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roundedRightIcon.png; sourceTree = "<group>"; };
 		CD136730231EF71400E875E8 /* greenDoneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenDoneIcon.png; sourceTree = "<group>"; };
 		CD136732231EF8D500E875E8 /* SuccessRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegisterController.swift; sourceTree = "<group>"; };
@@ -216,6 +225,11 @@
 		CD13673A232E7F2000E875E8 /* DocumentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionCell.swift; sourceTree = "<group>"; };
 		CD13673C232E887F00E875E8 /* editIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editIcon.png; sourceTree = "<group>"; };
 		CD13673E232EB6D500E875E8 /* elanIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elanIcon.png; sourceTree = "<group>"; };
+		CD21592A24B4E8B1008EEEE8 /* ChooseLanguageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLanguageController.swift; sourceTree = "<group>"; };
+		CD21592F24B4F0D5008EEEE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CD21593124B4F0F0008EEEE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		CD21593224B4F0F1008EEEE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CD21593324B4F0F1008EEEE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CD219F5D22CD2F4D00BC4DC6 /* bigActionBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigActionBar.png; sourceTree = "<group>"; };
 		CD219F5F22CD30B500BC4DC6 /* RegisterTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTypeController.swift; sourceTree = "<group>"; };
 		CD219F6122CD3F4200BC4DC6 /* whiteBackIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBackIcon.png; sourceTree = "<group>"; };
@@ -496,6 +510,9 @@
 				CDE53E9E237AB3E000CF28B3 /* PricesTableCell.swift */,
 				CDE53E9F237AB3E000CF28B3 /* PricesTableCell.xib */,
 				CDE53EA2237BEA6700CF28B3 /* CustomActionBar.swift */,
+				CD21592A24B4E8B1008EEEE8 /* ChooseLanguageController.swift */,
+				CD21593024B4F0D5008EEEE8 /* Localizable.strings */,
+				CD0D7CFF24D87442004E0B06 /* PayWebviewController.swift */,
 			);
 			path = Kargo;
 			sourceTree = "<group>";
@@ -514,6 +531,7 @@
 				CD73D89422D4708E0041B9E2 /* smsIcon.png */,
 				CD23A89522E62DC900FE9D5A /* rightArrow.png */,
 				CDD7B6AB233411C8007B496D /* whiteDone.png */,
+				CD0D7CFA24CF3771004E0B06 /* eye_icon.png */,
 				CDE53EC62383C90F00CF28B3 /* sifarisIcon.png */,
 				CDE53E9B237AA60C00CF28B3 /* checked.png */,
 				CDE53E9A237AA60B00CF28B3 /* unchecked.png */,
@@ -687,6 +705,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				az,
 			);
 			mainGroup = CD903F4522CB2BAB0088F473;
 			productRefGroup = CD903F4F22CB2BAB0088F473 /* Products */;
@@ -710,6 +730,7 @@
 				CD903F6C22CB49660088F473 /* FirstInfPage.xib in Resources */,
 				CD73D87622D128D00041B9E2 /* menuIcon.png in Resources */,
 				CD219F6422CE7BB800BC4DC6 /* driver.png in Resources */,
+				CD0D7CFB24CF3771004E0B06 /* eye_icon.png in Resources */,
 				CD73D8B222D606FC0041B9E2 /* logoutIcon.png in Resources */,
 				CD23A87422D8ADBC00FE9D5A /* moneyTransfer.png in Resources */,
 				CD73D8C322D723BA0041B9E2 /* evacuator2Img.png in Resources */,
@@ -763,6 +784,7 @@
 				CD13672F231EF6D200E875E8 /* roundedRightIcon.png in Resources */,
 				CD13673D232E888000E875E8 /* editIcon.png in Resources */,
 				CD7FA538230B396D00A66483 /* noInternet.png in Resources */,
+				CD21592E24B4F0D5008EEEE8 /* Localizable.strings in Resources */,
 				CD004BE72305CAC700279B64 /* plus-button.png in Resources */,
 				CD73D8A022D4BEEC0041B9E2 /* blueCircle.png in Resources */,
 				CD73D8B922D61F440041B9E2 /* ringIcon.png in Resources */,
@@ -918,6 +940,7 @@
 				CD73D89022D391740041B9E2 /* CustomView.swift in Sources */,
 				CDA5429C23566F6B0070516D /* EditElanController.swift in Sources */,
 				CD73D8C122D651BD0041B9E2 /* FontForService.swift in Sources */,
+				CD0D7D0024D87442004E0B06 /* PayWebviewController.swift in Sources */,
 				CD73D87222D120120041B9E2 /* SWRevealViewController.m in Sources */,
 				CD23A86422D750CC00FE9D5A /* CustomSelectButton.swift in Sources */,
 				CD73D87B22D1E5440041B9E2 /* FindDriverCollectionCell.swift in Sources */,
@@ -933,6 +956,7 @@
 				CD23A88E22DF3CAE00FE9D5A /* ProfileController.swift in Sources */,
 				CD219F6022CD30B500BC4DC6 /* RegisterTypeController.swift in Sources */,
 				CDF5D055237020240021CA0F /* MyOrdersController.swift in Sources */,
+				CD21592B24B4E8B1008EEEE8 /* ChooseLanguageController.swift in Sources */,
 				CD796BE523106E8A008D8805 /* ErrorMessageController.swift in Sources */,
 				CD73D8BF22D64BDA0041B9E2 /* ServiceViewController.swift in Sources */,
 				CD73D89A22D4B2260041B9E2 /* SenedeBaxButtonView.swift in Sources */,
@@ -968,10 +992,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CD21593024B4F0D5008EEEE8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD21592F24B4F0D5008EEEE8 /* en */,
+				CD21593324B4F0F1008EEEE8 /* ru */,
+				CD0D7CFE24D3126A004E0B06 /* az */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		CD903F5522CB2BAB0088F473 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CD903F5622CB2BAB0088F473 /* Base */,
+				CD21593124B4F0F0008EEEE8 /* ru */,
+				CD0D7CFC24D3126A004E0B06 /* az */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -980,6 +1016,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CD903F5B22CB2BAD0088F473 /* Base */,
+				CD21593224B4F0F1008EEEE8 /* ru */,
+				CD0D7CFD24D3126A004E0B06 /* az */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -991,6 +1029,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1052,6 +1091,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

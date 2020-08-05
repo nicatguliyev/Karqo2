@@ -21,15 +21,19 @@ class InformationController: UIViewController, UIScrollViewDelegate {
     var page2 = FirstInfPage()
     var page3 = FirstInfPage()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginBtn.setTitle("login".addLocalizableString(str: UserDefaults.standard.string(forKey: "Lang")!), for: .normal)
+        registerBtn.setTitle("register".addLocalizableString(str: UserDefaults.standard.string(forKey: "Lang")!), for: .normal)
+        
         
         designButtons()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
             self.addPages()
         })
-
+        
     }
     
     func designButtons(){
@@ -55,7 +59,7 @@ class InformationController: UIViewController, UIScrollViewDelegate {
         page1 = Bundle.main.loadNibNamed("FirstInfPage", owner: self, options: nil)?.first as! FirstInfPage
         page1.frame = CGRect(x: view.frame.size.width * CGFloat(0), y: 0, width: view.frame.size.width, height: horizontalScrollView.frame.height)
         horizontalScrollView.addSubview(page1)
-    
+        
         page2 = Bundle.main.loadNibNamed("FirstInfPage", owner: self, options: nil)?.first as! FirstInfPage
         page2.frame = CGRect(x: view.frame.size.width * CGFloat(1), y: 0, width: view.frame.size.width, height: horizontalScrollView.frame.height)
         horizontalScrollView.addSubview(page2)
@@ -109,6 +113,19 @@ class InformationController: UIViewController, UIScrollViewDelegate {
             
         }
     }
-
     
+    override func viewWillAppear(_ animated: Bool) {
+        loginBtn.setTitle("login".addLocalizableString(str: UserDefaults.standard.string(forKey: "Lang")!), for: .normal)
+        registerBtn.setTitle("register".addLocalizableString(str: UserDefaults.standard.string(forKey: "Lang")!), for: .normal)
+    }
+    
+    
+}
+
+extension String {
+    func addLocalizableString(str: String) -> String {
+        let path = Bundle.main.path(forResource: str, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        return NSLocalizedString(self, tableName: "", bundle: bundle!, value: "", comment: "")
+    }
 }
